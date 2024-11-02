@@ -109,16 +109,25 @@ padding-top: 100px;
 padding-left: 150px;
 padding-top: 50px;
 }
+
+.onet {
+
+  padding-left: 150px;
+  font-size: 24px;
+
+}
+
+
  .two {
 
   padding-left: 150px;
-  width: 1400px;
+  width: 1300px;
   font-size: 24px;
  }
 
 .three {
   padding-left: 150px;
-  width: 1400px;
+  width: 1200px;
   font-size: 24px;
   text-align: center;
 
@@ -138,6 +147,7 @@ padding-top: 50px;
     font-size: 24px;   
     font-style: italic;
     text-decoration: none;
+    width: 1300px;
   }
   .po {
     padding-left: 150px;
