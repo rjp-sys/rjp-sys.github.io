@@ -181,69 +181,99 @@ font-size: 24px;
 }
 
 .rha { 
-  text-align: center;
-  padding-left: 10px;
+  text-indent: 10px;
+  padding-left: 100px;
 
 }
 
 .rhb { 
-  text-align: center;
+  text-indent: 10px;
+  padding-left: 100px;
   
 }
 
 .rhc { 
-  text-align: center;
-  
+  text-indent: 10px;
+  padding-left: 450px ;
 }
 
 .rhd { 
-  text-align: center;
+
+  text-indent: 10px;
+  padding-left: 450px;
   
 }
 
 .rhe{ 
-  text-align: center;
+
+  text-indent: 10px;
+  padding-left: 100px;
   
 }
 
 .rhf { 
-  text-align: center;
+  text-indent: 10px;
+  padding-left: 100px;
   
 }
 
 .rhg { 
-  text-align: center;
-}
-
-.rhh { 
-  text-align: center;
-}
-
-.rhI { 
-  text-align: center;
-}
-
-.rhj { 
-  text-align: center;
-}
-
-.rhk{ 
-  text-align: center;
-}
-
-.rhl { 
-  text-align: center;
-}
-
-.rhm { 
-  text-align: center;
-}
-
-.rhn { 
-  text-align: center;
+  text-indent: 10px;
   padding-left: 100px;
 }
 
+.rhh { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhI { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhj { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhk{ 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhl { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rhm { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rhn { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rho { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhp { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhq { 
+  text-indent: 10px;
+  padding-left: 100px;
+}
 
 
 
