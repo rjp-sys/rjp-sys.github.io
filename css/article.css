@@ -145,7 +145,11 @@
     padding-left: 0px;
   }
   
-  
+  .txt {
+   text-align: center;
+   padding-left: 500px;
+  }
+
   .footer {
     position: fixed;
     left: 0;
