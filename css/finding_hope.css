@@ -68,6 +68,107 @@
   }
 
 
+  .top {
+    display: flex;
+    align-items: center;
+    margin-top: 200px;
+    padding-left: 100px;
+    
+  }
+  .banner { 
+    padding-left: 50px;
+    padding-bottom: 40px;
+  
+  }
+  
+  .name {
+    padding-top: 100px;
+    padding-left: 100px;
+    font-size: 50px;  
+  
+  }
+
+
+.headera {
+    text-indent: 50px;
+    font-size: 24px;
+    margin-top: 100px;
+}
+
+.headerb {
+    text-indent: 50px;
+    font-size: 24px;
+
+}
+
+.para {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.parb {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.parc {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.pard {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.pare {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.parf {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+
+}
+.parg {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.parh {
+    text-indent: 100px;
+    font-size: 24px;
+    width: 1200px;
+    padding-left: 100px;
+    padding-right: 50px;
+}
+
+.copywritea {
+    text-align: center;
+    font-size: 24px;
+}
 
 
 
