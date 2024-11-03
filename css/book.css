@@ -8,7 +8,6 @@
 }
 
 .one {
-
   width: 1525px;
 }
 
@@ -68,6 +67,8 @@ li.dropdown {
   display: block;
 }
 
+
+
 img {
   padding-top: 150px;
   padding-left: 200px;
@@ -88,9 +89,10 @@ hr.line {
   display: flex;
   align-items: center;
   margin-top: 1px;
-  padding-left: 300px;
+  padding-left: 100px;
   
 }
+
 .banner { 
   padding-left: 50px;
   padding-bottom: 40px;
@@ -104,6 +106,12 @@ hr.line {
 
 }
 
+.script {
+  padding-left: 50px;
+  padding-top: 50px;
+  width: 100px;
+
+}
 
 .namet {
 
@@ -112,19 +120,20 @@ hr.line {
 }
 
 .bio {
-  display: flex;
+  display: flex; 
 
 }
 
 .shortbio {
+  text-indent: 50px;
   font-size: 24px;
   padding-left: 700px;
   width: 8  00px;
   padding-top: 50px;
   padding-right: 50px;
+  
 
 }
-
 
 hr.linet {
   display:block;
@@ -145,7 +154,15 @@ hr.linet {
   padding-bottom: 100px;
 }
 
-
+hr.divided   {
+  display:block;
+  border:0px;
+  height:10px;
+  width: 100%;
+  border-bottom: 10px solid #e9d261;
+  color: #e9d261;
+  align-items:baseline;
+}
 
 .header {
 
@@ -185,6 +202,7 @@ align-items: center;
   margin-left: 600px;
 
 }
+
 .linkt {
   text-decoration: none;
 }

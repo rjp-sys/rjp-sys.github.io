@@ -89,7 +89,7 @@ hr.line {
   display: flex;
   align-items: center;
   margin-top: 1px;
-  padding-left: 300px;
+  padding-left: 100px;
   
 }
 .banner { 
@@ -129,6 +129,7 @@ hr.line {
   width: 8  00px;
   padding-top: 50px;
   padding-right: 50px;
+  text-indent: 50px;
 
 }
 
@@ -161,11 +162,46 @@ hr.divided   {
   align-items:baseline;
 }
 
+
+.headera {
+  text-align: center;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-left: 700px;
+
+}
+    
+.imga {
+  height: 300px;
+  width: 250px;
+  text-align: justify;
+  padding-top: 60px;
+  padding-left: 680px;
+  padding-bottom: 30px;
+}
+
+.linka {
+
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  margin-top: 800px;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-left: 630px;
+
+
+}
+
+
 .header {
 
   text-align: center;
   text-decoration: none;
-  padding-top: 50px;
+  margin-top: 150px;
   margin-left: 600px;
 
 }
@@ -182,7 +218,7 @@ align-items: center;
   width: 400px;
   text-align: justify;
   padding-top: 60px;
-  padding-left: 580px;
+  padding-left: 600px;
 }
 
 .link {
