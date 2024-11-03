@@ -109,49 +109,28 @@ li.dropdown {
   padding-left: 0px;
 }
 
-
-.disca {
-  padding-top: 50px;
-  width: 1200px;
-  padding-left: 500px;
-  text-indent: 50px;
-}
-
-.discb {
-  width: 1200px;
-  padding-left: 500px;
-  text-indent: 50px;
-}
-
-.discc {
-  width: 1200px;
-  padding-left: 500px;
-  text-indent: 50px;
-}
-
-
-.discd {
-  width: 1200px;
-  padding-left: 500px;
-  text-indent: 50px;
-}
-
-
-.disce {
-  width: 1200px;
-  padding-left: 500px;
-  text-indent: 50px;
-}
-
 .cover {
-
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  text-align: justify;
+  padding-top: 60px;
+  padding-left: 580px;
 }
 
 
-.linkt {
+.link {
+
   text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  margin-top: 800px;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-left: 640px;
+  padding-top: 20px;
+
 }
 
 .footer {

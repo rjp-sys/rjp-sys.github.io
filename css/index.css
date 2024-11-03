@@ -105,6 +105,13 @@ hr.line {
 
 }
 
+.script {
+  padding-left: 50px;
+  padding-top: 50px;
+  width: 100px;
+
+}
+
 .namet {
 
   text-align: center;
@@ -192,6 +199,7 @@ align-items: center;
   margin-left: 600px;
 
 }
+
 .linkt {
   text-decoration: none;
 }

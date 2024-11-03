@@ -79,7 +79,12 @@ li.dropdown {
 
 }
 
+.script {
+  padding-left: 50px;
+  padding-top: 50px;
+  width: 100px;
 
+}
 
 hr.line {
   display:block;
