@@ -1,4 +1,4 @@
-
+/*  © Share The Hope */
 .flex {
     display: inline-flex;
     flex: auto;
@@ -157,6 +157,8 @@
     width: 100%;  
     background-color: #e9d261;
     color: #457830;
+  } 
+/*  © Share The Hope */
     text-align: center;
     text-decoration: none;
   }
