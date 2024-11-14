@@ -317,6 +317,7 @@ unicode-bidi: isolate;
 }
 
 body {
+  font-family: 'Times New Roman';
   background-color: #f9f3d3;  
   margin: 0px;
 }

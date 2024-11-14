@@ -67,6 +67,24 @@
     display: block;
   }
   
+  
+  
+  img {
+    padding-top: 150px;
+    padding-left: 200px;
+  }
+  
+  
+  hr.line {
+    display:block;
+    border:0px;
+    height:10px;
+    width: 100%;
+    border-bottom: 10px solid #e9d261;
+    color: #e9d261;
+    align-items:baseline;
+  }
+  
   .top {
     display: flex;
     align-items: center;
@@ -74,10 +92,8 @@
     padding-left: 100px;
     
   }
-  
   .banner { 
     padding-left: 50px;
-    padding-top: 100px;
     padding-bottom: 40px;
   
   }
@@ -88,68 +104,34 @@
     font-size: 50px;  
   
   }
-
-.link {
-
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #457830;
-    margin-top: 800px;
-    display: block;
-    margin: 0 auto;
-    padding-bottom: 15px;
-    text-align: center;
-    margin-left: 600px;
   
-  }
-  
- 
   .imga {
-    height: 300px;
-    width: 250px;
-    text-align: justify;
-    padding-top: 60px;
-    padding-left: 680px;
-    padding-bottom: 30px;
-  }
-  
-  .linka {
-  
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #457830;
-    margin-top: 800px;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    margin-left: 500px;
-  }  
-
-  .auth {
-    font-size: 34px;
-    font-weight: 600;
-    margin-left: 600px;
-    margin-top: 810px;
-    text-align: justify;
+    width: 200px;
+    height: auto;
+    
   }
 
 
-  .linkt {
-    text-decoration: none;
-  }
+.service {
+  font-family: 'Times New Roman';
+  margin-left: 300px;
+  width: 900px;
+  text-align: center;
+}
+
+.bolda {
+
+    font-weight: 900;
+
+}
+
   
   .logo {
     padding-top: 0px;
     padding-left: 0px;
   }
   
-  .txt {
-   text-align: center;
-   padding-left: 500px;
-  }
-
+  
   .footer {
     position: fixed;
     left: 0;
@@ -165,4 +147,5 @@
     background-color: #f9f3d3;
     margin: 0px;
   }
-/*  © Share The Hope 2024 */
+  /*  © Share The Hope 2024 */
+  
