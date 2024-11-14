@@ -79,7 +79,7 @@
     display:block;
     border:0px;
     height:10px;
-    width: 100%;
+    width: 1725px;
     border-bottom: 10px solid #e9d261;
     color: #e9d261;
     align-items:baseline;
@@ -112,11 +112,22 @@
   }
 
 
+.Center {
+  margin-left: 200px;
+}
+
+#Center {
+  margin-left: 200px;
+
+}
+
+
+
 .service {
   font-family: 'Times New Roman';
-  margin-left: 300px;
+  margin-left: 100px;
   width: 900px;
-  text-align: center;
+  
 }
 
 .bolda {

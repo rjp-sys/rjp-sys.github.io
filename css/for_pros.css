@@ -79,7 +79,7 @@ hr.line {
   display:block;
   border:0px;
   height:10px;
-  width: 100%;
+  width: 1725px;
   border-bottom: 10px solid #e9d261;
   color: #e9d261;
   align-items:baseline;
@@ -102,9 +102,21 @@ hr.line {
   padding-top: 100px;
   padding-left: 100px;
   font-size: 50px;  
-
 }
 
+
+.cover_f {
+  width: 300px;
+  height: auto;
+  margin-left: 500px;
+}
+
+
+.linkb {
+  text-decoration: none;
+  margin-left: 715px;
+  margin-top: 400px;
+}
 
 
 .logo {
