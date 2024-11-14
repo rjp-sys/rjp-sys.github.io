@@ -75,15 +75,15 @@
   }
   
   
-  hr.line {
-    display:block;
-    border:0px;
-    height:10px;
-    width: 1725px;
-    border-bottom: 10px solid #e9d261;
-    color: #e9d261;
-    align-items:baseline;
-  }
+hr.line {
+  display:block;
+  border:0px;
+  height:10px;
+  width: 100%;
+  border-bottom: 10px solid #e9d261;
+  color: #e9d261;
+  align-items:baseline;
+}
   
   .top {
     display: flex;
