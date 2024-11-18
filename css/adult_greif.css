@@ -4,12 +4,12 @@
     flex: auto;
     flex-wrap: wrap;
     float: flex;
-    width: 1525px;
+    width: 1874px;
   }
   
   .one {
   
-    width: 1525px;
+    width: 1874px;
   }
   
   
@@ -85,40 +85,6 @@
       color: #e9d261;
       align-items:baseline;
     }
-    .lettera {
-      margin-left: 150px;
-      width: 900px;
-      margin-top: -650px;
-      text-indent: 50px;
-      font-size: 24px;
-      font-weight: 400;
-    }
-    .letterb {
-      margin-left: 150px;
-      width: 900px;
-      margin-top: -410px;
-      text-indent: 50px;
-      font-size: 24px;
-      font-weight: 400;
-    }
-
-    .letterc{
-      margin-left: 150px;
-      width: 900px;
-      margin-top: -200px;
-      text-indent: 50px;
-      font-size: 24px;
-      font-weight: 400;
-    }
-    .letterd{
-      margin-left: 150px;
-      width: 900px;
-      margin-top: -50px;
-      text-indent: 50px;
-      font-size: 24px;
-      font-weight: 400;
-    }
-    
     .top {
       display: flex;
       align-items: center;
@@ -126,6 +92,26 @@
       padding-left: 100px;
       
     }
+
+
+.sample {
+  margin-left: 400px;
+  margin-top: -600px;
+  height: 600px;
+  padding: 0;
+}
+
+.link3 {
+  text-decoration: none;
+  margin-top: 30px;
+  margin-left: -350px;
+  font-size: 24px;
+  color: #457830;
+  font-weight: 700;
+}
+
+
+
     
     .banner { 
       padding-left: 50px;

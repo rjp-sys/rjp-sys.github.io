@@ -1,14 +1,7 @@
 /*  © Share The Hope 2024 */
-.flex {
-  display: inline-flex;
-  flex: auto;
-  flex-wrap: wrap;
-  float: flex;
-  width: 1525px;
-}
-
-.one {
-  width: 1525px;
+img {
+  padding-top: 150px;
+  padding-left: 200px;
 }
 
 ul {
@@ -69,11 +62,6 @@ li.dropdown {
 
 
 
-img {
-  padding-top: 150px;
-  padding-left: 200px;
-}
-
 hr.line {
   display:block;
   border:0px;
@@ -83,6 +71,7 @@ hr.line {
   color: #e9d261;
   align-items:baseline;
 }
+
 
 .top {
   display: flex;
@@ -166,16 +155,16 @@ hr.divided   {
   text-align: center;
   text-decoration: none;
   margin-top: 50px;
-  margin-left: 700px;
+  margin-left: -250px;
 
 }
     
 .imga {
   height: 300px;
-  width: 250px;
+  width: auto;
   text-align: justify;
   padding-top: 60px;
-  padding-left: 680px;
+  padding-left: 580px;
   padding-bottom: 30px;
 }
 
@@ -190,7 +179,7 @@ hr.divided   {
   margin: 0 auto;
   padding-bottom: 15px;
   text-align: center;
-  margin-left: 630px;
+  margin-left: -250px;
 
 
 }
@@ -201,7 +190,7 @@ hr.divided   {
   text-align: center;
   text-decoration: none;
   margin-top: 150px;
-  margin-left: 600px;
+  margin-left: -250px;
 
 }
 
@@ -231,7 +220,7 @@ align-items: center;
   margin: 0 auto;
   padding-bottom: 15px;
   text-align: center;
-  margin-left: 600px;
+  margin-left: -250px;
 
 }
 
