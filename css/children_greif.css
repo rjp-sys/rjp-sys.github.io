@@ -116,6 +116,7 @@ li.dropdown {
   text-align: justify;
   padding-top: 60px;
   padding-left: 580px;
+  height: 500px;
 }
 
 
@@ -125,13 +126,10 @@ li.dropdown {
   font-size: 24px;  
   font-weight: bold;
   color: #457830;
-  margin-top: 800px;
   display: block;
   margin: 0 auto;
-  padding-bottom: 15px;
-  text-align: center;
-  margin-left: 640px;
-  padding-top: 20px;
+  margin-top: 600px;
+  margin-left: -330px;
 
 }
 

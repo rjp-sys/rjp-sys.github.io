@@ -196,13 +196,12 @@ hr.divided   {
 
 
 .book {
-
-display: flex;
 align-items: center;
 }
 
 
 .cover {
+
   width: 400px;
   text-align: justify;
   padding-top: 60px;
@@ -245,6 +244,8 @@ align-items: center;
   text-decoration: none;
 }
 body {
+  display: flex;
+  flex: auto;
   font-family: 'Times New Roman';
   background-color: #f9f3d3;
   margin: 0px;
