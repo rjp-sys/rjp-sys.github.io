@@ -153,6 +153,9 @@ hr.divided   {
 
 
 .headera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   text-decoration: none;
   margin-top: 50px;
@@ -167,11 +170,11 @@ hr.divided   {
   padding-top: 60px;
   justify-content: center;
   align-items: center;
+  margin-left: 395px;
   padding-bottom: 30px;
 }
 
 .linka {
-
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
@@ -245,6 +248,7 @@ align-items: center;
   text-align: center;
   text-decoration: none;
 }
+
 body {
   display: flex;
   flex: auto;
