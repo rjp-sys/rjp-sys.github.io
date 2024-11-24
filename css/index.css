@@ -162,9 +162,9 @@ hr.divided   {
 .imga {
   height: 300px;
   width: auto;
-  text-align: justify;
   padding-top: 60px;
-  padding-left: 580px;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 30px;
 }
 
