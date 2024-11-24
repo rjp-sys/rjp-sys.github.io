@@ -1,5 +1,6 @@
 /*  © Share The Hope 2024 */
 img {
+  display: flex;
   padding-top: 150px;
   padding-left: 200px;
 }
@@ -160,6 +161,7 @@ hr.divided   {
 }
     
 .imga {
+  display: flex;
   height: 300px;
   width: auto;
   padding-top: 60px;
