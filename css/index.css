@@ -57,10 +57,6 @@ ul {
   
 
 
-
-
-
-
   .top {
     display:  flex;
     flex-direction: row;
@@ -73,7 +69,7 @@ ul {
 .name {
 
 margin-top: 300px;
-margin-left: 400px;
+margin-left: 200px;
 font-size: 40px;
 font-weight: 500;
 } 
@@ -88,15 +84,16 @@ font-weight: 500;
   height: 300px;
   margin-top: 200px;
   padding-left: 50px;
+  padding-bottom: 100px;
   
 }
 
 
 .script {
-
-  margin-top: 300px;
+  margin-top: -300px;
   width: 400px;
-  margin-left: 50px;
+  padding-left: 400px;
+  margin-left: 800px;
   font-size: 24px;
 }
 
