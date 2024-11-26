@@ -153,7 +153,8 @@ hr.split {
 }
 
 
-.photo{
+.photo{ 
+  padding-top: 50px;
   margin-top: -350px;
   margin-right: 900px;
   padding-bottom: 50px;
@@ -217,7 +218,7 @@ hr.divided   {
   text-align: center;
   padding-top: 50px;
   margin-bottom: 100px;
-  margin-left: 630px;
+  margin-left: 610px;
 
 }
 
@@ -247,7 +248,7 @@ hr.divided   {
   width: 400px;
   height: fit-content;
   margin-top: 150px;
-  margin-left: -350px;
+  margin-left: -250px;
   margin-bottom: 20px;
   
 }
