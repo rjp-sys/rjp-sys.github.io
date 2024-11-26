@@ -190,87 +190,96 @@ flex-shrink: initial;
 }
 
 
+.titlea {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: -100px;
+  margin-left: 750px;
+  padding-bottom: 15px;
+  text-align: center;
+  padding-bottom: 100px;
+ 
 
-.headera {
-justify-content: center;
-align-items: center;
-text-align: center;
-padding-top: 50px;
-margin-top: -100px;
-margin-left: 790px;
+} 
 
-}
-  
+
 .covera {
-display: flex;
-height: 300px;
-width: auto;
-padding-top: 60px;
-justify-content: center;
-align-items: center;
-margin-left: -250px;
-margin-bottom: 20px;
-
-}
-
-.finding {
-display: flex;
-text-decoration: none;
-font-size: 24px;
-font-weight: bold;
-color: #457830;
-text-align: center;
-padding-top: 50px;
-margin-bottom: 100px;
-margin-left: 730px;
-
+  display: flex;
+  height: 300px;
+  width: auto;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: -350px;
+  
+  
 }
 
 
+.linka {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  margin-left: 680px;
+  padding-top: 50px;
+  padding-bottom: 15px;
+  text-align: center;
+ 
+
+}
 
 
 
-.book {
+.flexd {
 display:  flex;
 flex-direction: row;
 flex-wrap: wrap;
 flex-grow: initial;
 flex-shrink: initial;
-}
-
-.headerb {
-
-text-align: center;
-text-decoration: none;
-margin-top: 50px;
-margin-left: 850px;
-
-}
-
-.coverb {
-
-width: 400px;
-height: fit-content;
-margin-top: 150px;
-margin-left: -350px;
-margin-bottom: 20px;
 
 }
 
 
 
-.link {
+.titleb {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  margin-top: -250px;
+  margin-left: 750px;
+
+}
+
+
+.book {
+ align-items: center;
+  width: auto;
+  text-align: justify;
+  height: 400px;
+  margin-top: 400px;
+  margin-left: -275px;
+  padding-bottom: 200px;
+
+}
+
+
+.buy {
 display: flex;
-text-decoration: none;
-font-size: 24px;
-font-weight: bold;
-color: #457830;
-text-align: center;
-padding-top: 50px;
-margin-top: 740px;
-margin-bottom: 100px;
-padding-bottom: 100px;
-margin-left: -300px;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  padding-bottom: 15px;
+  text-align: center;
+  margin-top: 830px;
+  margin-left: -200px;
 
 }
 
