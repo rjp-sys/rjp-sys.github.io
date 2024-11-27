@@ -192,12 +192,9 @@ flex-shrink: initial;
 
 .titlea {
   display: flex;
-  align-items: center;
-  text-decoration: none;
   font-weight: bold;
-  text-align: center;
-  margin-top: 50px;
   margin-left: 250px;
+  margin-right: -620px;
 } 
 
 
@@ -209,6 +206,7 @@ flex-shrink: initial;
   align-items: center;
   margin-top: -10px;
   margin-left: 250px;
+  padding-top: 200px;
   padding-bottom: 200px;
 
 }
@@ -222,7 +220,7 @@ flex-shrink: initial;
   font-weight: bold;
   color: #457830;
   text-align: center;
-  margin-top: 190px;
+  margin-top: 390px;
   margin-left: -350px;
   padding-left: -15px;
   width: 400px;
