@@ -208,7 +208,6 @@ flex-shrink: initial;
   margin-left: 250px;
   padding-top: 100px;
   padding-bottom: 200px;
-
 }
 
 
@@ -244,15 +243,24 @@ flex-shrink: initial;
   display: flex;
   align-items: center;
   text-align: center;
-  text-decoration: none;
+  margin-top: -600px;
+  margin-left: 350px;
+  margin-right: -500px;
+  font-size: 30px;
+  font-weight: 600;
+
 }
 
 
 .book {
- align-items: center;
-  width: auto;
-  text-align: justify;
-  height: 400px;
+align-items: center;
+width: auto;
+text-align: justify;
+height: 400px;
+margin-top: -10px;
+margin-left: 250px;
+padding-top: 200px;
+padding-bottom: 200px;
 
 }
 
