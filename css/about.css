@@ -1,8 +1,3 @@
-/*  © Share The Hope 2024 */
-img {
-  padding-top: 150px;
-  padding-left: 200px;
-}
 
 ul {
   list-style-type: none;
@@ -62,244 +57,87 @@ li.dropdown {
 
 
 .top {
-  display: flex;
-  align-items: center;
-  margin-top: 1px;
-  padding-left: 100px;
-  
-}
-.banner { 
-  padding-left: 50px;
+  display:  flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: initial;
+  flex-shrink: initial;
 
 }
 
 .name {
-  padding-top: 100px;
-  padding-left: 100px;
-  font-size: 50px;  
+
+margin-top: 300px;
+margin-left: 400px;
+font-size: 40px;
+font-weight: 500;
+} 
+
+
+
+
+.banner {
+
+justify-content: center;
+width: auto;
+height: 300px;
+margin-top: 200px;
+padding-left: 50px;
+padding-bottom: 50px;
 
 }
+
 
 .script {
-  padding-left: 50px;
-  padding-top: 50px;
-  width: 200px;
 
+margin-top: 300px;
+width: 400px;
+margin-left: 50px;
+font-size: 24px;
 }
+
 
 hr.line {
-  display:block;
-  border:0px;
-  height:10px;
-  width: 100%;
-  border-bottom: 10px solid #e9d261;
-  color: #e9d261;
-  align-items:baseline;
+display:  flex;
+flex-direction: row;
+flex-wrap: wrap;
+flex-grow: initial;
+flex-shrink: initial;
+border:0px;
+height:10px;
+width: 100%;
+border-bottom: 10px solid #e9d261;
+color: #e9d261;
+align-items:baseline;
 }
 
-.logo {
 
-  padding-top: 0px;
-  padding-left: 0px;
 
-}
-
+.flexb {
+  display:  flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: initial;
+  flex-shrink: initial;
+  }
+  
 
 .Topic {
-  padding-left: 100px;
-  width: 1400px;
-  font-size: 24px;
-}
-
-.namet{
-  text-align: center;
-  font-size: 24px;
-}
-
-.namer {
-font-size: 24px;
-  text-align: center;
-
-}
-
-.longbioa{
-  align-self: flex-start;
-  padding-left: 150px;
-  font-size: 24px;
-  font-weight: 500;
-  padding-top: 200px;
-  text-indent: 50px;
-  padding-top: 50px;
-
-}
-
-.longbiob{
-  align-self: flex-start;
-  padding-left: 150px;
-  font-size: 24px;
-  font-weight: 500; 
-  text-indent: 50px;
-  padding-top: 0;
-
-}
-
-.longbioc{
-  align-self: flex-start;
-  padding-left: 150px;
-  font-size: 24px;
-  font-weight: 500; 
-  text-indent: 50px;
-  padding-top: 0;;
-
-}
-
-.longbiod{
-  align-self: flex-start;
-  padding-left: 150px;
-  font-size: 24px;
-  font-weight: 500; 
-  text-indent: 50px;
-  padding-top: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  width: 1300px;
-
-}
-
-.longbioe{
-  align-self: flex-start;
-  padding-left: 150px;
-  font-size: 24px;
-  font-weight: 500; 
-  text-indent: 50px;
-  padding-top: 0;
-  width: 1300px;
-}
-
-
-.headerb {
-  font-size: 24px;
-  text-align: center;
-}
-
-.rha { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-
-}
-
-.rhb { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
+text-indent: 200px;
   
 }
 
-.rhc { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 520px ;
+.qoute {
+  margin-left: 50px;
+  margin-right: 50px;
+
 }
 
-.rhd { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 520px;
-  
+.Names {
+margin-left: 550px;
+ 
 }
 
-.rhe{ 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-  
-}
-
-.rhf { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-  
-}
-
-.rhg { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhh { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhI { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhj { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhk{ 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhl { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-
-.rhm { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-
-.rhn { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-
-.rho { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-.rhp { 
-  font-size: 24px;
-  text-indent: 10px;
-  padding-left: 100px;
-}
-
-
-
-
-.photo {
-  float: right;
-  padding-left: 10px;
-  padding-right: 100px;
-  padding-bottom: 100px;
-  padding-top: 50px;
-}
-
-.linkt {
-  text-decoration: none;
-}
 
 .footer {
   position: fixed;
@@ -309,16 +147,29 @@ font-size: 24px;
   background-color: #e9d261;
   color: #457830;
   text-align: center;
+  text-decoration: none;
 }
 
-div {
-display: block;
-unicode-bidi: isolate;
+
+.share_link {
+  text-decoration: none;
+  color: #457830;
 }
+
+.facebook {
+  padding-top: 0px;
+  padding-left: 0px;
+}
+
+
 
 body {
+  display:  flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: initial;
+  flex-shrink: initial;
   font-family: 'Times New Roman';
-  background-color: #f9f3d3;  
-  margin: 0px;
+  margin: 0;
+  background-color: #f9f3d3;
 }
-/*  © Share The Hope 2024 */
