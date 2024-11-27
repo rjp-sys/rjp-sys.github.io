@@ -267,11 +267,14 @@ padding-bottom: 200px;
 
 .buy {
 display: flex;
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: bold;
-  color: #457830;
-  text-align: center;
+text-decoration: none;
+font-size: 24px;
+font-weight: bold;
+color: #457830;
+text-align: center;
+margin-top: 535px;
+margin-left: -263px;
+width: 400px;
 
 }
 
