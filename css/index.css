@@ -219,7 +219,7 @@ flex-shrink: initial;
   font-weight: bold;
   color: #457830;
   text-align: center;
-  margin-top: 188px;
+  margin-top: 175px;
   margin-left: -363px;
   width: 400px;
  
@@ -243,10 +243,10 @@ flex-shrink: initial;
   display: flex;
   align-items: center;
   text-align: center;
-  margin-top: -602px;
-  margin-left: 413px;
-  margin-right: -491px;
-  font-size: 30px;
+  margin-top: -606px;
+  margin-left: 429px;
+  margin-right: -471px;
+  font-size: 25px;
   font-weight: 600;
 
 }
@@ -259,7 +259,7 @@ text-align: justify;
 height: 400px;
 margin-top: -10px;
 margin-left: 250px;
-padding-top: 99px;
+padding-top: 100px;
 padding-bottom: 200px;
 
 }
