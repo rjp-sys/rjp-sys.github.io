@@ -138,6 +138,14 @@ margin-top: -150px;
 }
 
 
+.namet {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 24px;
+  margin-top: -90px;
+  margin-left: 700px;
+}
+
 .footer {
   position: fixed;
   left: 0;
