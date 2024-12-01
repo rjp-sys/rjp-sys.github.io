@@ -122,20 +122,17 @@ align-items:baseline;
   }
   
 
-.Topic {
-text-indent: 200px;
   
+.headera {
+  margin-left: 200px;
+  width: 400px;
 }
+
 
 .qoute {
-  margin-left: 50px;
-  margin-right: 50px;
-
-}
-
-.Names {
-margin-left: 550px;
- 
+  width: 900px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 
