@@ -109,6 +109,7 @@ width: 100%;
 border-bottom: 10px solid #e9d261;
 color: #e9d261;
 align-items:baseline;
+margin-top: -150px;
 }
 
 
@@ -124,15 +125,16 @@ align-items:baseline;
 
   
 .headera {
-  margin-left: 200px;
-  width: 400px;
+  margin-left: 780px;
+  margin-top: -250px;
 }
 
 
 .qoute {
-  width: 900px;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 24px;
+  margin-top: -190px;
 }
 
 
