@@ -102,6 +102,13 @@ ul {
     flex-shrink: initial;
 }
 
+.titlea {
+  margin-top: -50px;
+  font-size: 36px;
+  margin-left: 750px;
+  padding-bottom: 40px;
+}
+
   .imga {
     width: auto;
     height: 400px;
