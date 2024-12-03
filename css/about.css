@@ -83,7 +83,7 @@ width: auto;
 height: 300px;
 margin-top: 200px;
 padding-left: 50px;
-padding-bottom: 50px;
+padding-bottom: 250px;
 
 }
 
@@ -125,26 +125,50 @@ margin-top: -150px;
 
   
 .headera {
+  display: flex;
   margin-left: 780px;
-  margin-top: -250px;
+  margin-top: -50px;
 }
 
 
 .qoute {
+  display: flex;
   padding-left: 50px;
   padding-right: 50px;
   font-size: 24px;
-  margin-top: -190px;
+  margin-top: 50px;
 }
 
 
 .namet {
+  display: flex;
   padding-left: 50px;
   padding-right: 50px;
   font-size: 24px;
-  margin-top: -90px;
+  margin-top: 50px;
   margin-left: 700px;
 }
+
+
+.topic {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 24px;
+}
+
+
+.nametw {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 24px;
+  margin-top: 50px;
+  margin-left: 700px;
+  margin-bottom: 100px;
+
+}
+
 
 .footer {
   position: fixed;
