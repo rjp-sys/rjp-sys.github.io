@@ -170,6 +170,180 @@ margin-top: -150px;
 }
 
 
+
+.namer {
+  display: flex;
+  margin-left: 680px;
+  margin-top: 50px;
+  font-size: 32px;
+}
+
+
+.photo {
+  padding-left: 50px;
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
+
+.longbioa{
+margin-top: -500px;
+margin-left: 450px;
+padding-left: 50px;
+padding-right: 50px;
+width: 70%;
+font-size: 24px;
+
+}
+
+.longbiob{
+  margin-top: 50px;
+  margin-left: 450px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 70%;
+  font-size: 24px;
+}
+
+.longbioc {
+  margin-top: 50px;
+  margin-left: 450px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 70%;
+  font-size: 24px;
+}
+
+.longbiod {
+  margin-top: 50px;
+  margin-left: 450px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 70%;
+  font-size: 24px;
+}
+
+.longbioe {
+  margin-top: 50px;
+  margin-left: 450px;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 70%;
+  font-size: 24px;
+  padding-bottom: 100px;
+}
+
+.headerb {
+  font-size: 24px;
+  text-align: left;
+  padding-left: 50px;
+  padding-bottom: 40px;
+}
+
+.rha { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+
+}
+
+.rhb { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+  
+}
+
+.rhc { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 520px ;
+}
+
+.rhd { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 520px;
+  
+}
+
+.rhe{ 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+  
+}
+
+.rhf { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+  
+}
+
+.rhg { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhh { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhI { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhj { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhk{ 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhl { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rhm { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rhn { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
+.rho { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+.rhp { 
+  font-size: 24px;
+  text-indent: 10px;
+  padding-left: 100px;
+}
+
+
 .footer {
   position: fixed;
   left: 0;
