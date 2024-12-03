@@ -105,7 +105,7 @@ ul {
   .imga {
     width: auto;
     height: 400px;
-    margin-left: 700px;
+    margin-left: 600px;
   }
   
   
@@ -113,13 +113,13 @@ ul {
     text-decoration: none;
     font-size: 24px;
     margin-top: 480px;
-    margin-left: -500px;
+    margin-left: -450px;
 }
 
 
 .txt {
     margin-top: 600px;
-    margin-left: -380px;
+    margin-left: -280px;
     margin-bottom: 700px;
 }
   

@@ -127,17 +127,18 @@ ul {
     color: #e9d261;
     align-items:baseline;
     margin-left: 600px;
-    margin-top: -450px;
+    margin-top: -418px;
   
 }
 
 
 .photo {
     margin-right: 900px;
-    margin-top: -450px;
+    margin-top: -434px;
     height: 400px;
     width: auto;
     padding-left: 50px;
+    padding-top: 50px;
 }
 
 .contentt {
@@ -158,11 +159,11 @@ hr.divided   {
     border-bottom: 10px solid #e9d261;
     color: #e9d261;
     align-items:baseline;
-    margin-top: -100px;
+    margin-top: 37px;
   }
 
 .header {
-  margin-left: 700px;
+  margin-left: 7260px;
   font-size: 36px;
 }
 
@@ -177,11 +178,11 @@ hr.divided   {
 
 .link {
     text-decoration: none;
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 36px;
+    font-weight: 900;
     color: #457830;
     margin-top: 700px;
-    margin-left: -270px;
+    margin-left: -288px;
 
 }
 
