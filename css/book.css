@@ -152,18 +152,22 @@ ul {
 }
 
 hr.divided   {
-    display:block;
-    border:0px;
-    height:10px;
-    width: 100%;
-    border-bottom: 10px solid #e9d261;
-    color: #e9d261;
-    align-items:baseline;
+  display:  flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: initial;
+  flex-shrink: initial;
+  border:0px;
+  height:10px;
+  width: 100%;
+  border-bottom: 10px solid #e9d261;
+  color: #e9d261;
+  align-items:baseline;
     margin-top: -50px;
   }
 
 .header {
-  padding-left: 710px;
+  padding-left: 763px;
   margin-top: 50px;
   font-size: 36px;
 }
