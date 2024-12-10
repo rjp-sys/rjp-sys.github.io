@@ -104,44 +104,50 @@ hr.line {
     }
 
 .content {
-    display:  flex;
-    flex-direction: row;
+  display:  flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: initial;
+  flex-shrink: initial;
 }
 
 
 .header {
     margin-top: 100px;
     margin-left: 600px;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 900;
 }
 
 .headerb {
     margin-left: 600px;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 900;
+    padding-bottom: 50px;
 }
 
 .subheader {
-    margin-left: 580px;
+    margin-left: 650px;
     text-align: center;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 600;
     
 }
 
 .subheaderb {
     margin-left: 600px;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: 600;
-    padding-bottom: 100px;
 }
 
 .para {
-    margin-left: 100px;
+  padding-top: 100px;
+    margin-left: -900px;
     text-indent: 50px;
     font-size: 24px;
-    margin-right: 100px;
+    margin-right: 50px;
+    padding-bottom: 100px;
+    width: 1000px;
 }
   
 
