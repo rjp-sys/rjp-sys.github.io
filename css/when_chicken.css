@@ -55,7 +55,8 @@ ul {
     display: block;
   }
   
-
+  
+  
   .top {
     display:  flex;
     flex-direction: row;
@@ -64,27 +65,29 @@ ul {
     flex-shrink: initial;
   
   }
-
-
+  
   .name {
+  
+  margin-top: 300px;
+  margin-left: 400px;
+  font-size: 40px;
+  font-weight: 500;
+  } 
+  
+  
+  
+  
+  .banner {
+  
+  justify-content: center;
+  width: auto;
+  height: 300px;
+  margin-top: 200px;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  
+  }
 
-    margin-top: 300px;
-    margin-left: 400px;
-    font-size: 40px;
-    font-weight: 500;
-    } 
-    
-    
-    .banner {
-    
-    justify-content: center;
-    width: auto;
-    height: 300px;
-    margin-top: 200px;
-    padding-left: 50px;
-    padding-bottom: 50px;
-    
-    }
 
 hr.line {
     display:  flex;
@@ -100,97 +103,47 @@ hr.line {
     align-items:baseline;
     }
 
-
-
-    .header {
-        margin-top: 100px;
-        margin-left: 600px;
-        font-size: 36px;
-        font-weight: 900;
-    }
-
-    .subheader {
-        margin-left: 600px;
-        font-size: 30px;
-        font-weight: 700;
-    }
-.para {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.parb {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
+.content {
+    display:  flex;
+    flex-direction: row;
 }
 
 
-.parc {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-
-.pard {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.pare {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-
-.parf {
-    text-indent: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-
-
-.parg {
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-
-
-.parh {
-    margin-left: 100px;
-    margin-right: 100px;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.copywrite {
+.header {
     margin-top: 100px;
     margin-left: 600px;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 200px;
+    font-size: 36px;
+    font-weight: 900;
 }
 
+.headerb {
+    margin-left: 600px;
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.subheader {
+    margin-left: 580px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    
+}
+
+.subheaderb {
+    margin-left: 600px;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 100px;
+}
+
+.para {
+    margin-left: 100px;
+    text-indent: 50px;
+    font-size: 24px;
+    margin-right: 100px;
+}
+  
 
 .footer {
     position: fixed;

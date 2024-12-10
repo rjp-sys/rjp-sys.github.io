@@ -57,10 +57,6 @@ li.dropdown {
 
 
 
-
-
-
-
 .top {
   display:  flex;
   flex-direction: row;
@@ -192,9 +188,10 @@ flex-shrink: initial;
 
 .titlea {
   display: flex;
+  font-size: 60px;
   font-weight: bold;
-  margin-left: 250px;
-  margin-right: -581px;
+  margin-left: 650px;
+  margin-right: -601px;
 } 
 
 
@@ -204,8 +201,8 @@ flex-shrink: initial;
   width: auto;
   justify-content: center;
   align-items: center;
-  margin-top: -10px;
-  margin-left: 250px;
+  margin-top: 50px;
+  margin-left: -250px;
   padding-top: 100px;
   padding-bottom: 200px;
 }
@@ -213,17 +210,42 @@ flex-shrink: initial;
 
 .linka {
   display: flex;
-  align-items: center;
   text-decoration: none;
+  align-items: center;
   font-size: 24px;
   font-weight: bold;
   color: #457830;
   text-align: center;
-  margin-top: 175px;
-  margin-left: -363px;
+  margin-top: 375px;
+  margin-left: -383px;
   width: 400px;
  
+}
 
+
+.coverb {
+  display: flex;
+  height: 300px;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 250px;
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
+.linkb {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  text-align: center;
+  margin-top: 375px;
+  margin-left: -463px;
+  width: 600px;
 }
 
 
@@ -243,11 +265,12 @@ flex-shrink: initial;
   display: flex;
   align-items: center;
   text-align: center;
-  margin-top: -606px;
-  margin-left: 429px;
-  margin-right: -471px;
-  font-size: 25px;
-  font-weight: 600;
+  display: flex;
+  font-size: 60px;
+  font-weight: bold;
+  margin-left: 650px;
+  margin-right: -601px;
+  margin-top: -490px;
 
 }
 
@@ -259,7 +282,7 @@ text-align: justify;
 height: 400px;
 margin-top: -10px;
 margin-left: 250px;
-padding-top: 100px;
+padding-top: 200px;
 padding-bottom: 200px;
 
 }
@@ -272,7 +295,7 @@ font-size: 24px;
 font-weight: bold;
 color: #457830;
 text-align: center;
-margin-top: 535px;
+margin-top: 635px;
 margin-left: -180px;
 width: 400px;
 
