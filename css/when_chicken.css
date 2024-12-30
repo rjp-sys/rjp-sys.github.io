@@ -111,45 +111,246 @@ hr.line {
   flex-shrink: initial;
 }
 
-
 .header {
-    margin-top: 100px;
-    margin-left: 600px;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.headerb {
-    margin-left: 600px;
-    font-size: 30px;
-    font-weight: 900;
-    padding-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 600px;
+  font-weight: 600;
+  font-size: 36px;
 }
 
 .subheader {
-    margin-left: 650px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: 600;
-    
+  margin-left: 600px;
+  font-size: 36px;
+  font-weight: 600;
 }
 
-.subheaderb {
-    margin-left: 600px;
-    font-size: 24px;
-    font-weight: 600;
+
+.headerb{
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 150px;
+  margin-left: -470px;
 }
 
-.para {
-  padding-top: 100px;
-    margin-left: -900px;
-    text-indent: 50px;
-    font-size: 24px;
-    margin-right: 50px;
-    padding-bottom: 100px;
-    width: 1000px;
+.subheaderb{
+  padding-top: 50px;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 150px;
+  margin-left: -570px;
+ 
 }
+
+
+.para{
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.parb{
+  margin-top: -10px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
   
+}
+
+.parc{
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+  
+}
+
+.pard{
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.pare{
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+  
+}
+
+.page2 {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page2a {
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page2b {
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page2c {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page2d {
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page2e {
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3a {
+  margin-top: -20px;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3b {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3c {
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page3d {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page3e {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3f {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+.page3g {
+  text-align: center;
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3h {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page3i {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+
+.page3j {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page4a {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+}
+
+
+.page4b {
+  margin-left: 50px;
+  text-indent: 50px;
+  font-size: 26px;
+  font-weight: 300;
+  margin-right: 100px;
+  padding-bottom: 100px;
+}
+
 
 .footer {
     position: fixed;
@@ -184,6 +385,6 @@ hr.line {
     font-family: 'Times New Roman';
     margin: 0;
     background-color: #f9f3d3;
-    width: 1920px;
-    height: 1080px;
+    max-width: 1920px;
+    max-height: 1080px;
   }
