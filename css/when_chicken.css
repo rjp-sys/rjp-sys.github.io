@@ -73,9 +73,7 @@ ul {
   font-size: 40px;
   font-weight: 500;
   } 
-  
-  
-  
+
   
   .banner {
   
@@ -119,7 +117,7 @@ hr.line {
 }
 
 .subheader {
-  margin-left: 600px;
+  margin-left: 605px;
   font-size: 36px;
   font-weight: 600;
 }
@@ -128,8 +126,8 @@ hr.line {
 .headerb{
   font-size: 30px;
   font-weight: 600;
-  margin-top: 150px;
-  margin-left: -470px;
+  margin-top: 100px;
+  margin-left: -480px;
 }
 
 .subheaderb{
@@ -137,22 +135,23 @@ hr.line {
   font-size: 30px;
   font-weight: 600;
   margin-top: 150px;
-  margin-left: -570px;
+  margin-left: -480px;
  
 }
 
 
 .para{
-  margin-left: 50px;
+  margin-left: 250px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
-  margin-right: 100px;
+  margin-right: 250px;
+  padding-bottom: 50px;
 }
 
 .parb{
   margin-top: -10px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -162,7 +161,7 @@ hr.line {
 
 .parc{
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -172,7 +171,7 @@ hr.line {
 
 .pard{
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -181,7 +180,7 @@ hr.line {
 
 .pare{
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -190,7 +189,7 @@ hr.line {
 }
 
 .page2 {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -200,7 +199,7 @@ hr.line {
 
 .page2a {
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -209,7 +208,7 @@ hr.line {
 
 .page2b {
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -217,7 +216,7 @@ hr.line {
 }
 
 .page2c {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -227,7 +226,7 @@ hr.line {
 
 .page2d {
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -236,7 +235,7 @@ hr.line {
 
 .page2e {
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -246,7 +245,7 @@ hr.line {
 
 .page3a {
   margin-top: -20px;
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -255,7 +254,7 @@ hr.line {
 
 
 .page3b {
-  margin-left: 50px;
+  margin-left: 530px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -264,6 +263,7 @@ hr.line {
 
 
 .page3c {
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -271,7 +271,7 @@ hr.line {
 }
 
 .page3d {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -279,7 +279,7 @@ hr.line {
 }
 
 .page3e {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -288,7 +288,7 @@ hr.line {
 
 
 .page3f {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -297,7 +297,7 @@ hr.line {
 
 .page3g {
   text-align: center;
-  margin-left: 50px;
+  margin-left: 650px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -306,7 +306,7 @@ hr.line {
 
 
 .page3h {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -315,7 +315,7 @@ hr.line {
 
 
 .page3i {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -325,7 +325,7 @@ hr.line {
 
 
 .page3j {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -334,7 +334,7 @@ hr.line {
 
 
 .page4a {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
@@ -343,10 +343,19 @@ hr.line {
 
 
 .page4b {
-  margin-left: 50px;
+  margin-left: 350px;
   text-indent: 50px;
   font-size: 26px;
   font-weight: 300;
+  margin-right: 100px;
+  padding-bottom: 100px;
+}
+
+.astrisk {
+  margin-left: 250px;
+  text-indent: 50px;
+  font-size: 36px;
+  font-weight: 500;
   margin-right: 100px;
   padding-bottom: 100px;
 }
