@@ -56,6 +56,7 @@ ul {
   }
   
   
+  
   .top {
     display:  flex;
     flex-direction: row;
@@ -72,9 +73,7 @@ ul {
   font-size: 40px;
   font-weight: 500;
   } 
-  
-  
-  
+
   
   .banner {
   
@@ -83,73 +82,81 @@ ul {
   height: 300px;
   margin-top: 200px;
   padding-left: 50px;
-  padding-bottom: 250px;
+  padding-bottom: 50px;
   
   }
-  
 
-  
-  hr.line {
+
+hr.line {
+    display:  flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: initial;
+    flex-shrink: initial;
+    border:0px;
+    height:10px;
+    width: 100%;
+    border-bottom: 10px solid #e9d261;
+    color: #e9d261;
+    align-items:baseline;
+    }
+
+.content {
   display:  flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: initial;
   flex-shrink: initial;
-  border:0px;
-  height:10px;
-  width: 100%;
-  border-bottom: 10px solid #e9d261;
-  color: #e9d261;
-  align-items:baseline;
-  margin-top: -150px;
-  }
-  
-  
-  .cover {
-    width: auto;
-    height: 600px;
-    margin-left: 300px;
-
-  }
- 
-  .link {
-    text-decoration: none;
-    font-size: 36px;
-    color: #457830;
-    font-weight: 900;
-    margin-top: 650px;
-    margin-left: -604px;
-    padding-bottom: 600px;
-  }
-
-  .coverb {
-    display: flex;
-    height: 600px;
-    width: auto;
-    justify-content: center;
-    align-items: center;
-    margin-top: -20px;
-    margin-left: 250px;
-    padding-top: 20px;
-    padding-bottom:100px;
-  }
-  
-  .linkb {
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    font-size: 36px;
-    font-weight: bold;
-    color: #457830;
-    text-align: center;
-    margin-top: 75px;
-    margin-left: -350px;
-    width: 600px;
-  }
-  
+}
 
 
-  .footer {
+
+.one {
+  display: flex;
+  text-wrap: wrap;
+  margin-top: 100px;
+  margin-left: 100px;
+  padding-left: 0;
+  padding-right: 100px;
+  margin-right: 200px;
+  font-weight: 700;
+  font-size: 34px;
+}
+
+.suse {
+  padding-left: 800px;
+  margin-left: 800px;
+  margin-top: -400px;
+  height: 300px;
+  width: 200;
+}
+
+.two {
+  margin-top: 100px;
+  margin-left: 550px;
+  margin-right: 150px;
+  font-weight: 600;
+  font-size: 34px;
+}
+
+
+.three {
+  margin-top: 100px;
+  margin-left: 550px;
+  margin-right: 150px;
+  font-weight: 400;
+  font-size: 34px;
+}
+
+
+.end {
+  font-weight: 400;
+  font-size: 24px;
+  margin-left: 300px;
+  padding-bottom: 200px;
+}
+
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -182,6 +189,6 @@ ul {
     font-family: 'Times New Roman';
     margin: 0;
     background-color: #f9f3d3;
-    width: 1920px;
-    height: 1080px;
+    max-width: 1920px;
+    max-height: 1080px;
   }

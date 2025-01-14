@@ -249,7 +249,30 @@ flex-shrink: initial;
   width: 600px;
 }
 
+.coverc {
+  display: flex;
+  height: 300px;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 250px;
+  padding-top: 20px;
+  padding-bottom:100px;
+}
 
+.linkc {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #457830;
+  text-align: center;
+  margin-top: 375px;
+  margin-left: -350px;
+  width: 600px;
+}
 
 .flexd {
 display:  flex;
