@@ -101,205 +101,125 @@ hr.line {
     }
 
 .heading {
-   margin-left: 550px;
+   margin-left: 800px;
    font-size: 36px;
 }
 
 .subheading {
-    margin-left: 600px;
+    margin-top: 60px;
+    margin-left: 250px;
+    margin-right: 300px;
     font-size: 30px;
 }
 
-.subsub {
-  margin-left: 600px;
-    font-size: 25px;
-}
-
-.para { 
-    margin-left: 600px;
-    padding-right: 200px;
+.para {
+    margin-left: 350px;
     font-size: 26px;
     font-weight: 500;
     margin-right: 350px;
     padding-bottom: 30px;
 }
 
-.parb { 
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
+.parb {
+    margin-left: 350px;
+    font-size: 26px;
+    font-weight: 500;
+    margin-right: 100px;
+    padding-bottom: 50px;
 }
 
-.parc{
-
-  margin-left: 600px;
-  padding-right: 200px;
+.parc {
+  margin-left: 350px;
   font-size: 26px;
   font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+
+.pard {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+
+.pare {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+.parf {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+.parg {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+.parh {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+.pari {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 50px;
+}
+
+.parj {
+  margin-left: 350px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 100px;
+  padding-bottom: 100px;
+}
+
+
+.park {
+    margin-left: 350px;
+    font-size: 26px;
+    font-weight: 500;
+    margin-right: 100px;
+    padding-bottom: 100px;
+  }
   
-}
-
-.pard{
   
-  margin-left: 600px;
-    padding-right: 200px;
+.parl {
+    margin-left: 350px;
     font-size: 26px;
     font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-.pare{
-  margin-left: 600px;
-    padding-right: 200px;
+    margin-right: 100px;
+    padding-bottom: 100px;
+  }
+  
+
+  .txtfooter {
+    margin-left: 350px;
     font-size: 26px;
     font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-
-.parf{
-  margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-
-.parg{
-  margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-
-.parh{
-    text-indent: 50px;
-    margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-
-
-.parI{
-    text-indent: 50px;
-    margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-
-
-.parj{
-    text-indent: 50px;
-    margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-.park{
-    text-indent: 50px;
-    margin-left: 600px;
-    padding-right: 200px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 350px;
-    padding-bottom: 30px;
-}
-.parl{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-.parm{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.parn{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.paro{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.parp{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.parq{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.parr{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 30px;
-}
-
-.pars{
-  text-indent: 50px;
-  margin-left: 600px;
-  padding-right: 200px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-right: 350px;
-  padding-bottom: 130px;
-}
-
-
+    margin-right: 100px;
+    padding-bottom: 100px;
+  }
 
 .footer {
     position: fixed;
