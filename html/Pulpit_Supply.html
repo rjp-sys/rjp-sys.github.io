@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pulpit Supply Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon-16x16.png">
+        <link rel="stylesheet" href="/css/Pulpit_Supply.css">
+    </head>
+    <body>
+<nav>
+  <ul>
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/html/about.html">About Rev. Robyn</a></li>   
+    <li><a href="/html/invitetoSpeak.html">Invite Robyn to Speak</a></li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Writings ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/articles.html">Articles</a>
+        <a href="/html/book.html">Books</a>
+        <a href="/html/Poems.html">Poems</a>
+        <a href="/html/Sermons.html">Sermons</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Ministries ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/photos.html">Photography</a>
+        <a href="/html/music.html">Music</a>
+        <a href="/html/Pulpit_Supply.html">Pulpit Supply</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Grief Resources ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/Children’s_Grief_Resources.html">Resources For Children</a>
+        <a href="/html/Adult_Grief_Resources.html">Resources For Adults</a>
+        <a href="/html/Resources_for_pro.html">Resources For Professionals</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+  <div class="top">
+  <h2 class="name">Share The Hope</h2>
+  
+  <div class="top-content">
+    <img class="banner" src="/res/Maine-Lighthouses-new.jpg" alt="Share the Hope Banner">
+  </div>
+
+</div>
+
+  <hr class="line">
+
+
+  <div class="song-card">
+  <h2 class="card-title">Pulpit Supply Request Form</h2>
+  <div class="card-body">
+    <iframe class="move"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSc5sxYTwBu8xc2cP7GHcY2bEvcq71dqz3QuIc5XdY5J3nKOlw/viewform?embedded=true"
+      width="100%" height="1327" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 12px; background: #fff;">
+      Loading…
+    </iframe>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© Robyn J Plocher 2025</p>
+  <img class="facebook" src="/res/download4.png" alt="facebook logo">
+  <a class="share_link" href="https://www.facebook.com/hope4always/" target="_blank">Share The Hope</a>
+</div>
+
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const dropdown = document.querySelector('.dropdown > a');
+  const dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdown.addEventListener('click', function (e) {
+    e.preventDefault();
+    dropdownContent.style.display = dropdownContent.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Optional: Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target) && !dropdownContent.contains(e.target)) {
+      dropdownContent.style.display = 'none';
+    }
+  });
+});
+</script>
+
+</body>
+</html>

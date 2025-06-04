@@ -1,0 +1,314 @@
+/* Reset some default styles */
+body, ul, li, h2, p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation styles */
+nav {
+  background: #457830;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center; /* or your preferred alignment */
+  background-color: inherit; /* inherit from nav */
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 18px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+nav ul li a:hover {
+  background: #e9d261;
+}
+
+nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #457830;
+  min-width: 160px;
+  z-index: 10;
+  flex-direction: column;
+}
+
+nav ul li:hover .dropdown-content,
+nav ul li:focus-within .dropdown-content {
+  display: flex;
+}
+
+.top {
+  text-align: center;
+  padding: 24px 8px 8px 8px;
+  background: #e6dbb9 ;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: black;
+}
+
+/* Flex layout for top-content */
+.top-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px; /* space between image and scripture */
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Banner image styling */
+.banner {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* Scripture styling */
+.script {
+  font-style: italic;
+  color: black;
+  font-size: 1.1rem;
+  max-width: 350px;
+  line-height: 1.5;
+}
+
+
+hr.line {
+  border: none;                  /* Remove default border */
+  border-bottom: 10px solid #e9d261; /* Add thick colored line */
+  height: 0;                     /* No extra height */
+  width: 100%;                   /* Full width */
+  margin: 32px 0;                /* Optional: space above/below */
+  background: transparent;        /* Ensure no background */
+}
+
+.profile-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.card {
+  background: #fffbe5;
+  box-shadow: 0 4px 16px rgba(220, 200, 150, 0.13);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  min-width: 320px;
+  flex: 1 1 350px;
+  box-sizing: border-box;
+}
+
+.longbio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #fcf7db;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(160, 140, 90, 0.08);
+}
+
+.namer {
+  color: #a48b5b;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.longbio p {
+  color: #4d4637;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-size: 1.08rem;
+  text-align: left;
+}
+
+.testimonials-header {
+  color: #a48b5b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial {
+  background: #fcf7db;
+  border-left: 5px solid #e6dbb9;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.testimonial-quote {
+  color: #4d4637;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  color: #7c6b4f;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.testimonial-org {
+  color: #a48b5b;
+  font-weight: normal;
+}
+
+.awards.card {
+  background: #fffbe5;
+  box-shadow: 0 4px 16px rgba(220, 200, 150, 0.13);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.headerb {
+  color: #a48b5b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.awards-list {
+  list-style: disc inside;
+  color: #4d4637;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  padding-left: 1.2em;
+}
+
+.awards-list li {
+  margin-bottom: 1rem;
+}
+
+.awards-list a {
+  color: #7c6b4f;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.awards-list a:hover {
+  color: #a48b5b;
+}
+
+
+.footer {
+  text-align: center;
+  background: #e9d261;
+  padding: 24px 8px 16px 8px;
+  font-size: 1rem;
+  color: black;
+  border-top: 1px solid #e9d261;
+  margin-top: 32px;
+}
+
+.footer .facebook {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+
+.footer .share_link {
+  color: black;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6dbb9;
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+/* Responsive navigation for mobile */
+@media (max-width: 800px) {
+  nav ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li .dropdown-content {
+    position: static;
+    min-width: 100%;
+  }
+    .top-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .script {
+    max-width: 100%;
+    font-size: 1rem;
+  }
+  .banner {
+    max-width: 100%;
+  }
+ 
+  .profile-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .card {
+    max-width: 100%;
+    min-width: 0;
+  }
+   .awards.card {
+    padding: 1rem;
+    max-width: 98vw;
+    margin: 1rem auto;
+    font-size: 0.98rem;
+  }
+  .headerb {
+    font-size: 1.3rem;
+  }
+  .awards-list {
+    font-size: 0.98rem;
+    padding-left: 0.8em;
+  }
+}
+@media (max-width: 600px) {
+  .name, .titlea {
+    font-size: 1.2rem;
+  }
+  .footer {
+    font-size: 0.85rem;
+  }
+}

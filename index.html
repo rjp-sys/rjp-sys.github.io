@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home Page</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon-16x16.png">
+        <link rel="stylesheet" href="/css/index.css">
+    </head>
+    <body>
+<nav>
+  <ul>
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/html/about.html">About Rev. Robyn</a></li>   
+    <li><a href="/html/invitetoSpeak.html">Invite Robyn to Speak</a></li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Writings ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/articles.html">Articles</a>
+        <a href="/html/book.html">Books</a>
+        <a href="/html/Poems.html">Poems</a>
+        <a href="/html/Sermons.html">Sermons</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Ministries ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/photos.html">Photography</a>
+        <a href="/html/music.html">Music</a>
+        <a href="/html/Pulpit_Supply.html">Pulpit Supply</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" onclick="return false;">Grief Resources ▼</a>
+      <div class="dropdown-content">
+        <a href="/html/Children’s_Grief_Resources.html">Resources For Children</a>
+        <a href="/html/Adult_Grief_Resources.html">Resources For Adults</a>
+        <a href="/html/Resources_for_pro.html">Resources For Professionals</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+  <div class="top">
+  <h2 class="name">Share The Hope</h2>
+  
+  <div class="top-content">
+    <img class="banner" src="/res/Maine-Lighthouses-new.jpg" alt="Share the Hope Banner">
+    <p class="script">
+      "The LORD is close to the brokenhearted and saves those who are crushed in spirit." Psalm 34:18 (NIV)
+    </p>
+  </div>
+
+</div>
+
+  <hr class="line">
+
+<div class="flexb">
+  <div class="bio-text">
+    <h3 class="namet">About Robyn Plocher, M.Div.</h3>
+    <p class="shortbio">For all the different aspects of ministry in which Robyn has served, the one unchanging thing has been Robyn's desire to share hope with
+      the hopeless and to help those in despair to rediscover the joy they once knew. On this site, you may freely read, copy or download 
+      any resources, words of inspiration and so much more. Please make sure the following credit appears: Used with permission, © Robyn Plocher (year) All Rights Reserved.</p>
+
+  </div>
+  <img class="photo" src="/res/share_the_hope2.jpg" alt="photo of Robyn">
+</div>
+<hr class="divided">
+
+<div class="flexc">
+  <h1 class="titlea">Featured Articles</h1>
+  
+  <div class="article">
+    <img class="covera" src="/res/hoilday.jpg" alt="Finding Hope cover">
+    <p class="linka">
+      <a href="/html/finding_hope.html" target="_blank">Finding Hope In Community</a>
+    </p>
+  </div>
+  
+  <div class="article">
+    <img class="coverb" src="/res/Slide52.jpg" alt="When Chicken Soup is Not Enough">
+    <p class="linkb">
+      <a href="/html/when_chicken.html" target="_blank">When Chicken Soup is Not Enough</a>
+    </p>
+  </div>
+  
+  <div class="article">
+    <img class="coverc" src="/res/ten_things.jpg" alt="Ten Things">
+    <p class="linkc">
+      <a href="/html/ten-things-to-know.html" target="_blank">10 Things to Know About Children and Grief</a>
+    </p>
+  </div>
+</div>
+
+<div class="flexd">
+  <h1 class="titleb">Featured Books</h1>
+  <div class="book-feature">
+    <img class="book" src="/res/61fCeZZh34L._SL1499_.jpg" alt="cover of Picture Perfect">
+    <p>
+      <a class="buy" href="https://www.amazon.com/Picture-Perfect-Robyn-J-Plocher/dp/B0DF6J3DVM?crid=3ANXFNYKRDKE5&dib=eyJ2IjoiMSJ9.9mlU5C-5T6nh68KqUYBZuR6x-gTUwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwO7gzuFZx8yZDt8SKQly88cSRIAGCMqsR29eO0QK4bBXhRpeCqb1QByXTot_SiXxLs-0tr7t0N3_oKPVAVMjkwaCfvmjSsY57lMN3t9hD3oVapPKxZPO6QsvGfsuB2D_I-Iksu7efTM3s9Ik-aWb70xXyf119MgE.9VDCEfH7sBR-U5cD7z-LxPu6GoWBQBSgYffMWwIwIj8&dib_tag=se&keywords=picture+perfect&qid=1731790369&sprefix=%2Caps%2C93&sr=8-7" target="_blank">Buy it Here</a>
+    </p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© Robyn J Plocher 2025</p>
+  <img class="facebook" src="/res/download4.png" alt="facebook logo">
+  <a class="share_link" href="https://www.facebook.com/hope4always/" target="_blank">Share The Hope</a>
+</div>
+
+
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const dropdown = document.querySelector('.dropdown > a');
+  const dropdownContent = document.querySelector('.dropdown-content');
+
+  dropdown.addEventListener('click', function (e) {
+    e.preventDefault();
+    dropdownContent.style.display = dropdownContent.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // Optional: Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!dropdown.contains(e.target) && !dropdownContent.contains(e.target)) {
+      dropdownContent.style.display = 'none';
+    }
+  });
+});
+</script>
+
+</body>
+</html>

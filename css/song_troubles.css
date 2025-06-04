@@ -1,0 +1,189 @@
+/* Reset some default styles */
+body, ul, li, h2, p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #e6dbb9;
+  font-family: "Times New Roman", Times, serif;
+  color: #4d4637;
+}
+
+/* Navigation styles */
+nav {
+  background: #457830;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+}
+nav ul li {
+  position: relative;
+}
+nav ul li a {
+  display: block;
+  padding: 14px 18px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+nav ul li a:hover {
+  background: #e9d261;
+}
+nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #457830;
+  min-width: 160px;
+  z-index: 10;
+  flex-direction: column;
+}
+nav ul li:hover .dropdown-content,
+nav ul li:focus-within .dropdown-content {
+  display: flex;
+}
+
+/* Top section */
+.top {
+  text-align: center;
+  padding: 24px 8px 8px 8px;
+  background: #e6dbb9;
+}
+.name {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: black;
+}
+.top-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+.banner {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+hr.line {
+  border: none;
+  border-bottom: 10px solid #e9d261;
+  height: 0;
+  width: 100%;
+  margin: 32px 0;
+  background: transparent;
+}
+
+/* Main content card */
+.content-card {
+  background: #fffbe5;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(220,200,150,0.13);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+  color: #4d4637;
+}
+.content-card p {
+  margin-bottom: 1.2em;
+  line-height: 1.7;
+  font-size: 1.08rem;
+}
+.content-card .suess {
+  float: right;
+  width: 180px;
+  max-width: 45%;
+  margin: 0 0 1.2em 1.5em;
+  border-radius: 0.7rem;
+  box-shadow: 0 2px 8px rgba(220,200,150,0.11);
+  background: #e9d261;
+}
+.content-card .song-title {
+  font-weight: bold;
+  color: #a48b5b;
+  font-size: 1.13rem;
+  display: block;
+  margin-bottom: 0.3em;
+}
+.content-card .two {
+  font-style: italic;
+  font-size: 1.07rem;
+  color: #7c6b4f;
+  margin-top: 1.5em;
+}
+.content-card .three {
+  white-space: pre-line;
+  font-family: inherit;
+  font-size: 1.07rem;
+  margin-top: 1.2em;
+}
+.content-card .end {
+  font-size: 0.97rem;
+  color: #a48b5b;
+  text-align: right;
+  margin-top: 2em;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: #e9d261;
+  padding: 24px 8px 16px 8px;
+  font-size: 1rem;
+  color: black;
+  border-top: 1px solid #e9d261;
+  margin-top: 32px;
+}
+.footer .facebook {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+.footer .share_link {
+  color: black;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+/* Responsive styles */
+@media (max-width: 700px) {
+  .content-card .suess {
+    float: none;
+    display: block;
+    margin: 1.2em auto 1.2em auto;
+    max-width: 90vw;
+    width: 100%;
+  }
+  .content-card {
+    padding: 1rem 0.5rem;
+    max-width: 98vw;
+  }
+  .content-card p {
+    font-size: 0.97rem;
+  }
+}
+@media (max-width: 600px) {
+  .name {
+    font-size: 1.1rem;
+  }
+  .footer {
+    font-size: 0.85rem;
+    padding: 14px 4px;
+  }
+}

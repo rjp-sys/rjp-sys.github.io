@@ -1,0 +1,271 @@
+/* Reset some default styles */
+body, ul, li, h2, p, h1 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation styles */
+nav {
+  background: #457830;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 18px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+nav ul li a:hover {
+  background: #e9d261;
+}
+
+nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #457830;
+  min-width: 160px;
+  z-index: 10;
+  flex-direction: column;
+}
+
+nav ul li:hover .dropdown-content,
+nav ul li:focus-within .dropdown-content {
+  display: flex;
+}
+
+/* Top section */
+.top {
+  text-align: center;
+  padding: 24px 8px 8px 8px;
+  background: #e6dbb9;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: black;
+}
+
+.top-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.banner {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+hr.line {
+  border: none;
+  border-bottom: 10px solid #e9d261;
+  height: 0;
+  width: 100%;
+  margin: 32px 0;
+  background: transparent;
+}
+
+/* Sermon Cards Layout */
+.flexc {
+  max-width: 1100px;
+  margin: 0 auto 64px auto;
+  padding: 32px 16px;
+  background: #fffbe5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.titlea {
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+  margin: 40px 0 32px 0;
+  font-family: "Times New Roman", Times, serif;
+  width: 100%;
+}
+
+.card.article {
+  background: #e6dbb9;
+  box-shadow: 0 4px 16px rgba(220, 200, 150, 0.13);
+  border-radius: 1rem;
+  padding: 1.2rem 1rem 1rem 1rem;
+  width: 260px;
+  min-height: 180px;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.card.article img {
+  max-width: 180px;
+  max-height: 120px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.card.article p {
+  font-size: 1.18rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: #4d4637;
+  text-align: center;
+}
+
+.card.article a {
+  font-size: 1.15rem;
+  color: #7c6b4f;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.card.article a:hover {
+  color: #a48b5b;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: #e9d261;
+  padding: 24px 8px 16px 8px;
+  font-size: 1rem;
+  color: black;
+  border-top: 1px solid #e9d261;
+  margin-top: 32px;
+}
+
+.footer .facebook {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+
+.footer .share_link {
+  color: black;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6dbb9;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Responsive layout for mobile/tablet */
+@media (max-width: 800px) {
+  nav ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li .dropdown-content {
+    position: static;
+    min-width: 100%;
+  }
+  .top-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    max-width: 98vw;
+  }
+  .banner {
+    max-width: 100%;
+    height: auto;
+  }
+  .flexc {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 8px;
+    max-width: 98vw;
+  }
+  .titlea {
+    font-size: 1.4rem;
+    margin: 24px 0 18px 0;
+  }
+  .card.article {
+    width: 95vw;
+    max-width: 340px;
+    min-width: 0;
+    padding: 1rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .card.article img {
+    max-width: 95vw;
+    max-height: 120px;
+  }
+  .footer {
+    font-size: 0.95rem;
+    padding: 16px 4px;
+  }
+}
+
+/* Phones (600px and down) */
+@media (max-width: 600px) {
+  .name, .titlea {
+    font-size: 1.1rem;
+  }
+  .flexc {
+    padding: 10px 2vw;
+    gap: 14px;
+  }
+  .card.article {
+    width: 98vw;
+    max-width: 99vw;
+    padding: 0.7rem 0.2rem;
+  }
+  .card.article img {
+    max-width: 92vw;
+    max-height: 100px;
+  }
+  .card.article p,
+  .card.article a {
+    font-size: 1rem;
+  }
+  .footer {
+    font-size: 0.85rem;
+    padding: 10px 2px;
+  }
+}
