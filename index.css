@@ -1,0 +1,380 @@
+/* Reset some default styles */
+body, ul, li, h2, p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation styles */
+nav {
+  background: #457830;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: inherit;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 18px;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+nav ul li a:hover {
+  background: #e9d261;
+}
+
+nav ul li .dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #457830;
+  min-width: 160px;
+  z-index: 10;
+  flex-direction: column;
+}
+
+nav ul li:hover .dropdown-content,
+nav ul li:focus-within .dropdown-content {
+  display: flex;
+}
+
+.top {
+  text-align: center;
+  padding: 24px 8px 8px 8px;
+  background: #e6dbb9 ;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: black;
+}
+
+/* Flex layout for top-content */
+.top-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Banner image styling */
+.banner {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Scripture styling */
+.script {
+  font-style: italic;
+  color: black;
+  font-size: 1.1rem;
+  max-width: 350px;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+hr.line, hr.divided {
+  border: none;
+  border-bottom: 10px solid #e9d261;
+  height: 0;
+  width: 100%;
+  margin: 32px 0;
+  background: transparent;
+}
+
+.flexb,
+.flexc,
+.flexd,
+.content-card {
+  max-width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  background: #fffbe5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+}
+
+.flexb {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bio-text {
+  flex: 1 1 300px;
+  min-width: 220px;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.photo, .banner, .book, .flexc img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-top: 0;
+  display: block;
+  box-sizing: border-box;
+}
+
+.flexc {
+  max-width: 1100px;
+  margin-bottom: 64px;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.titlea, .titleb, .title {
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 32px;
+  font-family: "Times New Roman", Times, serif;
+  word-break: break-word;
+}
+
+.flexc .article {
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  margin: 0 18px 32px 18px;
+  background: #e6dbb9 ;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 18px 10px 10px 10px;
+  transition: box-shadow 0.2s;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.flexc .article:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.flexc p {
+  margin: 0;
+  word-break: break-word;
+}
+
+.flexc a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+  word-break: break-word;
+}
+
+.flexc a:hover {
+  color: #e9d261;
+}
+
+.book-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.book {
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.buy {
+  display: inline-block;
+  background: #e9d261;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: background 0.2s, color 0.2s;
+  margin-top: 8px;
+}
+
+.buy:hover {
+  background: #457830;
+  color: #fffbe5;
+}
+
+.footer {
+  text-align: center;
+  background: #e9d261;
+  padding: 24px 8px 16px 8px;
+  font-size: 1rem;
+  color: black;
+  border-top: 1px solid #e9d261;
+  margin-top: 32px;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.footer .facebook {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+
+.footer .share_link {
+  color: black;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
+/* Responsive: Tablet */
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .content-card,
+  .flexb,
+  .flexc,
+  .flexd {
+    max-width: 95vw;
+    padding: 1.2rem 1rem;
+    font-size: 1.02rem;
+  }
+  .titlea, .titleb, .title {
+    font-size: 1.3rem;
+  }
+  .flexc .article {
+    width: 45vw;
+    max-width: 380px;
+    padding: 10px 2vw;
+  }
+  .flexc img, .book, .photo {
+    max-width: 80vw;
+  }
+}
+
+/* Responsive: Phone (up to 400px) */
+@media only screen and (max-width: 450px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .content-card,
+  .flexb,
+  .flexc,
+  .flexd {
+    max-width: 100vw;
+    width: 100vw;
+    padding: 0.6rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .titlea, .titleb, .title {
+    font-size: 1rem;
+  }
+  .flexc .article {
+    width: 98vw;
+    max-width: 400px;
+    padding: 8px 1vw;
+  }
+  .flexc img, .book, .photo {
+    max-width: 98vw;
+  }
+  .footer {
+    font-size: 0.8rem;
+    padding: 10px 2px;
+  }
+    .top-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .banner, .script {
+    max-width: 98vw;
+    width: 100%;
+  }
+}
+
+/* Existing mobile styles for up to 600px (merged for safety) */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .name, .titlea, .titleb, .title {
+    font-size: 1.1rem;
+  }
+  .footer {
+    font-size: 0.85rem;
+    padding: 14px 4px;
+  }
+  .header, .subheader {
+    font-size: 1rem;
+  }
+  .flexc, .flexb, .flexd, .content-card {
+    padding: 10px 2vw;
+    max-width: 99vw;
+    width: 99vw;
+  }
+  .flexc .article {
+    width: 98vw;
+    max-width: 99vw;
+    padding: 10px 2vw;
+  }
+  .flexc img, .book, .photo {
+    max-width: 90vw;
+  }
+}
+
+/* Ensure all text and links wrap */
+.content-card p,
+.flexb p,
+.flexc p,
+.flexd p,
+.bio-text,
+.footer,
+nav ul li a {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
