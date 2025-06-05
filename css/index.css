@@ -15,8 +15,11 @@ nav ul {
   padding: 0;
   list-style: none;
   display: flex;
-  justify-content: center; /* or your preferred alignment */
-  background-color: inherit; /* inherit from nav */
+  justify-content: center;
+  background-color: inherit;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 nav ul li {
@@ -29,6 +32,8 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   transition: background 0.2s;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 nav ul li a:hover {
@@ -68,10 +73,13 @@ nav ul li:focus-within .dropdown-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px; /* space between image and scripture */
+  gap: 32px;
   max-width: 900px;
   margin: 0 auto;
   text-align: left;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Banner image styling */
@@ -81,6 +89,8 @@ nav ul li:focus-within .dropdown-content {
   height: auto;
   border-radius: 8px;
   flex-shrink: 0;
+  display: block;
+  box-sizing: border-box;
 }
 
 /* Scripture styling */
@@ -90,77 +100,75 @@ nav ul li:focus-within .dropdown-content {
   font-size: 1.1rem;
   max-width: 350px;
   line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-
-hr.line {
-  border: none;                  /* Remove default border */
-  border-bottom: 10px solid #e9d261; /* Add thick colored line */
-  height: 0;                     /* No extra height */
-  width: 100%;                   /* Full width */
-  margin: 32px 0;                /* Optional: space above/below */
-  background: transparent;        /* Ensure no background */
+hr.line, hr.divided {
+  border: none;
+  border-bottom: 10px solid #e9d261;
+  height: 0;
+  width: 100%;
+  margin: 32px 0;
+  background: transparent;
 }
 
+.flexb,
+.flexc,
+.flexd,
+.content-card {
+  max-width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  background: #fffbe5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+}
 
 .flexb {
-  max-width: 900px;       /* Adjust to your content */
-  margin-left: auto;      /* Pushes the block to the right */
-  margin-right: 40px;     /* Space from the right edge, adjust as needed */
-  background: #fffbe5;    /* Your background color */
-  padding: 32px 24px;
   display: flex;
   flex-direction: row;
   gap: 32px;
   align-items: flex-start;
   flex-wrap: wrap;
-  border-radius: 12px;    /* Optional: for a soft look */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Optional subtle shadow */
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 .bio-text {
   flex: 1 1 300px;
   min-width: 220px;
   max-width: 600px;
+  word-break: break-word;
 }
 
-.photo {
-  flex: 0 0 220px;
-  max-width: 220px;
-  width: 100%;
+.photo, .banner, .book, .flexc img {
+  max-width: 100%;
   height: auto;
   border-radius: 8px;
   object-fit: cover;
   margin-top: 0;
-}
-
-
-hr.divided {
-  border: none;                  /* Remove default border */
-  border-bottom: 10px solid #e9d261; /* Add thick colored line */
-  height: 0;                     /* No extra height */
-  width: 100%;                   /* Full width */
-  margin: 32px 0;                /* Optional: space above/below */
-  background: transparent;        /* Ensure no background */
+  display: block;
+  box-sizing: border-box;
 }
 
 .flexc {
   max-width: 1100px;
-  margin: 0 auto;
   margin-bottom: 64px;
   padding: 32px 16px;
-  background: #fffbe5;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   text-align: center;
 }
 
-.titlea {
+.titlea, .titleb, .title {
   font-size: 2rem;
   color: black;
   margin-bottom: 32px;
   font-family: "Times New Roman", Times, serif;
+  word-break: break-word;
 }
 
 .flexc .article {
@@ -173,22 +181,17 @@ hr.divided {
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   padding: 18px 10px 10px 10px;
   transition: box-shadow 0.2s;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .flexc .article:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
-.flexc img {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 14px;
-}
-
 .flexc p {
   margin: 0;
+  word-break: break-word;
 }
 
 .flexc a {
@@ -197,27 +200,11 @@ hr.divided {
   font-weight: bold;
   font-size: 1.1rem;
   transition: color 0.2s;
+  word-break: break-word;
 }
 
 .flexc a:hover {
   color: #e9d261;
-}
-
-.flexd {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 32px 16px;
-  background: #fffbe5;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  text-align: center;
-}
-
-.titleb {
-  font-size: 2rem;
-  color: black;
-  margin-bottom: 28px;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .book-feature {
@@ -228,11 +215,7 @@ hr.divided {
 }
 
 .book {
-  width: 100%;
   max-width: 300px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.10);
   margin-bottom: 10px;
 }
 
@@ -254,6 +237,7 @@ hr.divided {
   background: #457830;
   color: #fffbe5;
 }
+
 .footer {
   text-align: center;
   background: #e9d261;
@@ -262,6 +246,8 @@ hr.divided {
   color: black;
   border-top: 1px solid #e9d261;
   margin-top: 32px;
+  box-sizing: border-box;
+  word-break: break-word;
 }
 
 .footer .facebook {
@@ -277,17 +263,9 @@ hr.divided {
   margin-left: 6px;
 }
 
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #e6dbb9;
-  font-family: "Times New Roman", Times, serif;
-}
-
-
+/* Responsive: Tablet */
 @media only screen and (min-width: 600px) and (max-width: 1023px) {
-   nav ul {
+  nav ul {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
@@ -300,7 +278,7 @@ html, body {
     padding: 1.2rem 1rem;
     font-size: 1.02rem;
   }
-  .titlea, .titleb {
+  .titlea, .titleb, .title {
     font-size: 1.3rem;
   }
   .flexc .article {
@@ -313,9 +291,9 @@ html, body {
   }
 }
 
-/* Phone styles: up to 400px */
+/* Responsive: Phone (up to 400px) */
 @media only screen and (max-width: 400px) {
-   nav ul {
+  nav ul {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
@@ -324,8 +302,8 @@ html, body {
   .flexb,
   .flexc,
   .flexd {
-    max-width: 98vw;
-    width: 100%;
+    max-width: 100vw;
+    width: 100vw;
     padding: 0.6rem 0.2rem;
     font-size: 0.95rem;
   }
@@ -346,15 +324,14 @@ html, body {
   }
 }
 
-/* Existing mobile styles for up to 600px (keep or merge as needed) */
+/* Existing mobile styles for up to 600px (merged for safety) */
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
   }
-
-  .name, .titlea, .titleb {
+  .name, .titlea, .titleb, .title {
     font-size: 1.1rem;
   }
   .footer {
@@ -364,8 +341,10 @@ html, body {
   .header, .subheader {
     font-size: 1rem;
   }
-  .flexc, .flexb, .flexd {
+  .flexc, .flexb, .flexd, .content-card {
     padding: 10px 2vw;
+    max-width: 99vw;
+    width: 99vw;
   }
   .flexc .article {
     width: 98vw;
@@ -375,4 +354,17 @@ html, body {
   .flexc img, .book, .photo {
     max-width: 90vw;
   }
+}
+
+/* Ensure all text and links wrap */
+.content-card p,
+.flexb p,
+.flexc p,
+.flexd p,
+.bio-text,
+.footer,
+nav ul li a {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
