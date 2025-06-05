@@ -287,6 +287,11 @@ html, body {
 
 
 @media only screen and (min-width: 600px) and (max-width: 1023px) {
+   nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
   .content-card,
   .flexb,
   .flexc,
@@ -310,6 +315,11 @@ html, body {
 
 /* Phone styles: up to 400px */
 @media only screen and (max-width: 400px) {
+   nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
   .content-card,
   .flexb,
   .flexc,
@@ -338,6 +348,12 @@ html, body {
 
 /* Existing mobile styles for up to 600px (keep or merge as needed) */
 @media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
   .name, .titlea, .titleb {
     font-size: 1.1rem;
   }
