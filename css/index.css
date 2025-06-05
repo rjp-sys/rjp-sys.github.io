@@ -286,6 +286,57 @@ html, body {
 }
 
 
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  .content-card,
+  .flexb,
+  .flexc,
+  .flexd {
+    max-width: 95vw;
+    padding: 1.2rem 1rem;
+    font-size: 1.02rem;
+  }
+  .titlea, .titleb {
+    font-size: 1.3rem;
+  }
+  .flexc .article {
+    width: 45vw;
+    max-width: 380px;
+    padding: 10px 2vw;
+  }
+  .flexc img, .book, .photo {
+    max-width: 80vw;
+  }
+}
+
+/* Phone styles: up to 400px */
+@media only screen and (max-width: 400px) {
+  .content-card,
+  .flexb,
+  .flexc,
+  .flexd {
+    max-width: 98vw;
+    width: 100%;
+    padding: 0.6rem 0.2rem;
+    font-size: 0.95rem;
+  }
+  .titlea, .titleb, .title {
+    font-size: 1rem;
+  }
+  .flexc .article {
+    width: 98vw;
+    max-width: 400px;
+    padding: 8px 1vw;
+  }
+  .flexc img, .book, .photo {
+    max-width: 98vw;
+  }
+  .footer {
+    font-size: 0.8rem;
+    padding: 10px 2px;
+  }
+}
+
+/* Existing mobile styles for up to 600px (keep or merge as needed) */
 @media (max-width: 600px) {
   .name, .titlea, .titleb {
     font-size: 1.1rem;
