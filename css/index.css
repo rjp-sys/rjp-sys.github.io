@@ -1,0 +1,219 @@
+/* =======================
+   Reset & Body
+======================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* =======================
+   Navbar
+======================= */
+.navbar {
+  background: #333;
+  color: #fff;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Left, Center, Right menus */
+.nav-left,
+.nav-right {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-center {
+  flex: 1;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Links */
+.nav-left li a,
+.nav-right li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  display: block;
+}
+
+.nav-left li a:hover,
+.nav-right li a:hover,
+.dropdown-link:hover {
+  background: #555;
+  border-radius: 4px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #444;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: max-height 0.4s ease;
+  z-index: 10;
+}
+
+.dropdown-menu li a {
+  padding: 0.5rem 1rem;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Desktop hover */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    max-height: 1000px;
+  }
+  .dropdown:hover .arrow {
+    transform: rotate(180deg);
+  }
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Hamburger menu */
+.nav-toggle {
+  display: none;
+}
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* =======================
+   Mobile Styles
+======================= */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .nav-left,
+  .nav-right {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #333;
+  }
+
+  .nav-toggle:checked ~ .nav-left,
+  .nav-toggle:checked ~ .nav-right {
+    max-height: 2000px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .dropdown.active .dropdown-menu {
+    max-height: 500px;
+  }
+
+  .dropdown.active .arrow {
+    transform: rotate(180deg);
+  }
+
+  .nav-center {
+    width: 100%;
+    order: -1;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* =======================
+   Hope Banner Section
+======================= */
+.hope-banner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.hope-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Scripture text on banner */
+.hope-script {
+  position: absolute;
+  bottom: 1rem;
+  left: 18%; /* aligns with navbar H2 */
+  color: #fff;
+  font-size: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  max-width: 55%;
+  line-height: 1.4;
+  white-space: normal;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  text-align: left;
+}
+
+/* Responsive adjustments for smaller devices */
+@media (max-width: 1024px) {
+  .hope-script {
+    left: 15%;
+    max-width: 65%;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hope-banner {
+    margin: 1rem;
+  }
+  .hope-script {
+    left: 10%;
+    max-width: 80%;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hope-script {
+    left: 5%;
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
