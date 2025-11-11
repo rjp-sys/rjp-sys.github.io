@@ -1,7 +1,11 @@
 /* =======================
    Global Base Styles
 ======================= */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -29,7 +33,9 @@ body {
   transition: background 0.3s ease;
 }
 
-.navbar:hover { background: linear-gradient(145deg, #2FA82F, #228B22); }
+.navbar:hover { 
+  background: linear-gradient(145deg, #2FA82F, #228B22); 
+}
 
 .nav-container {
   display: flex;
@@ -40,7 +46,12 @@ body {
   padding: 0 1rem;
 }
 
-.nav-left, .nav-right { display: flex; list-style: none; align-items: center; }
+.nav-left, .nav-right { 
+  display: flex; 
+  list-style: none; 
+  align-items: center; 
+}
+
 .nav-center {
   flex: 1;
   text-align: center;
@@ -49,7 +60,7 @@ body {
   color: #fff;
 }
 
-/* Navbar links */
+/* Navbar Links */
 .nav-left li a,
 .nav-right li a {
   position: relative;
@@ -60,6 +71,7 @@ body {
   align-items: center;
   transition: color 0.3s ease;
 }
+
 .nav-left li a::after,
 .nav-right li a::after {
   content: "";
@@ -71,38 +83,78 @@ body {
   background: #e9d261;
   transition: width 0.5s ease;
 }
+
 .nav-left li a:hover::after,
-.nav-right li a:hover::after { width: 100%; }
+.nav-right li a:hover::after { 
+  width: 100%; 
+}
+
 .nav-left li a:hover,
-.nav-right li a:hover { color: #fff9d0; }
+.nav-right li a:hover { 
+  color: #fff9d0; 
+}
 
 /* Dropdown */
-.dropdown { position: relative; }
+.dropdown { 
+  position: relative; 
+}
+
 .dropdown-menu {
-  max-height: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  background: #2A7A2A;
   list-style: none;
   margin: 0;
   padding: 0;
   border-radius: 12px;
+  background: #2A7A2A;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
   z-index: 10;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
-.dropdown-menu li a { padding: 0.5rem 1rem; transition: background 0.2s ease; }
-.dropdown-menu li a:hover { background: rgba(255,255,255,0.08); }
 
-.arrow { display: inline-block; transition: transform 0.35s cubic-bezier(0.68,-0.55,0.265,1.55); margin-left: 6px; }
-.dropdown.active .arrow { transform: rotate(180deg); }
+.dropdown-menu li a { 
+  padding: 0.5rem 1rem; 
+  display: block; 
+  transition: background 0.2s ease; 
+}
+
+.dropdown-menu li a:hover { 
+  background: rgba(255,255,255,0.08); 
+}
+
+.dropdown.active .dropdown-menu,
+.dropdown:hover .dropdown-menu {
+  max-height: 1000px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.arrow { 
+  display: inline-block; 
+  transition: transform 0.35s cubic-bezier(0.68,-0.55,0.265,1.55); 
+  margin-left: 6px; 
+}
+
+.dropdown.active .arrow,
+.dropdown:hover .arrow { 
+  transform: rotate(180deg); 
+}
 
 /* Hamburger */
-.nav-toggle { display: none; }
-.hamburger { display: none; font-size: 2rem; cursor: pointer; color: #fff; }
+.nav-toggle { 
+  display: none; 
+}
+
+.hamburger { 
+  display: none; 
+  font-size: 2rem; 
+  cursor: pointer; 
+  color: #fff; 
+}
 
 /* =======================
    Hope Banner
@@ -115,23 +167,23 @@ body {
   overflow: hidden;
 }
 
-.hope-image-container {
-  position: relative;
-  width: 100%;
-  display: block;
+.hope-image-container { 
+  position: relative; 
+  width: 100%; 
+  display: block; 
 }
 
-.hope-image-container img {
-  width: 100%;
-  display: block;
-  border-radius: 8px;
+.hope-image-container img { 
+  width: 100%; 
+  display: block; 
+  border-radius: 8px; 
 }
 
 /* Hope Script */
 .hope-script {
   position: absolute;
+  bottom: 0;
   left: 50%;
-  bottom: 0; 
   transform: translateX(-50%);
   background-color: rgba(0,0,0,0.55);
   color: #fff;
@@ -143,18 +195,26 @@ body {
   width: fit-content;
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s ease;
-  box-sizing: border-box;
   padding: 1rem 1.5rem;
   white-space: nowrap;
-  overflow-wrap: normal;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.hope-script.visible { opacity: 1; }
+.hope-script.visible { 
+  opacity: 1; 
+}
 
 /* =======================
    Bio Section
 ======================= */
-.robyn-bio { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+.robyn-bio {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center; /* centers the card */
+}
 
 .robyn-bio-text {
   display: flex;
@@ -163,6 +223,9 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 900px; /* keeps card from stretching too wide on large screens */
+  box-sizing: border-box;
 }
 
 .robyn-bio-text h3 {
@@ -179,27 +242,48 @@ body {
   text-align: justify;
 }
 
+/* Responsive tweaks to make sure it works on all devices */
+@media (max-width: 767px) {
+  .robyn-bio-text {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .robyn-bio-text {
+    padding: 1.8rem 1.2rem;
+  }
+}
+
 /* =======================
    Footer
 ======================= */
-.site-footer {
-  text-align: center;
-  background: #e9d261;
-  padding: 24px 8px 16px 8px;
-  font-size: 1rem;
-  color: black;
-  font-weight: bold;
-  border-top: 1px solid #e9d261;
-  margin-top: auto;
-  width: 100%;
-  transition: opacity 1s ease, transform 1s ease;
+.site-footer { 
+  text-align: center; 
+  background: #e9d261; 
+  padding: 24px 8px 16px 8px; 
+  font-size: 1rem; 
+  color: black; 
+  font-weight: bold; 
+  border-top: 1px solid #e9d261; 
+  margin-top: auto; 
+  width: 100%; 
+  transition: opacity 1s ease, transform 1s ease; 
 }
 
 /* =======================
    Scroll Fade-In Animation
 ======================= */
-.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 1s ease, transform 1s ease; }
-.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.animate-on-scroll { 
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 1s ease, transform 1s ease; 
+}
+
+.animate-on-scroll.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
 
 /* =======================
    Responsive Breakpoints
@@ -219,40 +303,25 @@ body {
   .nav-toggle, .hamburger { display: block; }
   .nav-toggle:checked ~ .nav-left,
   .nav-toggle:checked ~ .nav-right { max-height: 2000px; }
-  .dropdown .dropdown-menu { position: relative; max-height: 500px; overflow: hidden; }
+  .dropdown .dropdown-menu { position: relative; max-height: 500px; }
   .nav-center { width: 100%; order: -1; text-align: center; margin-bottom: 0.5rem; font-size: 1.4rem; }
-  .hope-script { font-size: 0.95rem; padding: 0.7rem 1rem; white-space: normal; }
+  .hope-script { font-size: 0.95rem; padding: 0.7rem 1rem; }
 }
 
-/* Tablets 768px – 1024px */
+/* Tablet 768px – 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
   .nav-left, .nav-right { flex-direction: row; max-height: none; background: transparent; }
   .dropdown .dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 180px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-
-  @media (orientation: portrait) {
-    .nav-toggle, .hamburger { display: block; }
-    .nav-left, .nav-right { flex-direction: column; max-height: 0; background: #228B22; }
-    .nav-toggle:checked ~ .nav-left,
-    .nav-toggle:checked ~ .nav-right { max-height: 2000px; }
-    .dropdown .dropdown-menu { position: relative; max-height: 500px; }
-  }
-
-  @media (orientation: landscape) {
-    .nav-toggle, .hamburger { display: none; }
-    .dropdown:hover .dropdown-menu { max-height: 1000px; }
-    .dropdown:hover .arrow { transform: rotate(180deg); }
-  }
-
-  .hope-script { font-size: 1.1rem; padding: 0.8rem 1.2rem; white-space: normal; }
+  .hope-script { font-size: 1.1rem; padding: 0.8rem 1.2rem; }
 }
 
 /* Large Tablets / Small Desktop 1025px – 1366px */
 @media (min-width: 1025px) and (max-width: 1366px) {
   .nav-left, .nav-right { flex-direction: row; max-height: none; background: transparent; }
-  .hamburger { display: none; }
-  .dropdown:hover .dropdown-menu { max-height: 1000px; }
+  .dropdown:hover .dropdown-menu { max-height: 1000px; visibility: visible; overflow: visible; }
   .dropdown:hover .arrow { transform: rotate(180deg); }
-  .hope-script { font-size: 1.2rem; padding: 0.9rem 1.4rem; white-space: nowrap; }
+  .hamburger { display: none; }
+  .hope-script { font-size: 1.2rem; padding: 0.9rem 1.4rem; }
 }
 
 /* Desktop 1367px – 1600px */

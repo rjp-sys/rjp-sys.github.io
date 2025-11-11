@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownLinks = document.querySelectorAll('.dropdown-link');
   const navToggle = document.querySelector('.nav-toggle');
+  const animateElements = document.querySelectorAll('.animate-on-scroll');
+  const hopeScript = document.querySelector('.hope-script');
+  const hopeImage = document.querySelector('.hope-banner img');
 
-  // 1️⃣ Navbar Dropdown Toggle (Mobile & Tablet)
+  // ==============================
+  // Navbar Dropdown Toggle (Mobile & Tablet)
+  // ==============================
   dropdownLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       if (window.innerWidth <= 1024) {
         e.preventDefault();
         const parentDropdown = this.parentElement;
@@ -13,13 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Close other dropdowns
         dropdownLinks.forEach(otherLink => {
           const otherDropdown = otherLink.parentElement;
-          if (otherDropdown !== parentDropdown) otherDropdown.classList.remove('active');
+          if (otherDropdown !== parentDropdown) {
+            otherDropdown.classList.remove('active');
+          }
         });
       }
     });
   });
 
-  // Reset dropdowns on resize
+  // Reset dropdowns on resize for > 1024px
   window.addEventListener('resize', () => {
     dropdownLinks.forEach(link => {
       const parentDropdown = link.parentElement;
@@ -29,36 +36,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2️⃣ Hamburger toggle
+  // ==============================
+  // Hamburger toggle for mobile
+  // ==============================
   if (navToggle) {
     navToggle.addEventListener('change', () => {
       document.body.classList.toggle('nav-open', navToggle.checked);
     });
   }
 
-  // 3️⃣ Scroll to top on page load
+  // ==============================
+  // Scroll to top on page load
+  // ==============================
   window.addEventListener('load', () => {
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     });
   });
 
-  // 4️⃣ Scroll fade-in animations
-  const animateElements = document.querySelectorAll('.animate-on-scroll');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  // ==============================
+  // Scroll fade-in animations
+  // ==============================
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
   animateElements.forEach(el => observer.observe(el));
 
-  // 5️⃣ Hope Script Fade-In after image loads
-  const hopeScript = document.querySelector('.hope-script');
-  const hopeImage = document.querySelector('.hope-banner img');
-
+  // ==============================
+  // Hope Script Fade-In after image loads
+  // ==============================
   function showHopeScript() {
     if (!hopeScript) return;
     hopeScript.classList.add('visible');
@@ -69,4 +83,24 @@ document.addEventListener('DOMContentLoaded', () => {
   } else if (hopeImage) {
     hopeImage.addEventListener('load', showHopeScript);
   }
+
+  // ==============================
+  // Enable Hover for Dropdown on Desktop
+  // ==============================
+  function enableHoverDropdown() {
+    if (window.innerWidth > 1024) {
+      dropdownLinks.forEach(link => {
+        const parentDropdown = link.parentElement;
+        parentDropdown.addEventListener('mouseenter', () => {
+          parentDropdown.classList.add('active');
+        });
+        parentDropdown.addEventListener('mouseleave', () => {
+          parentDropdown.classList.remove('active');
+        });
+      });
+    }
+  }
+
+  enableHoverDropdown();
+  window.addEventListener('resize', enableHoverDropdown);
 });
