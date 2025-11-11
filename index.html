@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chaplain Robyn Home Page</title>
-  <meta name="description" content="Chaplain Robyn in Hope & Grief" />
-  <meta name="keywords" content="Chaplain, Faith, Hope, Comfort, Robyn, Articles, Ministries, Grief Resources" />
-  <meta name="author" content="Chaplain Robyn" />
-  <link rel="stylesheet" href="/css/index.css" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <meta name="description" content="Chaplain Robyn — helping you find hope in seasons of grief">
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar animate-on-scroll">
     <div class="nav-container">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="hamburger">☰</label>
+
       <ul class="nav-left">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/html/about-robyn.html">About Robyn</a></li>
-        <li><a href="/html/photography.html">Photography</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="html/about-robyn.html">About Robyn</a></li>
+        <li><a href="html/photography.html">Photography</a></li>
       </ul>
 
       <h2 class="nav-center">Hope & Grief</h2>
@@ -27,39 +28,51 @@
         <li class="dropdown">
           <a href="#" class="dropdown-link">Writings <span class="arrow">▼</span></a>
           <ul class="dropdown-menu">
-            <li><a href="/html/articles.html">Articles</a></li>
-            <li><a href="/html/books.html">Books</a></li>
-            <li><a href="/html/poems.html">Poems</a></li>
-            <li><a href="/html/sermons.html">Sermons</a></li>
+            <li><a href="html/articles.html">Articles</a></li>
+            <li><a href="html/books.html">Books</a></li>
+            <li><a href="html/poems.html">Poems</a></li>
+            <li><a href="html/sermons.html">Sermons</a></li>
           </ul>
         </li>
-
         <li class="dropdown">
           <a href="#" class="dropdown-link">Grief Resources <span class="arrow">▼</span></a>
           <ul class="dropdown-menu">
-            <li><a href="/html/childrens-grief-resources.html">Resources for Children</a></li>
-            <li><a href="/html/adult-grief-resources.html">Resources for Adults</a></li>
-            <li><a href="/html/professional-grief-resources.html">Resources for Professionals</a></li>
+            <li><a href="html/childrens-grief-resources.html">Children</a></li>
+            <li><a href="html/adult-grief-resources.html">Adults</a></li>
+            <li><a href="html/professional-grief-resources.html">Professionals</a></li>
           </ul>
         </li>
-
-        <li><a href="/html/invite-robyn.html">Invite Robyn</a></li>
+        <li><a href="html/invite-robyn.html">Invite Robyn</a></li>
       </ul>
-
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="hamburger">☰</label>
     </div>
   </nav>
 
-  <!-- Hope Banner Section -->
-  <section class="hope-banner">
-    <img class="hope-image" src="/assets/share-the-hope-banner.jpg" alt="Chaplain Robyn in Hope & Grief Banner" />
-    <blockquote class="hope-script">
-      "The LORD is close to the brokenhearted<br />and saves those who are crushed in spirit."
-      <cite>Psalm 34:18 (NIV)</cite>
-    </blockquote>
+  <!-- Hope Banner -->
+  <section class="hope-banner animate-on-scroll">
+    <div class="hope-image-container">
+      <img src="assets/share-the-hope-banner.jpg" alt="Chaplain Robyn in Hope & Grief Banner">
+      <blockquote class="hope-script">
+        "The LORD is close to the brokenhearted<br>and saves those who are crushed in spirit."
+        <cite>Psalm 34:18 (NIV)</cite>
+      </blockquote>
+    </div>
   </section>
 
-  <script src="/js/navbar.js"></script>
+  <!-- About Robyn -->
+  <section class="robyn-bio animate-on-scroll">
+    <div class="robyn-bio-text">
+      <h3>About Robyn Plocher, M.Div.</h3>
+      <p>
+        Robyn's desire to share hope with the hopeless and help those in despair to rediscover joy is the heart of this ministry. All resources here may be freely read, copied, or downloaded. Please credit: © Robyn Plocher 2025-2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer animate-on-scroll">
+    <p>© Robyn J Plocher 2025</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
 </body>
 </html>
