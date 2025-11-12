@@ -1,0 +1,1043 @@
+/*
+ * style.css
+ * Universal Stylesheet for Hope & Grief Website (Green/Gold Theme)
+ * Combined and updated November 2025
+ */
+
+/* =======================
+   Global Base Styles
+======================= */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:root {
+    /* Color Palette */
+    --color-primary: #1A5E2E; /* Deep Forest Green */
+    --color-secondary: #38761D; /* Slightly Lighter Green */
+    --color-background: #F8F4E3; /* Soft Off-White/Cream */
+    --color-light-background: #FFFFFF; /* Pure White for cards/containers */
+    --color-accent-gold: #C9A74A; /* Muted Gold/Brass for accents */
+    --color-text-dark: #333;
+    --color-text-light: #fff;
+    --color-dropdown-bg: #1A5E2E; 
+    --shadow-subtle: 0 4px 12px rgba(0,0,0,0.05); 
+    --border-radius: 8px;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+  background: var(--color-background);
+  line-height: 1.6; 
+  /* These properties ensure the footer is pushed to the bottom of the viewport */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--color-text-dark);
+}
+
+main {
+    /* This property ensures the main content area takes up all available space, pushing the footer down */
+    flex-grow: 1; 
+    width: 100%;
+}
+
+h1, h2, h3 {
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* ACCESSIBILITY FIX (Visually Hidden) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* =======================
+   Scroll Fade-In Animation
+======================= */
+.animate-on-scroll { 
+  opacity: 0; 
+  transform: translateY(20px); 
+  transition: opacity 1s ease, transform 1s ease; 
+}
+
+.animate-on-scroll.visible { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+/* =======================
+   Navbar
+======================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--color-primary); 
+  color: var(--color-text-light);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.navbar:hover { 
+  background: var(--color-secondary); 
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px; 
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.nav-left, .nav-right { 
+  display: flex; 
+  list-style: none; 
+  align-items: center; 
+}
+
+.nav-center {
+  flex: 1;
+  text-align: center;
+  font-size: clamp(1.4rem, 2vw, 1.8rem); 
+  font-weight: 700;
+  color: var(--color-text-light);
+  letter-spacing: 0.05em; 
+}
+
+/* Navbar Links and Dropdown Button */
+.nav-left li a,
+.nav-right li a,
+.dropdown-button { 
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text-light);
+  padding: 1rem 1.2rem; 
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, background 0.3s ease;
+  
+  /* Reset button specific styles */
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Current page link style (maintained from original) */
+.nav-right li a[aria-current="page"] {
+    background: rgba(0,0,0,0.2);
+    font-weight: 700;
+}
+.nav-right li a[aria-current="page"]::after {
+    width: 80%;
+}
+
+
+/* Hover/Focus/Active link styles */
+.nav-left li a::after,
+.nav-right li a::after,
+.dropdown-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px; 
+  background: var(--color-accent-gold);
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+}
+
+.nav-left li a:hover::after,
+.nav-right li a:hover::after,
+.dropdown-button:hover::after,
+.dropdown-button:focus::after { 
+  width: 80%; 
+}
+
+.nav-left li a:hover,
+.nav-right li a:hover,
+.dropdown-button:hover,
+.dropdown-button:focus { 
+  color: #fff; 
+  background: rgba(0,0,0,0.1); 
+  outline: none; 
+}
+
+
+/* Dropdown setup */
+.dropdown { 
+  position: relative; 
+}
+
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--border-radius);
+  background: var(--color-dropdown-bg);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  
+  /* Start hidden state */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  
+  transition: max-height 0.35s ease, opacity 0.35s ease, visibility 0.35s ease;
+  z-index: 10;
+  position: absolute; 
+  top: 100%;
+  left: 0; 
+  min-width: 200px; 
+}
+
+.dropdown-menu li a { 
+  padding: 0.75rem 1.5rem; 
+  display: block; 
+  transition: background 0.2s ease; 
+}
+
+.dropdown-menu li a:hover { 
+  background: var(--color-secondary); 
+  border-radius: var(--border-radius);
+}
+
+/* JS-driven OPEN STATE (.active class added to parent .dropdown) */
+.dropdown.active .dropdown-menu { 
+  max-height: 1000px;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Arrow rotation via .active class */
+.dropdown.active .arrow { 
+  transform: rotate(180deg); 
+}
+
+.arrow { 
+  display: inline-block; 
+  transition: transform 0.35s cubic-bezier(0.68,-0.55,0.265,1.55); 
+  margin-left: 8px; 
+}
+
+
+/* Hamburger */
+.nav-toggle { 
+  display: none; 
+}
+
+.hamburger { 
+  display: none; 
+  font-size: 1.8rem; 
+  cursor: pointer; 
+  color: var(--color-text-light); 
+}
+
+/* =======================
+   Page Banner (General)
+======================= */
+
+.page-banner {
+    width: 100%;
+    min-height: 250px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 3rem 2rem;
+    box-sizing: border-box;
+    position: relative;
+    
+    /* Overlay for text readability on the banner */
+    z-index: 1;
+    overflow: hidden;
+}
+
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45); 
+    z-index: 2;
+}
+
+/* Specific banner style for Books page */
+.books-banner {
+    /* Replace with your actual image path */
+    background: url('/res/books-banner-bg.jpg') no-repeat center center/cover; 
+}
+
+.page-banner .banner-content {
+    position: relative;
+    z-index: 3;
+    max-width: 90%;
+}
+
+.page-banner h1 {
+    font-size: clamp(2.5em, 5vw, 3.5em);
+    margin-bottom: 0.15em;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: white; 
+}
+
+.page-banner p {
+    font-size: clamp(1em, 2vw, 1.25em);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    font-weight: 300;
+}
+
+
+/* =======================
+   Hope Banner (Homepage Specific)
+======================= */
+.hope-banner {
+  position: relative;
+  max-width: 1400px;
+  margin: 3rem auto; 
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  padding: 0 1rem; 
+  box-sizing: border-box;
+  box-shadow: var(--shadow-subtle);
+  height: clamp(200px, 25vw, 600px); 
+}
+
+.hope-image-container { 
+  position: relative; 
+  width: 100%; 
+  height: 100%; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.hope-image-container img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+  border-radius: var(--border-radius); 
+}
+
+/* Quote Text Style (applies to blockquote.hope-script) */
+.hope-script {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    color: var(--color-text-light); 
+    text-align: center;
+    /* Smaller font size range */
+    font-size: clamp(1rem, 2vw, 1.8rem); 
+    font-weight: 700;
+    line-height: 1.3;
+    
+    /* Reduced vertical padding */
+    padding: 5px 20px 5px 20px; 
+    
+    /* Box width is fit-content, constrained by max-width */
+    width: fit-content; 
+    max-width: 90%; 
+    
+    /* Increased transparency */
+    background: rgba(0, 0, 0, 0.3); 
+    
+    border-radius: var(--border-radius) var(--border-radius) 0 0; 
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    margin: 0; 
+    box-sizing: border-box;
+    padding-bottom: 10px; 
+    
+    white-space: normal; 
+}
+
+/* Citation Style */
+.hope-script cite {
+    display: block; 
+    /* Citation text is now tiny relative to the main quote text */
+    font-size: 0.4em; 
+    font-style: normal; 
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 5px; 
+    padding-top: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+.hope-script.visible {
+    opacity: 1;
+}
+
+/* ====================================
+   CARD Layouts (General & About Robyn)
+==================================== */
+.card-container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.card {
+    background: var(--color-light-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    padding: 3rem; 
+    margin-bottom: 3rem;
+}
+
+/* About Robyn card style (used on the Books page) */
+.about-card {
+    display: flex; 
+    gap: 3rem; 
+    align-items: flex-start; 
+}
+
+/* --- UPDATED SIZE TO MATCH INDEX.HTML ROBYN PHOTO --- */
+.about-card .photo {
+    width: 100%;
+    max-width: 350px; /* MATCHES .robyn-photo */
+    height: 100%;     /* MATCHES .robyn-photo */
+    object-fit: cover;
+    border-radius: var(--border-radius); 
+    flex-shrink: 0; 
+    border: 4px solid var(--color-accent-gold);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* -------------------------------------------------- */
+
+.bio-text-wrapper {
+    flex-grow: 1; 
+}
+
+.about-card .namet {
+    margin-top: 0;
+    color: var(--color-primary);
+    font-size: clamp(1.4rem, 2vw, 2rem); 
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.about-card .shortbio {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    /* FIX: Changed from text-align: justify; to text-align: left; */
+    text-align: left;
+    margin-top: 0; 
+    margin-bottom: 0;
+}
+
+/* ====================================
+   BOOK LIST SECTION (for books.html)
+==================================== */
+
+.book-list-section {
+    max-width: 1100px;
+    margin: 3rem auto 4rem auto; 
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    justify-content: center;
+}
+
+
+/* ====================================
+   HOME PAGE SECTIONS (index.html)
+==================================== */
+
+/* Bio Section */
+.robyn-bio {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  display: flex; 
+  align-items: stretch; 
+  gap: 3rem; 
+}
+
+/* .robyn-photo is the reference size (350px max-width) */
+.robyn-photo {
+    width: 100%;
+    max-width: 350px; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: var(--border-radius); 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    flex-shrink: 0; 
+}
+
+.robyn-bio-text {
+  display: flex;
+  flex-direction: column; 
+  background: var(--color-light-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
+  padding: 3rem; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.robyn-bio-text h3 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem); 
+  margin-bottom: 1rem; 
+  color: var(--color-primary);
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid var(--color-accent-gold); 
+  padding-bottom: 0.5rem; 
+  flex-shrink: initial; 
+}
+
+.robyn-bio-text p {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.7; 
+  color: var(--color-text-dark);
+  text-align: justify;
+  margin: 0; 
+  padding: 0;
+  flex-grow: initial; 
+  flex-basis: initial; 
+}
+
+
+/* Featured Books Section */
+.book-section {
+    max-width: 1100px;
+    margin: 3rem auto 4rem auto; 
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.book-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--color-primary);
+    margin: 0 auto 2.5rem auto; 
+    font-weight: 700;
+}
+
+.book-feature {
+    display: flex;
+    justify-content: center; 
+    gap: 3rem;
+    padding: 0 1rem;
+    max-width: 950px; 
+    margin: 0 auto;
+}
+
+/* Shared book-card/buy-link styles */
+.book-card, .book-list-section .book-card {
+    background: var(--color-light-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+    padding: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 350px; /* Specific max-width for index page feature */
+    width: 100%;
+    height: 100%; 
+}
+
+.book-list-section .book-card {
+    max-width: none; /* Override for the books page list layout */
+}
+
+
+.book-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.book-cover {
+    width: 100%; 
+    height: auto; 
+    max-width: 250px; 
+    object-fit: contain;
+    border-radius: var(--border-radius); 
+    margin-bottom: 2rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.buy-link {
+    display: inline-block;
+    background: var(--color-accent-gold);
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px; 
+    margin-top: 1rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: 2px solid var(--color-accent-gold);
+}
+
+.buy-link:hover {
+    background: transparent;
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+/* Added back from V1 for books page */
+.book-list-section .book-title {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+
+/* Featured Articles Section */
+.featured-content {
+    max-width: 1100px;
+    margin: 3rem auto 4rem auto; 
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+}
+
+.featured-articles-container {
+    margin-top: 3rem; 
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 2rem; 
+    align-items: stretch; 
+    max-width: 950px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-articles-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--color-primary);
+    margin: 0 auto 2.5rem auto; 
+    font-weight: 700;
+    text-align: center;
+    grid-column: 1 / -1; 
+}
+
+/* Article Cards Layout */
+.article-card {
+    background: var(--color-light-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-subtle);
+    padding: 1.5rem;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; 
+}
+
+.article-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.article-cover {
+    width: 100%; 
+    max-width: 220px; 
+    height: 220px; 
+    object-fit: cover;
+    border-radius: var(--border-radius); 
+    margin: 0 auto 1.5rem auto; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.article-link {
+    font-size: clamp(1.2rem, 2vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.4;
+    padding-top: 0.5rem;
+    border-top: 2px solid var(--color-accent-gold); 
+    width: 100%;
+}
+
+.article-link a {
+    color: var(--color-primary); 
+    text-decoration: none;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.article-link a:hover {
+    color: var(--color-secondary);
+}
+
+/* ===========================================
+   INVITE ROBYN PAGE SECTIONS (invite-robyn.html)
+=========================================== */
+
+.invite-content-wrapper {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 3rem 2rem;
+    background: var(--color-light-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.invite-header {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.invite-subheader {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--color-accent-gold);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-background);
+}
+
+.topic-card {
+    background: var(--color-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--color-secondary);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.topic-card h3 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.topic-card p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.topic-card .source a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.topic-card .source a:hover {
+    text-decoration: underline;
+    color: var(--color-primary);
+}
+
+/* Google Form Container */
+.form-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.form-container iframe {
+    /* Ensures the iframe is responsive within its container */
+    display: block;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ===========================================
+   ARTICLE PAGE SECTIONS (e.g., finding-hope.html)
+=========================================== */
+
+.card {
+    /* Wider reading area (now takes up 90% of screen, max 1200px) */
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 3rem auto 4rem auto;
+    padding: 3rem 2rem;
+    background: var(--color-light-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.card-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.card-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent-gold);
+}
+
+.card-body p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* Sub-heading/Sub-title for the card body, fixed from HTML issue */
+.subheaderb {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.card-body .copyright {
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: right;
+    margin-top: 3rem;
+    color: #666;
+}
+
+.card-body .astrisk {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: right;
+    color: #666;
+}
+
+.page-break {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+/* =======================
+   Footer (Color Revert & Positioning)
+======================= */
+.site-footer { 
+  text-align: center; 
+  /* Footer color is the gold accent */
+  background: var(--color-accent-gold); 
+  padding: 30px 8px 20px 8px; 
+  font-size: 1rem; 
+  /* Text color is black on gold */
+  color: black; 
+  font-weight: bold; 
+  /* Pushed to the bottom by main's flex-grow: 1 */
+  margin-top: auto; 
+  width: 100%; 
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1); 
+  transition: opacity 1s ease, transform 1s ease; 
+}
+
+/* =======================
+   Responsive Breakpoints
+======================= */
+
+/* Tablet/Mobile Navigation (Max Width 1024px) */
+@media (max-width: 1024px) {
+  .nav-container { flex-wrap: wrap; justify-content: space-between; padding: 0 1rem; }
+  
+  .nav-left, .nav-right {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    background: var(--color-primary);
+  }
+  
+  .nav-toggle, .hamburger { display: block; }
+  
+  .nav-toggle:checked ~ .nav-left,
+  .nav-toggle:checked ~ .nav-right { max-height: 2000px; }
+  
+  /* MOBILE DROPDOWN OVERRIDES */
+  .dropdown-menu { 
+      position: relative; 
+      min-width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+  }
+
+  .nav-center { 
+      width: auto; 
+      text-align: left; 
+      margin-left: 1rem; 
+      order: 0; 
+      font-size: 1.4rem; 
+  }
+}
+
+/* Medium Mobile/Tablet Content Adjustments (Max Width 800px) */
+@media (max-width: 800px) {
+    /* Bio/About Card Stack */
+    .robyn-bio, .about-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+    .robyn-photo, .about-card .photo {
+        max-width: 250px;
+        /* Removed fixed height constraint for better scaling */
+        height: auto; 
+        object-fit: initial;
+    }
+    .robyn-bio-text {
+        padding: 2rem 1.5rem;
+    }
+    .robyn-bio-text h3 {
+        margin-bottom: 1rem;
+        text-align: center;
+        border-bottom: 2px solid var(--color-accent-gold);
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Invite Page adjustments */
+    .invite-content-wrapper {
+        padding: 2rem 1.5rem;
+        margin: 2rem auto;
+    }
+    
+    /* Article Page adjustments */
+    .card {
+        padding: 2rem 1.5rem;
+        margin: 2rem auto;
+    }
+}
+
+/* Small Mobile Content Adjustments (Max Width 600px) */
+@media (max-width: 600px) {
+    /* Featured Sections */
+    .featured-articles-container {
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+    }
+    .book-feature {
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Applies to books.html list and index.html featured book */
+    .book-card, .book-list-section .book-card {
+        max-width: 90%;
+        padding: 1.5rem; 
+    }
+    .book-cover {
+        max-width: 150px; 
+    }
+    
+    /* Book List on Books Page (Added back from V1) */
+    .book-list-section {
+        grid-template-columns: 1fr; /* Stack books vertically */
+        gap: 1.5rem;
+    }
+    
+    /* Invite Page adjustments */
+    .invite-header {
+        font-size: 2.2rem;
+    }
+    .invite-subheader {
+        font-size: 1.5rem;
+    }
+    .topic-card {
+        padding: 1rem;
+    }
+    .topic-card p {
+        font-size: 1rem;
+    }
+    
+    /* Article Page adjustments */
+    .card-title {
+        font-size: 1.8rem;
+    }
+    .card-subtitle {
+        font-size: 1rem;
+    }
+    .card-body p {
+        font-size: 1rem;
+    }
+}
+
+/* Very Small Screens (Max Width 500px) */
+@media (max-width: 500px) { 
+    /* General adjustments for very small screens */
+    .invite-header {
+        font-size: 1.8rem;
+    }
+    .hope-script {
+        /* Mobile specific font size reduction */
+        font-size: 0.9rem; 
+        padding: 5px 15px 8px 15px; 
+        padding-bottom: 10px; 
+        
+        /* Mobile width should still fit content but respect a smaller max */
+        max-width: 95%; 
+    }
+}
+
+
+/* Desktop (Min Width 1025px) */
+@media (min-width: 1025px) {
+  .hamburger { display: none; }
+  .nav-left, .nav-right { 
+      flex-direction: row; 
+      max-height: none; 
+      background: transparent; 
+      transition: none;
+      overflow: visible; 
+  }
+  
+  /* Desktop Hover Activation (for visibility) */
+  .dropdown-menu { 
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    max-height: 1000px; 
+  }
+  
+  .dropdown:hover .dropdown-menu {
+      visibility: visible;
+      opacity: 1;
+  }
+  
+  .dropdown:hover .arrow { 
+      transform: rotate(180deg); 
+  }
+
+}
