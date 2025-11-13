@@ -1,105 +1,286 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const dropdownButtons = document.querySelectorAll('.dropdown-button'); 
-  const navToggle = document.querySelector('.nav-toggle');
-  const hamburgerLabel = document.querySelector('.hamburger'); 
-  const animateElements = document.querySelectorAll('.animate-on-scroll');
-  // Re-added for pages that have the quote (e.g., index.html)
-  const hopeScript = document.querySelector('.hope-script'); 
-  const hopeImage = document.querySelector('.hope-banner img'); 
-  const desktopBreakpoint = 1024; 
+    // --- Debounce Utility Function ---
+    let debounceTimer;
+    const DEBOUNCE_TIME = 50; // Requested debounce time (50ms)
+    
+    /**
+     * Creates a debounced function that delays invocation until after 'delay' milliseconds 
+     * have passed since the last time the debounced function was invoked.
+     */
+    const debounce = (func, delay) => {
+        return function(...args) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(this, args), delay);
+        };
+    };
 
-  // ==============================
-  // Navbar Dropdown Toggle (Mobile & Tablet)
-  // ==============================
-  dropdownButtons.forEach(button => {
-    button.addEventListener('click', function (e) {
-      // Prevent button from submitting a form if accidentally placed inside one
-      e.preventDefault(); 
-      
-      const parentDropdown = this.parentElement;
-      const isCurrentlyActive = parentDropdown.classList.contains('active');
+    // --- 1. Menu Toggling Logic ---
+    const menuTrigger = document.getElementById('menu-trigger'); 
+    const menuClose = document.getElementById('menu-close');
+    const offCanvasMenu = document.getElementById('off-canvas-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body; // Reference to the body element
 
-      // Close all dropdowns
-      dropdownButtons.forEach(otherButton => {
-        const otherDropdown = otherButton.parentElement;
-        otherDropdown.classList.remove('active');
-        otherButton.setAttribute('aria-expanded', 'false');
-      });
+    // --- Accessibility/Style Toggles References ---
+    const scaleToggle = document.getElementById('scale-page-toggle');
+    const boldToggle = document.getElementById('bold-page-toggle');
+    const colorCircles = document.querySelectorAll('.color-circle');
+    
+    // --- Scale Dropdown & Slider References ---
+    const scaleDropdown = document.getElementById('scale-dropdown');
+    const scaleSlider = document.getElementById('scale-slider');
+    const scaleValueDisplay = document.getElementById('scale-value');
+    
+    // FINAL UPDATED: Stable zoom levels: 100, 110, 125, 150, and 175.
+    const preferredZoomLevels = [100, 110, 125, 150, 175];
 
-      // Toggle the clicked dropdown
-      if (!isCurrentlyActive) {
-        parentDropdown.classList.add('active');
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  // Reset dropdowns and ARIA state on resize to desktop size
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > desktopBreakpoint) {
-      dropdownButtons.forEach(button => {
-        button.parentElement.classList.remove('active');
-        button.setAttribute('aria-expanded', 'false');
-      });
-      // Ensure mobile menu is closed if resizing from mobile view
-      if (navToggle.checked) {
-          navToggle.checked = false;
-          hamburgerLabel.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-
-  // ==============================
-  // Hamburger toggle for mobile (with ARIA state update)
-  // ==============================
-  if (navToggle && hamburgerLabel) {
-    navToggle.addEventListener('change', () => {
-      const isChecked = navToggle.checked;
-      hamburgerLabel.setAttribute('aria-expanded', isChecked);
-    });
-  }
-
-  // ==============================
-  // Scroll to top on page load 
-  // ==============================
-  window.addEventListener('load', () => {
-    window.scrollTo(0, 0); 
-  });
-
-  // ==============================
-  // Scroll fade-in animations
-  // ==============================
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    // Function to close the menu 
+    const closeMenu = () => {
+        if (offCanvasMenu) {
+            offCanvasMenu.classList.remove('active');
+            if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'false');
+            body.style.overflow = '';
         }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  animateElements.forEach(el => observer.observe(el));
+    };
 
-  // ==============================
-  // Hope Script Fade-In after image loads
-  // *** This section now safely checks if hopeScript and hopeImage exist. ***
-  // ==============================
-  function showHopeScript() {
-    // Safety check: only proceed if the quote element is found on the page
-    if (!hopeScript) return; 
-    hopeScript.classList.add('visible');
-  }
+    // Function to open the menu
+    const openMenu = () => {
+        if (offCanvasMenu) {
+            offCanvasMenu.classList.add('active');
+            if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'true');
+            body.style.overflow = 'hidden';
+        }
+    };
 
-  // Safety check: only proceed if the image element is found on the page
-  if (hopeImage) { 
-    // Check if image is already loaded (from cache)
-    if (hopeImage.complete) {
-      showHopeScript();
-    } else {
-      // Wait for the image to load
-      hopeImage.addEventListener('load', showHopeScript);
+    // --- Menu Event Listeners ---
+    if (menuTrigger) {
+        menuTrigger.addEventListener('click', openMenu);
     }
-  }
+    if (menuClose) {
+        menuClose.addEventListener('click', closeMenu);
+    }
+    
+    // Close menu when a link inside is clicked
+    if (navLinks) {
+        navLinks.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                closeMenu();
+            }
+        });
+    }
+
+    // Close menu or scale dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        // Close off-canvas menu
+        if (offCanvasMenu && menuTrigger && offCanvasMenu.classList.contains('active')) {
+            if (!offCanvasMenu.contains(e.target) && !menuTrigger.contains(e.target)) {
+                closeMenu();
+            }
+        }
+        // Close scale dropdown
+        if (scaleDropdown && scaleToggle && scaleDropdown.classList.contains('visible')) {
+            if (!scaleDropdown.contains(e.target) && !scaleToggle.contains(e.target)) {
+                scaleDropdown.classList.remove('visible');
+                scaleToggle.classList.remove('active');
+                scaleToggle.setAttribute('aria-expanded', 'false');
+                scaleDropdown.setAttribute('aria-hidden', 'true');
+            }
+        }
+    });
+    
+    // --- SCALE TOGGLE (A) and SLIDER LOGIC ---
+    
+    /**
+     * Finds the closest preferred zoom level to the current slider value (snapping).
+     */
+    const snapToNearestPreferredLevel = (currentValue) => {
+        // Find the level with the smallest difference to the current slider value
+        return preferredZoomLevels.reduce((prev, curr) => {
+            return (Math.abs(curr - currentValue) < Math.abs(prev - currentValue) ? curr : prev);
+        });
+    };
+
+    const applyScale = (value) => {
+        const scaleFactor = value / 100;
+        
+        // Use the 'zoom' property for layout reflow and responsiveness
+        body.style.zoom = scaleFactor;
+        
+        // Update display value
+        if (scaleValueDisplay) {
+            scaleValueDisplay.textContent = `${value}%`;
+        }
+    };
+
+    if (scaleToggle) {
+        scaleToggle.addEventListener('click', () => {
+            const isVisible = scaleDropdown.classList.toggle('visible');
+            scaleToggle.classList.toggle('active', isVisible);
+            scaleToggle.setAttribute('aria-expanded', isVisible);
+            scaleDropdown.setAttribute('aria-hidden', !isVisible);
+
+            // Ensure bold is off when scale is used
+            body.classList.remove('bold-text');
+            if (boldToggle) boldToggle.classList.remove('active');
+        });
+    }
+
+    if (scaleSlider) {
+        // Initialize the scale text display
+        applyScale(scaleSlider.value); 
+
+        // Debounced function that applies the final snapped value and zoom
+        const debouncedApplySnapAndScale = debounce((snappedValue) => {
+            applyScale(snappedValue);
+        }, DEBOUNCE_TIME);
+        
+        // 1. Use 'input' to continuously snap the visual display (number and thumb) and trigger the debounced zoom.
+        scaleSlider.addEventListener('input', (e) => {
+            const currentValue = parseInt(e.target.value, 10);
+            
+            // Step A: Snap the value to the nearest fixed level 
+            const snappedValue = snapToNearestPreferredLevel(currentValue);
+
+            // Step B: Instantly snap the slider's physical position (the thumb jumps)
+            scaleSlider.value = snappedValue;
+
+            // Step C: Instantly snap the display to the stable value (removing 1% visibility)
+            if (scaleValueDisplay) {
+                scaleValueDisplay.textContent = `${snappedValue}%`;
+            }
+            
+            // Step D: Trigger the debounced zoom operation. 
+            debouncedApplySnapAndScale(snappedValue);
+        });
+        
+        // 2. Use 'change' to ensure the final zoom happens immediately on mouse release.
+        scaleSlider.addEventListener('change', (e) => {
+            const snappedValue = parseInt(e.target.value, 10);
+            clearTimeout(debounceTimer); // Cancel any pending debounced calls
+            applyScale(snappedValue); // Apply the final, clean value immediately
+        });
+    }
+
+
+    // --- B. Bold Text Toggle (B) ---
+
+    if (boldToggle) {
+        boldToggle.addEventListener('click', () => {
+            // Close scale dropdown and reset scale when bold is toggled
+            if (scaleDropdown && scaleDropdown.classList.contains('visible')) {
+                scaleDropdown.classList.remove('visible');
+                scaleToggle.classList.remove('active');
+                scaleToggle.setAttribute('aria-expanded', 'false');
+                scaleDropdown.setAttribute('aria-hidden', 'true');
+            }
+            if (scaleSlider) {
+                scaleSlider.value = 100; // Reset scale to 100%
+                applyScale(100);
+            }
+            
+            body.classList.toggle('bold-text');
+            boldToggle.classList.toggle('active');
+        });
+    }
+
+    // --- C. Background Color Changer (Circles) ---
+
+    if (colorCircles.length > 0) {
+        colorCircles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                const color = circle.getAttribute('data-color');
+                body.classList.remove('tan-background', 'grey-background');
+                colorCircles.forEach(c => c.classList.remove('active'));
+                
+                if (color === 'tan') {
+                    body.classList.add('tan-background');
+                    circle.classList.add('active');
+                } else if (color === 'grey') {
+                    body.classList.add('grey-background');
+                    circle.classList.add('active');
+                } else {
+                    circle.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // --- 3. Smooth Scroll for internal links ---
+    
+    const smoothScrollLinks = document.querySelectorAll('.js-fluid-scroll[href^="#"]');
+
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const hash = link.hash;
+            if (hash && hash.length > 1) {
+                e.preventDefault(); 
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                closeMenu(); 
+            }
+        });
+    });
+
+    // --- 4. Scroll Fade-In Animations ---
+    
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+    animateElements.forEach(el => observer.observe(el));
+
+
+    // --- 5. Hope Script Quote Fade-In (NEW) ---
+    
+    const quoteCardContainer = document.querySelector('.quote-card-container');
+    const hopeScript = document.querySelector('.quote-label'); // Targeting the new location of the quote
+    
+    // Note: The visibility class for quote-label should be defined in CSS 
+    // (e.g., .quote-label { opacity: 0; transition: opacity 1.5s; } .quote-label.visible { opacity: 1; })
+
+    function showHopeScript() {
+        if (hopeScript) {
+            hopeScript.classList.add('visible');
+        }
+    }
+
+    // Use a new Intersection Observer for the Hero Quote Card
+    if (quoteCardContainer) {
+        const quoteObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Once the main quote card is visible, start the quote fade-in
+                        showHopeScript();
+                        quoteObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            // Trigger when the container is 10% visible
+            { threshold: 0.1 } 
+        );
+        quoteObserver.observe(quoteCardContainer);
+    } else {
+        // Fallback: Show immediately if the container is missing 
+        showHopeScript();
+    }
+    
+    // --- 6. Scroll to top on page load (NEW) ---
+    
+    window.addEventListener('load', () => {
+        // Ensure the page starts at the very top after all assets have loaded
+        window.scrollTo(0, 0); 
+    });
 });
