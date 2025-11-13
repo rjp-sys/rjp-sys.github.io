@@ -13,6 +13,11 @@
 <body class="vintage-modern-background">
 
     <header class="main-nav-capsule">
+        
+        <button id="menu-trigger" class="menu-toggle-btn" aria-expanded="false" aria-label="Open main menu">
+            <span class="js-fluid-motion">☰ MENU</span>
+        </button>
+
         <div class="header-controls">
             <button id="scale-page-toggle" aria-label="Scale Page" aria-expanded="false" aria-controls="scale-dropdown">
                 <span class="ampersand-accent">A</span>
@@ -32,9 +37,6 @@
             <button class="color-circle active" data-color="default" aria-label="Change background to Default"></button>
         </div>
         
-        <button id="menu-trigger" class="menu-toggle-btn" aria-expanded="false" aria-label="Open main menu">
-            <span class="js-fluid-motion">☰ MENU</span>
-        </button>
     </header>
 
     <nav id="off-canvas-menu" aria-label="Main Navigation">
@@ -59,13 +61,14 @@
         <div class="quote-card-container animate-on-scroll">
             <div class="quote-image-section">
                 <img src="/assets/banner.jpg" alt="Hope Flower Symbol" loading="eager" class="quote-card-image">
-                <p class="quote-label">"The LORD is close to the brokenhearted and saves those who are crushed in spirit."<br><cite>Psalm 34:18 (NIV)</cite></p> 
+                <p class="quote-label">"The LORD is close to the brokenhearted and saves<br>those who are crushed in spirit."<br><cite>Psalm 34:18 (NIV)</cite></p> 
             </div>
             <div class="quote-text-section">
                 <h2>Sharing Hope in Seasons of Grief</h2>
                 <p>with Chaplain Robyn</p>
                 <blockquote class="hope-script"> 
-                    </blockquote>
+                    
+                </blockquote>
             </div>
         </div>
     </section>
@@ -81,32 +84,36 @@
             </div>
         </section>
 
-        <section class="book-section content-section" aria-labelledby="book-title-heading">
-            <h2 class="section-heading animate-on-scroll" id="book-title-heading">Featured Books</h2>
-            <div class="card-grid-container">
-                <div class="book-card content-card animate-on-scroll">
-                    <img class="book-cover content-image" src="/assets/picture-perfect-cover.jpg" alt="cover of Picture Perfect" loading="lazy">
-                    <p>
-                        <a class="buy-link button-style" href="https://www.amazon.com/Picture-Perfect-Robyn-J-Plocher/dp/B0DF6J3DVM?crid=3ANXFNYKRDKE5&dib=eyJ2IjoiMSJ9.9mlU5C-5T6nh68KqUYBZuR6x-gTUwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwO7gzuFZx8yDtxDt8SKQly88cSRIAGCMqsR29eO0QK4bBXhRpeCqb1QByXTot_SiXxLs-0tr7t0N3_oKPVAVMjkwaCfvmjSsY57lMN3t9hD3oVapPKxZPO6QsvfMsuB2D_I-Iksu7efTM3s9Ik-aWb70xXyf119MgE.9VDCEfH7sBR-U5cD3z-LxPu6GoWBQBSgYffMWwIwIj8&dib_tag=se&keywords=picture+perfect&qid=1731790369&sprefix=%2Caps%2C93&sr=8-7" target="_blank">Buy it Here</a>
-                    </p>
+        <section class="featured-combined content-section" aria-labelledby="combined-heading">
+            <h2 class="section-heading animate-on-scroll" id="combined-heading">Featured Books and Articles</h2>
+            
+            <div class="content-columns">
+                
+                <div class="book-column">
+                    <h3 class="column-heading">Books</h3>
+                    <div class="card-grid-container">
+                        <div class="book-card content-card animate-on-scroll">
+                            <img class="book-cover content-image" src="/assets/picture-perfect-cover.jpg" alt="cover of Picture Perfect" loading="lazy">
+                            <p>
+                                <a class="buy-link button-style" href="https://www.amazon.com/Picture-Perfect-Robyn-J-Plocher/dp/B0DF6J3DVM?crid=3ANXFNYKRDKE5&dib=eyJ2IjoiMSJ9.9mlU5C-5T6nh68KqUYBZuR6x-gTUwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwO7gzuFZx8yDtxDt8SKQly88cSRIAGCMqsR29eO0QK4bBXhRpeCqb1QByXTot_SiXxLs-0tr7t0N3_oKPVAVMjkwaCfvmjSsY57lMN3t9hD3oVapPKxZPO6QsvfMsuB2D_I-Iksu7efTM3s9Ik-aWb70xXyf119MgE.9VDCEfH7sBR-U5cD3z-LxPu6GoWBQBSgYffMWwIwIj8&dib_tag=se&keywords=picture+perfect&qid=1731790369&sprefix=%2Caps%2C93&sr=8-7" target="_blank">Buy it Here</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="featured-content content-section" aria-labelledby="articles-heading">
-            <h2 class="section-heading animate-on-scroll" id="articles-heading">Featured Articles</h2>
-            <div class="card-grid-container">
-                <div class="article-card content-card animate-on-scroll">
-                    <img class="article-cover content-image" src="/assets/holiday.jpg" alt="Finding Hope cover" loading="lazy">
-                    <p class="article-link"><a href="/html/finding_hope.html" target="_blank">Finding Hope In Community</a></p>
-                </div>
-                <div class="article-card content-card animate-on-scroll">
-                    <img class="article-cover content-image" src="/assets/chicken-soup-cover.jpg" alt="When Chicken Soup is Not Enough" loading="lazy">
-                    <p class="article-link"><a href="/html/when_chicken.html" target="_blank">When Chicken Soup is Not Enough</a></p>
-                </div>
-                <div class="article-card content-card animate-on-scroll">
-                    <img class="article-cover content-image" src="/assets/ten-things.jpg" alt="Ten Things" loading="lazy">
-                    <p class="article-link"><a href="/html/ten-things-to-know.html" target="_blank">10 Things to Know About Children and Grief</a></p>
+                <div class="articles-column">
+                    <h3 class="column-heading">Articles</h3>
+                    <div class="card-grid-container">
+                        <div class="article-card content-card animate-on-scroll">
+                            <img class="article-cover content-image" src="/assets/holiday.jpg" alt="Finding Hope cover" loading="lazy">
+                            <p class="article-link"><a href="/html/finding_hope.html" target="_blank">Finding Hope In Community</a></p>
+                        </div>
+                        <div class="article-card content-card animate-on-scroll">
+                            <img class="article-cover content-image" src="/assets/chicken-soup-cover.jpg" alt="When Chicken Soup is Not Enough" loading="lazy">
+                            <p class="article-link"><a href="/html/when_chicken.html" target="_blank">When Chicken Soup is Not Enough</a></p>
+                        </div>
+                        
+                        </div>
                 </div>
             </div>
         </section>

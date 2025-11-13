@@ -13,6 +13,11 @@
     --color-grey: #D3D3D3;       /* Lighter background grey */
     --color-grey-swatch: #ADADAD;/* Deeper color for the circle preview */
 
+    /* NEW COLORS for Subtle Card Pop (Slightly Lighter than Body Tan/Grey) */
+    --color-card-tan: #F2EBE0; /* Slightly lighter than var(--color-tan) */
+    --color-card-grey: #EAEAEA; /* Slightly lighter than var(--color-grey) */
+
+
     --transition-slow: 0.7s;     
     --transition-fast: 0.3s;     
     --content-max-width: 1100px; 
@@ -69,42 +74,74 @@ body.grey-background {
 }
 
 
-/* --- 1. FLOATING NAVIGATION CAPSULE --- */
+/* --- 1. FLOATING NAVIGATION CAPSULE (COMBINED & VERTICALLY STACKED) --- */
 
 .main-nav-capsule {
     position: fixed;
-    top: 20px;
-    /* FIX: Align to the right side of the page */
+    /* Fixed to right alignment */
     right: 20px; 
-    left: auto;
+    left: auto; 
     transform: none; 
+    
     z-index: 1000;
-    width: auto; /* Width determined by content */
-    max-width: 95%;
+    /* CHANGE 1: Increase padding to make the capsule look longer horizontally */
+    width: auto; 
+    max-width: 95%; 
+    
+    /* Force vertical stacking */
     display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 10px 20px;
+    flex-direction: column; 
+    /* Center items horizontally within the capsule */
+    align-items: center; 
+    
+    padding: 15px 30px; /* Increased padding from 10px 20px */
     
     background-color: var(--color-paper);
     border: 2px solid var(--color-border);
-    border-radius: 60px / 60px; 
+    border-radius: 60px / 60px; /* Retain smooth capsule shape */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    /* The transition is kept, but the JS scroll hiding logic is removed */
+
+    /* SCROLL VISIBILITY SETUP */
+    top: 20px; /* Default visible position */
     transition: top var(--transition-slow) ease-in-out; 
 }
 
-/* Container for A, B, and Color Toggles */
+/* Class to hide the capsule when scrolling down (Controlled by JS) */
+.main-nav-capsule.hidden {
+    top: -100px; /* Moves it off-screen */
+}
+
+/* Menu Button Styling (Now the first stacked item) */
+.menu-toggle-btn {
+    font-family: 'Inter', sans-serif;
+    /* Reduced font size for tighter fit */
+    font-size: 1.5rem; 
+    padding: 10px 20px; 
+    background-color: var(--color-accent);
+    color: white; 
+    border: none;
+    cursor: pointer;
+    border-radius: 40px; 
+    transition: background-color var(--transition-fast) ease-out;
+    margin: 0 0 8px 0; 
+}
+
+.menu-toggle-btn:hover {
+    background-color: #6a828e; 
+}
+
+/* Container for A, B, and Color Toggles (Now the second stacked item) */
 .header-controls {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-right: 15px; 
-    border-right: 1px solid var(--color-border); 
-    position: relative; /* Needed for scale-dropdown absolute positioning */
+    padding: 0; 
+    border: none;
+    position: relative; 
+    margin-top: 0; 
 }
 
-/* General Button Style for A/B Toggles in Header */
+/* General Button Style for A/B Toggles in Header (NO CHANGE) */
 .header-controls button {
     text-decoration: none;
     line-height: 1; 
@@ -116,10 +153,10 @@ body.grey-background {
     transition: all var(--transition-fast) ease-out;
     border: none;
     outline: none;
-    background: none; /* Ensure no default button background interferes */
+    background: none; 
 }
 
-/* A & B Button Style (Non-circular) */
+/* A & B Button Style (Non-circular) (NO CHANGE) */
 #scale-page-toggle, #bold-page-toggle {
     padding: 5px 10px; 
     border-radius: 4px; 
@@ -132,7 +169,7 @@ body.grey-background {
     border-color: var(--color-accent);
 }
 
-/* Style for active state (A or B is engaged) */
+/* Style for active state (A or B is engaged) (NO CHANGE) */
 #scale-page-toggle.active, #bold-page-toggle.active {
     background-color: var(--color-accent);
     color: white; 
@@ -140,26 +177,28 @@ body.grey-background {
     box-shadow: 0 0 5px rgba(74, 96, 108, 0.5);
 }
 
-/* Requested Ampersand Style for A and B */
+/* Requested Ampersand Style for A and B (NO CHANGE) */
 .ampersand-accent {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6em;
+    /* Reduced font size for tighter fit */
+    font-size: 1.3em; 
     vertical-align: -0.1em;
     color: var(--color-ink); 
     padding: 0 4px; 
     transition: color var(--transition-fast);
 }
 
-/* Text color change when active */
+/* Text color change when active (NO CHANGE) */
 .header-controls button.active .ampersand-accent {
     color: var(--color-paper); 
 }
 
-/* --- Dropdown Menu Styling (New Feature) --- */
+/* --- Dropdown Menu Styling (No Change) --- */
 .scale-dropdown-menu {
     position: absolute;
     top: calc(100% + 10px); 
     right: 0; 
+    left: auto;
     width: 200px; 
     background-color: var(--color-paper);
     border: 1px solid var(--color-accent);
@@ -214,16 +253,16 @@ body.grey-background {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Color Circles Styling in Header (BRIGHTER) --- */
+/* --- Color Circles Styling in Header (Permanent Default Effect) (NO CHANGE) --- */
 .color-circle {
+    /* Reverted to 20px */
     width: 20px; 
     height: 20px;
     border-radius: 50%; 
     border: 2px solid var(--color-ink); 
-    /* Increased shadow and added a subtle white inner glow to make it "pop" off the light background */
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.5); 
     transition: all 0.2s ease;
-    opacity: 1; /* Fully opaque now */
+    opacity: 1; 
     cursor: pointer;
 }
 
@@ -238,35 +277,29 @@ body.grey-background {
     background-color: var(--color-paper);
 }
 
-.color-circle:hover {
-    transform: scale(1.05); /* Slight scale on hover */
+/* Permanent Active Style for Default Circle */
+.color-circle[data-color="default"] {
+    border-color: var(--color-accent); /* Thicker border */
+    border-width: 3px; 
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8); /* Shadow effect */
 }
 
-.color-circle.active {
+/* Override the standard active class on default, only allow tan/grey to switch */
+.color-circle.active:not([data-color="default"]) {
     border-color: var(--color-accent); 
     border-width: 3px; 
     opacity: 1;
-    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8); /* Also increased active shadow */
+    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8); 
 }
 
-.menu-toggle-btn {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    padding: 8px 15px;
-    background-color: var(--color-accent);
-    color: white; 
-    border: none;
-    cursor: pointer;
-    border-radius: 40px; 
-    transition: background-color var(--transition-fast) ease-out;
-    margin-left: 15px; 
+/* Hover effect should not apply to the default if it already looks active */
+.color-circle:hover:not([data-color="default"]) {
+    transform: scale(1.05); 
 }
 
-.menu-toggle-btn:hover {
-    background-color: #6a828e; 
-}
 
-/* --- 2. OFF-CANVAS MENU STYLES --- */
+/* --- 2. OFF-CANVAS MENU STYLES (NO CHANGE) --- */
 
 #off-canvas-menu {
     position: fixed;
@@ -324,11 +357,16 @@ body.grey-background {
     border-bottom: 1px solid var(--color-border);
 }
 
-/* --- 3. CONTENT STRUCTURE AND FIXES (Existing Styles) --- */
+/* --- 3. CONTENT STRUCTURE AND FIXES --- */
 
 main {
-    /* No longer using transform scale here, but keep the transition style if you like */
-    transition: transform var(--transition-fast) ease;
+    transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease; /* ADD opacity transition for scrim */
+}
+
+/* NEW: Scrim effect on main content when menu is active */
+body.menu-open main {
+    opacity: 0.3; /* Dims the background content */
+    pointer-events: none; /* Prevents interaction with dimmed content */
 }
 
 .content-section {
@@ -367,7 +405,6 @@ main {
 .hope-script {
     font-family: 'Lora', serif;
     font-style: italic;
-    /* REVISED for new card structure - removed margin/max-width */
     text-align: left; 
     color: var(--color-accent);
     line-height: 1.8; 
@@ -376,6 +413,26 @@ main {
     white-space: normal; 
     display: block; 
     margin: 10px 0 0 0;
+}
+
+/* Updated .quote-label for fade-in transition */
+.quote-label {
+    font-family: 'Lora', serif;
+    font-size: 1.2em; 
+    font-style: italic;
+    color: var(--color-accent); 
+    text-align: center; 
+    line-height: 1.6;
+    margin-top: 0; 
+    
+    /* === NEW: Add Fade-In Styles === */
+    opacity: 0; /* Starts hidden */
+    transition: opacity 1.5s ease-out; /* Fade-in effect */
+}
+
+/* === NEW: Class toggled by JavaScript to make it visible === */
+.quote-label.visible {
+    opacity: 1;
 }
 
 /* Citation Styling */
@@ -403,11 +460,138 @@ main {
     width: 200px;
     height: 200px;
     object-fit: cover; 
-    /* --- REVERT: Back to original subtle styling. --- */
     border-radius: 5px; 
     border: 2px solid var(--color-accent); 
-    box-shadow: none; /* Ensure no residual shadow */
-    /* ----------------------------------------------- */
+    box-shadow: none; 
+}
+
+/* Bio Text Size Increase (NO CHANGE) */
+.robyn-bio p {
+    font-size: 1.3rem; 
+    line-height: 1.7; 
+}
+
+/* --- REVISED: Quote Card Styling (Hero Card) --- */
+
+.quote-card-container {
+    max-width: 1400px; 
+    margin: 60px auto; 
+    /* Base background is white/paper */
+    background-color: var(--color-paper);
+    transition: background-color var(--transition-slow) ease; 
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+}
+
+/* CHANGE 2: Apply the lighter card specific colors to the quote card container
+            when the body state changes so it doesn't match the body exactly. */
+body.tan-background .quote-card-container {
+    background-color: var(--color-card-tan); /* Lighter tan for 'pop' */
+}
+body.grey-background .quote-card-container {
+    background-color: var(--color-card-grey); /* Lighter grey for 'pop' */
+}
+
+
+.quote-image-section {
+    flex: 0 0 400px; 
+    /* This section remains var(--color-paper) or you could change it if needed */
+    background-color: var(--color-paper); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+    border-right: 1px solid var(--color-border); 
+}
+
+/* Ensure image section also updates if it uses the color-paper variable
+   and use the lighter card color for consistency. */
+body.tan-background .quote-image-section {
+    background-color: var(--color-card-tan);
+}
+body.grey-background .quote-image-section {
+    background-color: var(--color-card-grey);
+}
+
+
+.quote-card-image {
+    width: 250px; 
+    height: 250px; 
+    object-fit: contain;
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+    border: none;
+    box-shadow: none;
+}
+
+
+.quote-label cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8em;
+    font-style: normal;
+    color: var(--color-ink);
+    line-height: 1.2;
+}
+
+.quote-text-section {
+    flex: 1; 
+    padding: 20px 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.quote-text-section h2 {
+    font-size: 2.2em; 
+    margin-bottom: 10px;
+    color: var(--color-ink);
+    text-align: left; 
+}
+
+.quote-text-section p {
+    font-size: 1.1em; 
+    color: var(--color-ink);
+    line-height: 1.4;
+    text-align: left; 
+}
+
+/* --- Two-Column Content Layout (Books and Articles) (NO CHANGE) --- */
+
+.content-columns {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px; 
+    padding-top: 20px;
+}
+
+.book-column {
+    flex: 1 1 45%; 
+    max-width: 500px;
+    padding-right: 30px; 
+    border-right: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.articles-column {
+    flex: 1 1 45%;
+    max-width: 500px;
+    padding-left: 30px;
+    text-align: center;
+}
+
+.column-heading {
+    font-family: 'Lora', serif;
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: var(--color-accent);
 }
 
 /* Card Grid Layout */
@@ -481,11 +665,44 @@ main {
 
 /* --- 4. MEDIA QUERIES (Basic Responsiveness) --- */
 
-/* Tablet/Medium Mobile Content Adjustments (Max Width 768px) */
-@media (max-width: 768px) {
+/* Tablet/Medium Mobile Content Adjustments (Max Width 900px) */
+@media (max-width: 900px) {
+    /* --- Navigation Adjustment (No Change) --- */
     .main-nav-capsule {
-        right: 10px;
+        top: 10px; 
+        right: 10px; 
+        left: auto;
+        transform: none;
+        padding: 10px 15px; 
     }
+    
+    .menu-toggle-btn {
+        margin: 0 0 10px 0; 
+    }
+    
+    /* --- Content Column Adjustment (No Change) --- */
+    .content-columns {
+        flex-direction: column; 
+        gap: 40px;
+    }
+    
+    .book-column, .articles-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 0;
+        border-right: none; 
+    }
+    
+    .book-column {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    .articles-column {
+        padding-left: 0;
+    }
+
+    /* --- General Layout Adjustment (No Change) --- */
     .robyn-bio {
         flex-direction: column;
         text-align: center;
@@ -500,104 +717,13 @@ main {
         max-width: 90%; 
     }
     
-    .hope-script {
-        /* Adjusted for the quote card */
-        font-size: 1.1rem;
-    }
-}
-
-/* Small Mobile Content Adjustments (Max Width 500px) */
-@media (max-width: 500px) {
-    .hope-script {
-        font-size: 0.9rem;
-        margin: 10px 0 0 0;
-    }
-}
-
-
-/* --- NEW: Quote Card Styling --- */
-
-.quote-card-container {
-    max-width: 1400px; /* Adjusted to 1400px */
-    margin: 60px auto; /* Centered with spacing */
-    background-color: var(--color-paper);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; 
-    display: flex; /* Make it a flex container */
-    align-items: stretch; 
-}
-
-.quote-image-section {
-    flex: 0 0 400px; /* Gave it more width to accommodate the quote */
-    background-color: var(--color-paper); 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center;
-    padding: 20px; /* Increased padding */
-    border-right: 1px solid var(--color-border); 
-}
-
-.quote-card-image {
-    width: 250px; /* **INCREASED IMAGE SIZE** */
-    height: 250px; /* **INCREASED IMAGE SIZE** */
-    object-fit: contain;
-    border-radius: 5px; 
-    margin-bottom: 20px; /* More space below image */
-    /* Remove old banner specific styles that might interfere */
-    border: none;
-    box-shadow: none;
-}
-
-.quote-label {
-    font-family: 'Lora', serif;
-    font-size: 1.2em; /* Made the quote larger */
-    font-style: italic;
-    color: var(--color-accent); /* Applied accent color for quote */
-    text-align: center; /* Centered the quote */
-    line-height: 1.6;
-    margin-top: 0; /* No margin above the quote */
-}
-
-.quote-label cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.8em;
-    font-style: normal;
-    color: var(--color-ink);
-    line-height: 1.2;
-}
-
-.quote-text-section {
-    flex: 1; 
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-}
-
-.quote-text-section h2 {
-    font-size: 2.2em; /* Larger heading */
-    margin-bottom: 10px;
-    color: var(--color-ink);
-    text-align: center; /* Centered for the wider card */
-}
-
-.quote-text-section p {
-    font-size: 1.1em; /* Slightly larger paragraph text */
-    color: var(--color-ink);
-    line-height: 1.4;
-    text-align: center; /* Centered for the wider card */
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 900px) { /* Adjusted breakpoint for larger card */
+    /* --- Hero Card Mobile Fix (No Change) --- */
     .quote-card-container {
         flex-direction: column; 
-        max-width: 95%; /* Adjusted for better mobile handling */
+        max-width: 95%; 
+        align-items: center;
     }
+    
     .quote-image-section {
         flex: none; 
         width: 100%; 
@@ -606,8 +732,8 @@ main {
         padding: 20px 0;
     }
     .quote-card-image {
-        width: 150px; /* Revert image size for smaller screens */
-        height: 150px; /* Revert image size for smaller screens */
+        width: 150px; 
+        height: 150px; 
         margin: 0 auto 15px auto; 
     }
     .quote-text-section {
@@ -616,11 +742,19 @@ main {
     }
     .quote-text-section h2, 
     .quote-text-section p,
-    .hope-script, /* Ensure these are centered on mobile as well */
+    .hope-script, 
     .hope-script cite { 
         text-align: center; 
     }
     .quote-label {
         margin-top: 0; 
+    }
+}
+
+/* Small Mobile Content Adjustments  (Max Width 500px) */
+@media (max-width: 500px) {
+    .hope-script {
+        font-size: 0.9rem;
+        margin: 10px 0 0 0;
     }
 }

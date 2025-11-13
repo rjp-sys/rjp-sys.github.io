@@ -20,11 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const offCanvasMenu = document.getElementById('off-canvas-menu');
     const navLinks = document.querySelector('.nav-links');
     const body = document.body; // Reference to the body element
+    const mainContent = document.querySelector('main'); // Reference for optional transform/scrim
 
     // --- Accessibility/Style Toggles References ---
     const scaleToggle = document.getElementById('scale-page-toggle');
     const boldToggle = document.getElementById('bold-page-toggle');
     const colorCircles = document.querySelectorAll('.color-circle');
+    const navCapsule = document.querySelector('.main-nav-capsule'); // Reference for sticky header
     
     // --- Scale Dropdown & Slider References ---
     const scaleDropdown = document.getElementById('scale-dropdown');
@@ -34,21 +36,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // FINAL UPDATED: Stable zoom levels: 100, 110, 125, 150, and 175.
     const preferredZoomLevels = [100, 110, 125, 150, 175];
 
-    // Function to close the menu 
+    // Function to close the menu (UPDATED for scrim)
     const closeMenu = () => {
         if (offCanvasMenu) {
             offCanvasMenu.classList.remove('active');
+            body.classList.remove('menu-open'); // REMOVE SCIM CLASS
             if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'false');
             body.style.overflow = '';
+            // If you use content pushing, reset it here:
+            // if (mainContent) mainContent.style.transform = 'translateX(0)';
         }
     };
 
-    // Function to open the menu
+    // Function to open the menu (UPDATED for scrim)
     const openMenu = () => {
         if (offCanvasMenu) {
             offCanvasMenu.classList.add('active');
+            body.classList.add('menu-open'); // ADD SCIM CLASS
             if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'true');
             body.style.overflow = 'hidden';
+            // If you use content pushing, set it here:
+            // if (mainContent) mainContent.style.transform = 'translateX(300px)'; 
         }
     };
 
@@ -199,7 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     body.classList.add('grey-background');
                     circle.classList.add('active');
                 } else {
-                    circle.classList.add('active');
+                     // Ensure the default circle is explicitly active
+                    document.querySelector('.color-circle[data-color="default"]').classList.add('active');
                 }
             });
         });
@@ -247,9 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteCardContainer = document.querySelector('.quote-card-container');
     const hopeScript = document.querySelector('.quote-label'); // Targeting the new location of the quote
     
-    // Note: The visibility class for quote-label should be defined in CSS 
-    // (e.g., .quote-label { opacity: 0; transition: opacity 1.5s; } .quote-label.visible { opacity: 1; })
-
+    // Note: The visibility class for quote-label is now defined in CSS 
+    
     function showHopeScript() {
         if (hopeScript) {
             hopeScript.classList.add('visible');
@@ -283,4 +291,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // Ensure the page starts at the very top after all assets have loaded
         window.scrollTo(0, 0); 
     });
+    
+    // --- 7. NAVIGATION CAPSULE SCROLL VISIBILITY LOGIC (NEW) ---
+    if (navCapsule) {
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop < lastScrollTop || scrollTop === 0) {
+                // Scrolling UP or at the very TOP
+                navCapsule.classList.remove('hidden');
+            } else if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scrolling DOWN and past the initial buffer of 50px
+                navCapsule.classList.add('hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile browsers
+        }, false);
+    }
 });
