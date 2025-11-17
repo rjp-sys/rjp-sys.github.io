@@ -912,6 +912,66 @@ body.grey-background .article-card {
     background-color: var(--color-card-grey);
 }
 
+
+/* --------------------------------------------------------------------------------------- */
+/* --- NEW STYLING FOR INVITE ROBYN PAGE (Centering and Form Sizing) --- */
+/* --------------------------------------------------------------------------------------- */
+
+/* Center the topic list and limit its width for readability on large screens */
+.invite-content-wrapper {
+    max-width: 750px; 
+    margin: 40px auto; /* Centers the block */
+    padding: 0 20px;
+}
+
+.invite-header, .invite-subheader {
+    text-align: center;
+}
+
+.topic-card {
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-paper);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Color adjustment for topic cards */
+body.tan-background .topic-card {
+    background-color: var(--color-card-tan);
+}
+body.grey-background .topic-card {
+    background-color: var(--color-card-grey);
+}
+
+.topic-card h3 {
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.topic-card p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.topic-card .source a {
+    font-size: 0.9em;
+}
+
+/* Center the form container and limit its width */
+.form-container {
+    max-width: 700px; 
+    margin: 40px auto; /* Centers the block */
+    padding: 0 20px 80px 20px;
+}
+
+.form-container iframe {
+    display: block;
+    /* Height is fixed by the embed, width is 100% of the parent max-width */
+}
+
 /* --------------------------------------------------------------------------------------- */
 
 
@@ -1150,94 +1210,26 @@ body.grey-background .article-card {
     .article-header .article-meta {
         font-size: 0.9em;
     }
-}
+    
+    /* Ensure invite page content remains readable on very small screens */
+    .invite-content-wrapper,
+    .form-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
+    .topic-card {
+        padding: 1rem;
+    }
+
+}
 
 /* Small Mobile Content Adjustments (Max Width 500px) */
 @media (max-width: 500px) {
     
     /* Horizontal Padding is confirmed at 1.25rem (20px) */
     .content-section, .archive-feed {
-        padding-left: 1.25rem; /* 20px */  
+        padding-left: 1.25rem; /* 20px */
         padding-right: 1.25rem; /* 20px */
-        /* Vertical margin is handled by the 900px query, but we'll ensure it's still generous here */
-        margin-top: 2.5rem; 
-        margin-bottom: 2.5rem;
-    }
-    
-    .hope-banner {
-        padding-top: 4.0625rem; /* 65px */ 
-        padding-bottom: 1.25rem; /* 20px */
-    }
-
-    /* --- Robyn Bio Text Specific Changes for 500px and below --- */
-    .robyn-bio-text {
-        /* ADJUSTMENT: Increased vertical padding for more room up and down */
-        padding-top: 2.5rem; /* 40px */ 
-        padding-bottom: 2.5rem; /* 40px */
-    }
-
-    .robyn-bio p {
-        font-size: 1.1rem;  
-        /* ADJUSTMENT: Increased line height for more lines/vertical space */
-        line-height: 1.85;
-        /* Bio text remains centered on small screens */
-        text-align: center;
-        /* Removed 1rem margin rules as they are now set by the 540px query */
-    }
-
-    /* CRITICAL FIX: Reduce main heading size on small screens to prevent overflow */
-    .quote-heading {
-        font-size: 2em; /* Reduced from 3.5em */
-        line-height: 1.1;
-    }
-
-    .quote-text-section h2 {
-        font-size: 1.6em;   
-    }
-    .quote-text-section p {
-        font-size: 0.9em;   
-    }
-    
-    .quote-label {
-        font-size: 0.9rem;
-        margin: 1.5rem auto 1.5rem auto; 
-        /* Ensure quote centering holds */
-        text-align: center; 
-    }
-    
-    /* Ensure citation holds centered on small mobile */
-    .quote-label cite {
-        text-align: center;
-    }
-
-    .main-nav-capsule {
-        padding: 0.375rem 0.625rem; 
-        right: 8px; 
-    }
-    
-    .menu-toggle-btn {
-        font-size: 1.3rem;  
-        padding: 0.5rem 0.9375rem;  
-    }
-    
-    .header-controls {
-        gap: 0.5rem; 
-    }
-    
-    .article-body p {
-        font-size: 1rem;    
-        line-height: 1.65;
-        margin-bottom: 1.3em;
-    }
-
-    .quote-text-section .bio-subtitle {
-        font-size: 1.25rem; /* Making it quite small, but still readable */
-       }
-       
-    /* Article Feed Grid Adjustments */
-    .archive-feed .card-grid-container {
-        /* On small mobile, likely only one column, increase padding */
-        gap: 1.25rem;
     }
 }

@@ -1,61 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invite Robyn | Hope & Grief</title> 
-  <meta name="description" content="Invite Chaplain Robyn Plocher to speak on topics like compassion fatigue, grief support, and faith in the family.">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" href="/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite Robyn</title>
+    <meta name="description" content="Chaplain Robyn — helping you find hope in seasons of grief, with resources, articles, and more.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
-  <nav class="navbar animate-on-scroll" aria-label="Main Navigation">
-    <div class="nav-container">
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-controls="main-menu">
-      <label for="nav-toggle" class="hamburger" aria-expanded="false" aria-label="Toggle navigation menu">☰</label>
+<body class="vintage-modern-background">
+    <!-- Corrected: changed <nav class="main-nav-capsule"> to <header class="main-nav-capsule"> -->
+    <header class="main-nav-capsule">
+        
+        <button id="menu-trigger" class="menu-toggle-btn" aria-expanded="false" aria-label="Open main menu">
+            <span class="js-fluid-motion">☰ MENU</span>
+        </button>
 
-      <ul class="nav-left" id="main-menu">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="about-robyn.html">About Robyn</a></li>
-        <li><a href="photography.html">Photography</a></li>
-      </ul>
+        <div class="header-controls">
+            <button id="scale-page-toggle" aria-label="Scale Page" aria-expanded="false" aria-controls="scale-dropdown">
+                <span class="ampersand-accent">A</span>
+            </button>
+            
+            <div id="scale-dropdown" class="scale-dropdown-menu" aria-hidden="true">
+                <div class="slider-control">
+                    <label for="scale-slider" class="scale-label">Zoom: <span id="scale-value">100%</span></label>
+                    <input type="range" id="scale-slider" min="100" max="175" value="100" step="5">
+                </div>
+            </div>
 
-      <h2 class="nav-center">Hope & Grief</h2>
-
-      <ul class="nav-right">
-        <li class="dropdown">
-          <button class="dropdown-button" aria-expanded="false" aria-haspopup="true" aria-controls="writings-menu">
-            Writings <span class="arrow">▼</span>
-          </button>
-          <ul class="dropdown-menu" id="writings-menu">
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="books.html">Books</a></li>
-            <li><a href="poems.html">Poems</a></li>
-            <li><a href="sermons.html">Sermons</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <button class="dropdown-button" aria-expanded="false" aria-haspopup="true" aria-controls="resources-menu">
-            Grief Resources <span class="arrow">▼</span>
-          </button>
-          <ul class="dropdown-menu" id="resources-menu">
-            <li><a href="childrens-grief-resources.html">Children</a></li>
-            <li><a href="adult-grief-resources.html">Adults</a></li>
-            <li><a href="professional-grief-resources.html">Professionals</a></li>
-          </ul>
-        </li>
-        <li><a href="invite-robyn.html" aria-current="page">Invite Robyn</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main>
-    <section class="hope-banner animate-on-scroll" aria-label="Hope Banner">
-      <div class="hope-image-container">
-        <img src="/assets/share-hope-banner.jpg" alt="Chaplain Robyn in Hope & Grief Banner" loading="eager">
+            <button id="bold-page-toggle" aria-label="Bold Text"><span class="ampersand-accent">B</span></button>
+            
+            <button class="color-circle" data-color="tan" aria-label="Change background to Tan"></button>
+            <button class="color-circle" data-color="grey" aria-label="Change background to Grey"></button>
+            <button class="color-circle active" data-color="default" aria-label="Change background to Default"></button>
         </div>
-    </section>
+        
+    </header>
+
+   <nav id="off-canvas-menu" aria-label="Main Navigation">
+        <button id="menu-close" aria-label="Close menu">X</button>
+        <ul class="nav-links">
+            <li><a href="/index.html" class="js-fluid-scroll">Home</a></li>
+            <li><a href="/html/" class="js-fluid-scroll">About Robyn</a></li>
+            
+        <li class="nav-section-heading">Content Library</li>
+    
+        <li><a href="/html/Articles.html" class="js-fluid-scroll">Articles</a></li>
+        <li><a href="/html/books.html" class="js-fluid-scroll">Books</a></li>
+        <li><a href="/html/" class="js-fluid-scroll">Photography</a></li>
+        <li><a href="/html/" class="js-fluid-scroll">Sermons</a></li>
+
+            <li class="nav-section-heading">Grief Resources</li>
+            <li><a href="/html/" class="js-fluid-scroll">Children</a></li>
+            <li><a href="/html/" class="js-fluid-scroll">Adults</a></li>
+            <li><a href="/html/" class="js-fluid-scroll">Professional</a></li>
+            <li><a href="/html/invite-robyn.html" aria-current="page" class="js-fluid-scroll">Invite Robyn</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hope-banner" aria-label="Hope Scripture Banner">
+            <div class="quote-card-container animate-on-scroll">
+                <div class="quote-image-section">
+                    <img src="/assets/banner.jpg" alt="Hope Flower Symbol" loading="eager" class="quote-card-image">
+                </div>
+                <div class="quote-text-section">
+                <h2 class="quote-heading">Sharing Hope in Seasons of Grief</h2>
+                    <span class="bio-subtitle">with Chaplain Robyn</span>
+                </div>
+            </div>
+        </section> 
+
 
     <div class="invite-content-wrapper animate-on-scroll"> 
       <h1 class="invite-header">Invite Robyn to Speak</h1>
@@ -100,12 +117,19 @@
         width="100%" height="1659" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
     
-  </main>
+    </main>
+    
+   
+    <section>
+        <div class="center-content">
+            <a href="/html/Articles.html" class="button-style">Return to All Articles</a>
+        </div>
+    </section>
 
-  <footer class="site-footer animate-on-scroll">
-    <p>&copy; Robyn J Plocher 2025</p>
-  </footer>
+    <footer class="site-footer">
+           <p>&copy; Robyn J Plocher 2025 | <a href="/index.html">Home</a></p>
+    </footer>
 
-  <script src="/js/script.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
