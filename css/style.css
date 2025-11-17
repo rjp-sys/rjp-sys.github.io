@@ -1,4 +1,6 @@
 /* --- 0. FONT IMPORTS & GLOBAL RESET (Vintage Modern) --- */
+/* FIX: Added missing font imports here, which is standard practice for the top of a CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
 /* Vintage Color Palette */
@@ -88,13 +90,17 @@ body.bold-text * {
 body.tan-background .article-card-feed,
 body.tan-background .content-card,
 body.tan-background .quote-card-container,
-body.tan-background .quote-image-section {
+body.tan-background .quote-image-section,
+body.tan-background .topic-card, /* FIX: Added topic-card to color-changing elements */
+body.tan-background .article-card { /* FIX: Added article-card to color-changing elements */
     background-color: var(--color-card-tan);    
 }
 body.grey-background .article-card-feed,
 body.grey-background .content-card,
 body.grey-background .quote-card-container,
-body.grey-background .quote-image-section {
+body.grey-background .quote-image-section,
+body.grey-background .topic-card, /* FIX: Added topic-card to color-changing elements */
+body.grey-background .article-card { /* FIX: Added article-card to color-changing elements */
     background-color: var(--color-card-grey);    
 }
 
@@ -866,6 +872,7 @@ body.grey-background .quote-image-section {
     height: 100%; 
     
     /* Add a slight lift effect on hover */
+    /* FIX: Added CSS for hover state */
     &:hover {
         transform: translateY(-0.1875rem); /* -3px */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -976,170 +983,33 @@ body.grey-background .topic-card {
 
 
 /* --- 6. MEDIA QUERIES (Basic Responsiveness) --- */
+/* --------------------------------------------------------------------------------------- */
+/* --- 6. MEDIA QUERIES (Corrected Order and Consolidation) --- */
+/* --------------------------------------------------------------------------------------- */
 
-/* Tablet/Medium Mobile Content Adjustments (Max Width 900px) */
-@media (max-width: 900px) {
-    
-    .content-section, .archive-feed {
-        padding-left: 0.9375rem; /* 15px */  
-        padding-right: 0.9375rem; /* 15px */
-        margin-top: 1.875rem; /* 30px */
-        margin-bottom: 1.875rem; /* 30px */
-    }
-    
-    .section-heading {
+
+/* Tablet and Small Desktop Adjustments (Max Width 992px) */
+@media (max-width: 992px) {
+
+    /* Article Header Adjustments */
+    .article-header .article-title {
         font-size: 1.8em;
-        margin-bottom: 1.25rem; /* 20px */
     }
 
-    /* --- Navigation Adjustment --- */
-    .main-nav-capsule {
-        top: 10px;  
-        right: 10px;    
-        padding: 0.625rem 0.9375rem; 
+    /* ADDED: Meta size for small screens */
+    .article-header .article-meta {
+        font-size: 0.9em;
     }
     
-    .menu-toggle-btn {
-        margin: 0 0 0.625rem 0; 
-    }
-    
-    /* --- Robyn Bio Layout FIX for 900px breakpoint --- */
-    .robyn-bio {
-        flex-direction: column;
-        text-align: center; 
-        
-        /* ADJUSTMENT: Increase Vertical Margin for 850px and below */
-        margin-top: 3.125rem; /* 50px */ 
-        margin-bottom: 3.125rem; /* 50px */
-        
-        margin-left: auto;  
-        margin-right: auto;
-        padding-left: 0;    
-        max-width: 56.25rem;    
-        gap: 0; 
-    }
-    .robyn-photo {
-        margin: 0 auto 1.25rem auto; 
-        width: 12.5rem; 
-        height: 12.5rem; 
-    }
-    .robyn-bio-text {
-        width: 100%;    
-        max-width: 37.5rem; 
-        margin: 0 auto; 
-        padding-top: 1.25rem;   
-        padding-bottom: 1.25rem;
-    }
-    .robyn-bio-text h2 {
-        text-align: center; 
-    }
-    
-    /* CRITICAL FIX: Center the paragraph text inside the bio box for tablet/mobile */
-    .robyn-bio-text p {
-        margin-bottom: 1.5em;   
-        text-align: center; 
-    }
-    
-    /* --- Content Column Adjustment (Stacked on Tablet) --- */
-    .content-columns {
-        flex-direction: column; 
-        gap: 2.5rem;    
-        padding-left: 0;    
-        padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .book-column, .articles-column {
-        flex: 1 1 100%;
-        max-width: 100%;
-        padding: 0; 
-        border-right: none; 
+    /* Ensure invite page content remains readable on very small screens */
+    .invite-content-wrapper,
+    .form-container {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    .book-column {
-        padding-bottom: 1.25rem;    
-        border-bottom: 1px solid var(--color-border);
-    }
-    
-    /* FIX: Override desktop centering for mobile stack */
-    .column-heading {
-        /* Align content headings to center when stacked */
-        text-align: center !important;  
-    }
-
-    /* Add back padding for the card container within the column */
-    .card-grid-container {
-        /* FIX: Center cards within the column */
-        justify-content: center !important; 
-        padding-top: 0.9375rem; 
-    }
-    
-    /* FIX: Content Card Alignment for stacked layout (now full-width) */
-    .content-card {
-        flex: 1 1 100%; 
-        max-width: 100%; 
-        margin-left: 0 !important;   
-        margin-right: 0 !important;
-    }
-    
-    /* FIX: Center the Buy Link on Mobile/Tablet Stack */
-    .content-card p {
-        /* Target the paragraph that holds the button */
-        text-align: center; 
-    }
-    .book-card p .buy-link {
-        /* CRITICAL FIX: Reset the large desktop margin to 0 to allow it to be centered by parent text-align */
-        margin-left: 0 !important;  
-    }
-    
-    /* --- Hero Card Mobile Fix --- */
-    .quote-card-container {
-        flex-direction: column; 
-        max-width: 95%; 
-        align-items: center;
-    }
-    
-    .quote-image-section {
-        flex: none; 
-        width: 100%; 
-        border-right: none;
-        border-bottom: 1px solid var(--color-border);   
-        padding: 1.25rem 0; 
-    }
-    .quote-card-image {
-        width: 9.375rem; 
-        height: 9.375rem; 
-        margin: 0 auto 0.9375rem auto; 
-    }
-    .quote-text-section {
-        padding: 1.25rem; 
-    }
-    .quote-text-section h2, 
-    .quote-text-section p { 
-        text-align: center; 
-    }
-    
-    .quote-label {
-        /* Fix the positioning of the scripture text */
-        position: static;
-        background-color: transparent;
-        color: var(--color-ink);
-        padding: 0;
-        margin-top: 1rem;
-    }
-    
-    /* Article Feed Grid Adjustments */
-    .archive-feed .card-grid-container {
-        /* On tablet, reduce gap and min size slightly */
-        gap: 1.5rem; /* 24px */
-        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); 
-    }
-    .article-cover {
-        height: 10rem; /* 160px */
-    }
-    .article-card {
-        min-height: auto; /* Allow height to collapse when not in a perfect row */
+    .topic-card {
+        padding: 1rem;
     }
 }
 
@@ -1191,35 +1061,198 @@ body.grey-background .topic-card {
     }
 }
 
-/* --- Dedicated Fix for Max Width 540px (User Request) --- */
-@media (max-width: 540px) {
-    .robyn-bio p {
-        /* Applied 2rem horizontal margin */
-        margin-left: 2rem;
-        margin-right: 2rem;
-        margin-top: 0.5rem; 
-        margin-bottom: 0.5rem;
-    }
 
-    /* Mobile Fix for New Article Header */
-    .article-header .article-title {
-        font-size: 1.8em;
-    }
-
-    /* ADDED: Meta size for small screens */
-    .article-header .article-meta {
-        font-size: 0.9em;
+/* Tablet/Medium Mobile Content Adjustments (Max Width 900px) */
+/* **This block re-establishes the core tablet stacking and padding.** */
+@media (max-width: 900px) {
+    
+    .content-section, .archive-feed {
+        padding-left: 0.9375rem; /* 15px */  
+        padding-right: 0.9375rem; /* 15px */
+        margin-top: 1.875rem; /* 30px */
+        margin-bottom: 1.875rem; /* 30px */
     }
     
-    /* Ensure invite page content remains readable on very small screens */
-    .invite-content-wrapper,
-    .form-container {
-        padding-left: 10px;
-        padding-right: 10px;
+    .section-heading {
+        font-size: 1.8em;
+        margin-bottom: 1.25rem; /* 20px */
     }
 
-    .topic-card {
+    /* --- Navigation Adjustment --- */
+    .main-nav-capsule {
+        top: 10px;  
+        right: 10px;    
+        padding: 0.625rem 0.9375rem; 
+    }
+    
+    .menu-toggle-btn {
+        margin: 0 0 0.625rem 0; 
+    }
+    
+    /* --- Robyn Bio Layout FIX --- */
+    .robyn-bio {
+        flex-direction: column;
+        text-align: center; 
+        margin: 3.125rem auto; 
+        gap: 0; 
+    }
+    .robyn-photo {
+        margin: 0 auto 1.25rem auto; 
+        width: 12.5rem; 
+        height: 12.5rem; 
+    }
+    .robyn-bio-text {
+        width: 100%;    
+        max-width: 37.5rem; 
+        margin: 0 auto; 
+        padding-top: 1.25rem;   
+        padding-bottom: 1.25rem;
+    }
+    .robyn-bio-text h2 {
+        text-align: center; 
+    }
+    
+    /* CRITICAL FIX: Center the paragraph text inside the bio box for tablet/mobile */
+    .robyn-bio-text p {
+        margin-bottom: 1.5em;   
+        text-align: center; 
+    }
+    
+    /* --- Content Column Adjustment (Stacked on Tablet) --- */
+    .content-columns {
+        flex-direction: column; 
+        gap: 2.5rem;    
+        padding-left: 0;    
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .book-column, .articles-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 0; 
+        border-right: none; 
+    }
+
+    .book-column {
+        padding-bottom: 1.25rem;    
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    /* FIX: Override desktop centering for mobile stack */
+    .column-heading {
+        text-align: center !important;  
+    }
+
+    /* Add back padding for the card container within the column */
+    .card-grid-container {
+        justify-content: center !important; 
+        padding-top: 0.9375rem; 
+    }
+    
+    /* FIX: Content Card Alignment for stacked layout (now full-width) */
+    .content-card {
+        flex: 1 1 100%; 
+        max-width: 100%; 
+        margin-left: 0 !important;   
+        margin-right: 0 !important;
+    }
+    
+    /* FIX: Reset text-align to left for individual cards inside the stacked column,
+           but let the wrapper align the button */
+    .content-card p {
+        text-align: left;
+    }
+
+    /* FIX: Center the Buy Link on Mobile/Tablet Stack */
+    .book-card p {
+        text-align: center; 
+    }
+    .book-card p .buy-link {
+        margin-left: 0 !important;  
+    }
+    
+    /* --- Hero Card Mobile Fix --- */
+    .quote-card-container {
+        flex-direction: column; 
+        max-width: 95%; 
+        align-items: center;
+    }
+    
+    .quote-image-section {
+        flex: none; 
+        width: 100%; 
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);   
+        padding: 1.25rem 0; 
+    }
+    .quote-card-image {
+        width: 9.375rem; 
+        height: 9.375rem; 
+        margin: 0 auto 0.9375rem auto; 
+    }
+    .quote-text-section {
+        padding: 1.25rem; 
+    }
+    .quote-text-section h2, 
+    .quote-text-section p { 
+        text-align: center; 
+    }
+    
+    .quote-label {
+        position: static;
+        background-color: transparent;
+        color: var(--color-ink);
+        padding: 0;
+        margin-top: 1rem;
+    }
+    
+    /* Article Feed Grid Adjustments */
+    .archive-feed .card-grid-container {
+        gap: 1.5rem; /* 24px */
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); 
+    }
+    .article-cover {
+        height: 10rem; /* 160px */
+    }
+    .article-card {
+        min-height: auto; 
+    }
+}
+
+
+/* --- DEDICATED FIX FOR 540px SCREENS (Portrait Tablet/Large Phone) --- */
+@media (max-width: 540px) {
+    
+    /* FIX: Revert horizontal margin on bio text to prevent extreme squish/overlap at this size */
+    .robyn-bio p {
+        margin-left: 0.9375rem; /* 15px */
+        margin-right: 0.9375rem; /* 15px */
+        margin-top: 0.5rem; 
+        margin-bottom: 0.5rem;
+        /* Ensure font size is comfortable */
+        font-size: 1.15rem; 
+    }
+    
+    /* Ensure content padding is tight but readable */
+    .content-section, 
+    .archive-feed {
+        padding-left: 1rem; 
+        padding-right: 1rem; 
+    }
+    
+    /* Reduce padding on the quote card text */
+    .quote-text-section {
         padding: 1rem;
+    }
+
+    /* Reduce font size for the largest heading elements */
+    .quote-heading {
+        font-size: 2.5em;   
+    }
+    .quote-text-section .bio-subtitle {
+        font-size: 1.5rem;
     }
 
 }

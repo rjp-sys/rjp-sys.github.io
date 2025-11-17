@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Books</title>
+    <title>Books | Chaplain Robyn</title>
     <meta name="description" content="Chaplain Robyn — helping you find hope in seasons of grief, with resources, articles, and more.">
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css">
@@ -11,7 +11,7 @@
 </head>
 
 <body class="vintage-modern-background">
-    <nav class="main-nav-capsule">
+    <header class="main-nav-capsule">
         
         <button id="menu-trigger" class="menu-toggle-btn" aria-expanded="false" aria-label="Open main menu">
             <span class="js-fluid-motion">☰ MENU</span>
@@ -36,24 +36,24 @@
             <button class="color-circle active" data-color="default" aria-label="Change background to Default"></button>
         </div>
         
-    </nav>
+    </header>
 
    <nav id="off-canvas-menu" aria-label="Main Navigation">
         <button id="menu-close" aria-label="Close menu">X</button>
         <ul class="nav-links">
-            <li><a href="/index.html" aria-current="page" class="js-fluid-scroll">Home</a></li>
+            <li><a href="/index.html" class="js-fluid-scroll">Home</a></li>
             <li><a href="/html/about-robyn.html" class="js-fluid-scroll">About Robyn</a></li>
             
         <li class="nav-section-heading">Content Library</li>
         <li><a href="/html/Articles.html" class="js-fluid-scroll">Articles</a></li>
-        <li><a href="/html/books.html" class="js-fluid-scroll">Books</a></li>
+        <li><a href="/html/books.html"  aria-current="page" class="js-fluid-scroll">Books</a></li>
         <li><a href="/html/photography.html" class="js-fluid-scroll">Photography</a></li>
-        <li><a href="#" class="js-fluid-scroll">Sermons</a></li>
+        <li><a href="/html/Sermons.html" class="js-fluid-scroll">Sermons</a></li>
 
             <li class="nav-section-heading">Grief Resources</li>
             <li><a href="/html/childrens-grief-resources.html" class="js-fluid-scroll">Children</a></li>
             <li><a href="/html/adult-grief-resources.html" class="js-fluid-scroll">Adults</a></li>
-            <li><a href="#" class="js-fluid-scroll">Professional</a></li>
+            <li><a href="/html/professional-grief-resources.html" class="js-fluid-scroll">Professional</a></li>
             <li><a href="/html/invite-robyn.html" class="js-fluid-scroll">Invite Robyn</a></li>
         </ul>
     </nav>
@@ -71,20 +71,22 @@
             </div>
         </section> 
             
-<!-- Full-Width Article Feed Section (The key section for full-width layout) -->
         <section class="archive-feed content-section">
             
-            <!-- .section-heading ensures the large, custom title size -->
-            <h3 class="section-heading">My Books</h3> 
+            <h2 class="section-heading">My Books</h2> 
             
             <div class="card-grid-container">
               
-                <div class="article-card content-card animate-on-scroll">
-                    <img class="article-cover content-image" src="/assets/picture-perfect-cover.jpg" alt="picture-perfect-cover" loading="lazy">
+                <a class="article-card content-card animate-on-scroll" 
+                   href="https://www.amazon.com/Picture-Perfect-Robyn-J-Plocher/dp/B0DF6J3DVM?crid=3ANXFNYKRDKE5&dib=eyJ2IjoiMSJ9.9mlU5C-5T6nh68KqUYBZuR6x-gTUwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwO7gzuFZx8yDtxDt8SKQly88cSRIAGCMqsR29eO0QK4bBXhRpeCqb1QByXTot_SiXxLs-0tr7t0N3_oKPVAVMjkwaCfvmjSsY57lMN3t9hD3oVapPKxZPO6QsvfMsuB2D_I-Iksu7efTM3s9Ik-aWb70xXyf119MgE.9VDCEfH7sBR-U5cD3z-LxPu6GoWBQBSgYffMWwIwIj8&dib_tag=se&keywords=picture+perfect&qid=1731790369&sprefix=%2Caps%2C93&sr=8-7" 
+                   target="_blank"
+                   aria-label="Buy Picture Perfect by Robyn J Plocher on Amazon">
+                    
+                    <img class="article-cover content-image" src="/assets/picture-perfect-cover.jpg" alt="Picture Perfect book cover" loading="lazy">
                     <h3>Picture Perfect</h3>
                     <p>A short summary of the book content, ensuring card heights remain consistent due to Flexbox styling applied to this container.</p>
-                    <p class="article-link"><a href="https://www.amazon.com/Picture-Perfect-Robyn-J-Plocher/dp/B0DF6J3DVM?crid=3ANXFNYKRDKE5&dib=eyJ2IjoiMSJ9.9mlU5C-5T6nh68KqUYBZuR6x-gTUwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwT_pJAsLCgcDIz-GF97FNf6PMNzjtIVkKsOk-B3VhXjaiGTwO7gzuFZx8yDtxDt8SKQly88cSRIAGCMqsR29eO0QK4bBXhRpeCqb1QByXTot_SiXxLs-0tr7t0N3_oKPVAVMjkwaCfvmjSsY57lMN3t9hD3oVapPKxZPO6QsvfMsuB2D_I-Iksu7efTM3s9Ik-aWb70xXyf119MgE.9VDCEfH7sBR-U5cD3z-LxPu6GoWBQBSgYffMWwIwIj8&dib_tag=se&keywords=picture+perfect&qid=1731790369&sprefix=%2Caps%2C93&sr=8-7" target="_blank" class="button-style">Buy It Here</a></p>
-                </div>
+                    <p class="article-link button-style">Buy It Here</p>
+                </a>
             </div>
         </section>
         

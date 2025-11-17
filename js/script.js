@@ -1,8 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Debounce Utility Function ---
     let debounceTimer;
-    const DEBOUNCE_TIME = 50; 
     
+    const DEBOUNCE_TIME = 50; 
+    const preferredZoomLevels = [100, 110, 125, 150, 175];
+    const colorMap = {
+        'default': '#FAF9F6', 
+        'tan': '#EDE4D7',
+        'grey': '#D3D3D3'
+    };
+    
+    // --- Utility Functions ---
     const debounce = (func, delay) => {
         return function(...args) {
             clearTimeout(debounceTimer);
@@ -12,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Element References ---
     const body = document.body;
-    // CRITICAL: This targets the <html> tag, whose font-size determines the size of all REM units.
     const rootElement = document.documentElement; 
     
     // Navigation/Accessibility References
@@ -30,15 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const scaleSlider = document.getElementById('scale-slider');
     const scaleValueDisplay = document.getElementById('scale-value');
     
-    // Stable zoom levels for snapping the slider
-    const preferredZoomLevels = [100, 110, 125, 150, 175];
-    
-    // Theme colors mapping (matching CSS variables)
-    const colorMap = {
-        'default': '#FAF9F6', 
-        'tan': '#EDE4D7',
-        'grey': '#D3D3D3'
-    };
 
     // --- Menu Open/Close Functions ---
     const closeMenu = () => {
@@ -61,11 +59,18 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to handle clicks outside the menu
     function closeMenuOutside(event) {
-        // Check if the click target is outside the menu AND not the trigger button
         if (offCanvasMenu.classList.contains('open') && !offCanvasMenu.contains(event.target) && !menuTrigger.contains(event.target)) {
             closeMenu();
         }
     }
+    
+    // Accessibility Fix: Close menu on Escape key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && offCanvasMenu && offCanvasMenu.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
 
     // --- Persistence/Load State (Loads settings from local storage) ---
     const loadState = () => {
@@ -83,13 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         applyScale(parseInt(savedScale, 10), false); // Apply without re-saving
 
-        // Load and Apply Color State
+        // Load and Apply Color State (***RESTORED: Direct inline style on body for background***)
         const savedColor = localStorage.getItem('backgroundColor') || 'default';
         
-        // Apply background color to the body
+        // 1. Apply background color directly to the body (This ensures the whole page changes)
         body.style.backgroundColor = colorMap[savedColor];
         
-        // Add class to body for card-level color changes (handled by CSS)
+        // 2. Add class to body for card-level color changes (handled by CSS)
         body.classList.remove('tan-background', 'grey-background');
         if (savedColor === 'tan') {
             body.classList.add('tan-background');
@@ -97,15 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.add('grey-background');
         }
 
-
-        // Set the active color circle button
+        // 3. Set the active color circle button
         colorCircles.forEach(circle => {
             circle.classList.remove('active');
             if (circle.dataset.color === savedColor) {
                 circle.classList.add('active');
-            } else if (savedColor === 'default' && circle.dataset.color === 'default') {
-                circle.classList.add('active');
-            }
+            } 
         });
     };
     
@@ -127,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rootElement) {
             // Calculates the new pixel size for 1rem (base is 16px)
             const newBaseFontSize = 16 * scaleFactor;
-            // This line drives all the REM unit scaling in your CSS
             rootElement.style.fontSize = `${newBaseFontSize}px`;
         }
         
@@ -178,40 +179,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scale Slider Listeners
+    // Scale Slider Listeners (Refined)
     if (scaleSlider) {
-        // Debounced function that applies the final snapped value and zoom
-        const debouncedApplySnapAndScale = debounce((snappedValue) => {
-            applyScale(snappedValue);
-        }, DEBOUNCE_TIME);
         
-        // Continuously snap the visual display AND the slider value while dragging.
+        // 'input' event: Handles visual snap and immediate (unsaved) scale application.
         scaleSlider.addEventListener('input', (e) => {
             const currentValue = parseInt(e.target.value, 10);
             const snappedValue = snapToNearestPreferredLevel(currentValue);
             
-            // CRITICAL FIX: Set the slider's physical value to the snapped value
-            // This makes the slider thumb visually jump to the preferred levels.
             scaleSlider.value = snappedValue;
 
             if (scaleValueDisplay) {
                 scaleValueDisplay.textContent = `${snappedValue}%`;
             }
             
-            // Trigger the debounced function to apply and save the scale
-            debouncedApplySnapAndScale(snappedValue);
+            // Apply scale immediately for visual feedback, but without saving.
+            applyScale(snappedValue, false); 
         });
         
-        // The 'change' event now only serves as a final, immediate check on release, 
-        // ensuring any pending debounce is cleared and the final value is saved/applied immediately.
+        // 'change' event: Fires once when the slider is released. This is where we apply and save.
         scaleSlider.addEventListener('change', (e) => {
             const finalValue = parseInt(e.target.value, 10);
             
-            // Clear any pending debounced calls
-            clearTimeout(debounceTimer); 
-            
-            // Apply the final value immediately (it should already be snapped)
-            applyScale(finalValue); 
+            // Apply the final snapped value and save to localStorage
+            applyScale(finalValue, true); 
         });
     }
 
@@ -231,13 +222,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Background Color Changer Listeners (Circles)
+    // Background Color Changer Listeners (Circles) - Whole Page Color Change via inline style
     if (colorCircles.length > 0) {
         colorCircles.forEach(circle => {
             circle.addEventListener('click', () => {
                 const color = circle.getAttribute('data-color');
                 
-                // 1. Set the body background using the colorMap (for fast body color change)
+                // 1. Set the page background using the inline style (FORCES WHOLE PAGE COLOR CHANGE)
                 body.style.backgroundColor = colorMap[color];
                 localStorage.setItem('backgroundColor', color);
                 
@@ -337,7 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let lastScrollTop = 0;
         
         window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            // Use window.scrollY (modern standard)
+            const scrollTop = window.scrollY; 
             
             if (scrollTop < lastScrollTop || scrollTop === 0) {
                 // Scrolling UP or at the very TOP
@@ -347,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 navCapsule.classList.add('hidden');
             }
             
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
-        }, false);
+            lastScrollTop = scrollTop; 
+        }, { passive: true }); // Added passive listener for performance
     }
 });
