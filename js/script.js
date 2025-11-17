@@ -1,12 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Debounce Utility Function ---
     let debounceTimer;
-    const DEBOUNCE_TIME = 50; // Requested debounce time (50ms)
+    const DEBOUNCE_TIME = 50; 
     
-    /**
-     * Creates a debounced function that delays invocation until after 'delay' milliseconds 
-     * have passed since the last time the debounced function was invoked.
-     */
     const debounce = (func, delay) => {
         return function(...args) {
             clearTimeout(debounceTimer);
@@ -14,77 +10,153 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    // --- 1. Menu Toggling Logic ---
+    // --- Element References ---
+    const body = document.body;
+    // CRITICAL: This targets the <html> tag, whose font-size determines the size of all REM units.
+    const rootElement = document.documentElement; 
+    
+    // Navigation/Accessibility References
     const menuTrigger = document.getElementById('menu-trigger'); 
     const menuClose = document.getElementById('menu-close');
     const offCanvasMenu = document.getElementById('off-canvas-menu');
     const navLinks = document.querySelector('.nav-links');
-    const body = document.body; // Reference to the body element
-    const mainContent = document.querySelector('main'); // Reference for optional transform/scrim
-
-    // --- Accessibility/Style Toggles References ---
+    const navCapsule = document.querySelector('.main-nav-capsule');
+    
     const scaleToggle = document.getElementById('scale-page-toggle');
     const boldToggle = document.getElementById('bold-page-toggle');
     const colorCircles = document.querySelectorAll('.color-circle');
-    const navCapsule = document.querySelector('.main-nav-capsule'); // Reference for sticky header
     
-    // --- Scale Dropdown & Slider References ---
     const scaleDropdown = document.getElementById('scale-dropdown');
     const scaleSlider = document.getElementById('scale-slider');
     const scaleValueDisplay = document.getElementById('scale-value');
     
-    // FINAL UPDATED: Stable zoom levels: 100, 110, 125, 150, and 175.
+    // Stable zoom levels for snapping the slider
     const preferredZoomLevels = [100, 110, 125, 150, 175];
+    
+    // Theme colors mapping (matching CSS variables)
+    const colorMap = {
+        'default': '#FAF9F6', 
+        'tan': '#EDE4D7',
+        'grey': '#D3D3D3'
+    };
 
-    // Function to close the menu (UPDATED for scrim)
+    // --- Menu Open/Close Functions ---
     const closeMenu = () => {
         if (offCanvasMenu) {
-            offCanvasMenu.classList.remove('active');
-            body.classList.remove('menu-open'); // REMOVE SCIM CLASS
+            offCanvasMenu.classList.remove('open');
+            body.classList.remove('menu-open'); 
             if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'false');
-            body.style.overflow = '';
-            // If you use content pushing, reset it here:
-            // if (mainContent) mainContent.style.transform = 'translateX(0)';
+            document.removeEventListener('click', closeMenuOutside);
         }
     };
 
-    // Function to open the menu (UPDATED for scrim)
     const openMenu = () => {
         if (offCanvasMenu) {
-            offCanvasMenu.classList.add('active');
-            body.classList.add('menu-open'); // ADD SCIM CLASS
+            offCanvasMenu.classList.add('open');
+            body.classList.add('menu-open'); 
             if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'true');
-            body.style.overflow = 'hidden';
-            // If you use content pushing, set it here:
-            // if (mainContent) mainContent.style.transform = 'translateX(300px)'; 
+            document.addEventListener('click', closeMenuOutside); 
+        }
+    };
+    
+    // Function to handle clicks outside the menu
+    function closeMenuOutside(event) {
+        // Check if the click target is outside the menu AND not the trigger button
+        if (offCanvasMenu.classList.contains('open') && !offCanvasMenu.contains(event.target) && !menuTrigger.contains(event.target)) {
+            closeMenu();
+        }
+    }
+
+    // --- Persistence/Load State (Loads settings from local storage) ---
+    const loadState = () => {
+        // Load and Apply Bold State
+        const savedBold = localStorage.getItem('boldText') === 'true';
+        if (savedBold) {
+            body.classList.add('bold-text');
+            if (boldToggle) boldToggle.classList.add('active');
+        }
+
+        // Load and Apply Scale State
+        const savedScale = localStorage.getItem('pageScale') || '100';
+        if (scaleSlider) {
+            scaleSlider.value = savedScale;
+        }
+        applyScale(parseInt(savedScale, 10), false); // Apply without re-saving
+
+        // Load and Apply Color State
+        const savedColor = localStorage.getItem('backgroundColor') || 'default';
+        
+        // Apply background color to the body
+        body.style.backgroundColor = colorMap[savedColor];
+        
+        // Add class to body for card-level color changes (handled by CSS)
+        body.classList.remove('tan-background', 'grey-background');
+        if (savedColor === 'tan') {
+            body.classList.add('tan-background');
+        } else if (savedColor === 'grey') {
+            body.classList.add('grey-background');
+        }
+
+
+        // Set the active color circle button
+        colorCircles.forEach(circle => {
+            circle.classList.remove('active');
+            if (circle.dataset.color === savedColor) {
+                circle.classList.add('active');
+            } else if (savedColor === 'default' && circle.dataset.color === 'default') {
+                circle.classList.add('active');
+            }
+        });
+    };
+    
+    // --- CRITICAL Scaling Logic ---
+    
+    // Finds the closest preferred zoom level for snapping the slider.
+    const snapToNearestPreferredLevel = (currentValue) => {
+        return preferredZoomLevels.reduce((prev, curr) => {
+            return (Math.abs(curr - currentValue) < Math.abs(prev - currentValue) ? curr : prev);
+        });
+    };
+
+    /**
+     * Applies page scaling by setting the base font size (1rem) on the root element.
+     */
+    const applyScale = (value, save = true) => {
+        const scaleFactor = value / 100;
+
+        if (rootElement) {
+            // Calculates the new pixel size for 1rem (base is 16px)
+            const newBaseFontSize = 16 * scaleFactor;
+            // This line drives all the REM unit scaling in your CSS
+            rootElement.style.fontSize = `${newBaseFontSize}px`;
+        }
+        
+        if (scaleValueDisplay) {
+            scaleValueDisplay.textContent = `${value}%`;
+        }
+        
+        if (save) {
+            localStorage.setItem('pageScale', value);
         }
     };
 
-    // --- Menu Event Listeners ---
-    if (menuTrigger) {
-        menuTrigger.addEventListener('click', openMenu);
-    }
-    if (menuClose) {
-        menuClose.addEventListener('click', closeMenu);
-    }
+    // --- Event Listeners Initialization ---
+
+    // Menu Listeners
+    if (menuTrigger) menuTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMenu();
+    });
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
     
-    // Close menu when a link inside is clicked
     if (navLinks) {
         navLinks.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                closeMenu();
-            }
+            if (e.target.tagName === 'A') closeMenu();
         });
     }
 
-    // Close menu or scale dropdown when clicking outside
+    // Close scale dropdown when clicking outside
     document.addEventListener('click', (e) => {
-        // Close off-canvas menu
-        if (offCanvasMenu && menuTrigger && offCanvasMenu.classList.contains('active')) {
-            if (!offCanvasMenu.contains(e.target) && !menuTrigger.contains(e.target)) {
-                closeMenu();
-            }
-        }
         // Close scale dropdown
         if (scaleDropdown && scaleToggle && scaleDropdown.classList.contains('visible')) {
             if (!scaleDropdown.contains(e.target) && !scaleToggle.contains(e.target)) {
@@ -95,127 +167,96 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    
-    // --- SCALE TOGGLE (A) and SLIDER LOGIC ---
-    
-    /**
-     * Finds the closest preferred zoom level to the current slider value (snapping).
-     */
-    const snapToNearestPreferredLevel = (currentValue) => {
-        // Find the level with the smallest difference to the current slider value
-        return preferredZoomLevels.reduce((prev, curr) => {
-            return (Math.abs(curr - currentValue) < Math.abs(prev - currentValue) ? curr : prev);
-        });
-    };
 
-    const applyScale = (value) => {
-        const scaleFactor = value / 100;
-        
-        // Use the 'zoom' property for layout reflow and responsiveness
-        body.style.zoom = scaleFactor;
-        
-        // Update display value
-        if (scaleValueDisplay) {
-            scaleValueDisplay.textContent = `${value}%`;
-        }
-    };
-
+    // Scale Toggle Listener (A)
     if (scaleToggle) {
         scaleToggle.addEventListener('click', () => {
             const isVisible = scaleDropdown.classList.toggle('visible');
             scaleToggle.classList.toggle('active', isVisible);
             scaleToggle.setAttribute('aria-expanded', isVisible);
             scaleDropdown.setAttribute('aria-hidden', !isVisible);
-
-            // Ensure bold is off when scale is used
-            body.classList.remove('bold-text');
-            if (boldToggle) boldToggle.classList.remove('active');
         });
     }
 
+    // Scale Slider Listeners
     if (scaleSlider) {
-        // Initialize the scale text display
-        applyScale(scaleSlider.value); 
-
         // Debounced function that applies the final snapped value and zoom
         const debouncedApplySnapAndScale = debounce((snappedValue) => {
             applyScale(snappedValue);
         }, DEBOUNCE_TIME);
         
-        // 1. Use 'input' to continuously snap the visual display (number and thumb) and trigger the debounced zoom.
+        // Continuously snap the visual display and trigger the debounced zoom.
         scaleSlider.addEventListener('input', (e) => {
             const currentValue = parseInt(e.target.value, 10);
-            
-            // Step A: Snap the value to the nearest fixed level 
             const snappedValue = snapToNearestPreferredLevel(currentValue);
+            
+            // NOTE: Removed line 'scaleSlider.value = snappedValue;'
+            // The slider value should only snap when the user stops dragging (on 'change') 
+            // to avoid confusing jumpiness during the 'input' event.
 
-            // Step B: Instantly snap the slider's physical position (the thumb jumps)
-            scaleSlider.value = snappedValue;
-
-            // Step C: Instantly snap the display to the stable value (removing 1% visibility)
             if (scaleValueDisplay) {
                 scaleValueDisplay.textContent = `${snappedValue}%`;
             }
             
-            // Step D: Trigger the debounced zoom operation. 
             debouncedApplySnapAndScale(snappedValue);
         });
         
-        // 2. Use 'change' to ensure the final zoom happens immediately on mouse release.
+        // Ensure the final zoom happens immediately on mouse release, AND set the snapped slider value.
         scaleSlider.addEventListener('change', (e) => {
-            const snappedValue = parseInt(e.target.value, 10);
-            clearTimeout(debounceTimer); // Cancel any pending debounced calls
-            applyScale(snappedValue); // Apply the final, clean value immediately
+            const currentValue = parseInt(e.target.value, 10);
+            const snappedValue = snapToNearestPreferredLevel(currentValue);
+
+            clearTimeout(debounceTimer); 
+            
+            // CRITICAL FIX: Explicitly set the slider to the snapped value on change
+            scaleSlider.value = snappedValue;
+            
+            applyScale(snappedValue); 
         });
     }
 
 
-    // --- B. Bold Text Toggle (B) ---
-
+    // Bold Text Toggle Listener (B)
     if (boldToggle) {
         boldToggle.addEventListener('click', () => {
-            // Close scale dropdown and reset scale when bold is toggled
-            if (scaleDropdown && scaleDropdown.classList.contains('visible')) {
-                scaleDropdown.classList.remove('visible');
-                scaleToggle.classList.remove('active');
-                scaleToggle.setAttribute('aria-expanded', 'false');
-                scaleDropdown.setAttribute('aria-hidden', 'true');
-            }
+            // Optional: reset scale when bold is toggled
             if (scaleSlider) {
                 scaleSlider.value = 100; // Reset scale to 100%
                 applyScale(100);
             }
             
-            body.classList.toggle('bold-text');
-            boldToggle.classList.toggle('active');
+            const isActive = body.classList.toggle('bold-text');
+            boldToggle.classList.toggle('active', isActive);
+            localStorage.setItem('boldText', isActive); 
         });
     }
 
-    // --- C. Background Color Changer (Circles) ---
-
+    // Background Color Changer Listeners (Circles)
     if (colorCircles.length > 0) {
         colorCircles.forEach(circle => {
             circle.addEventListener('click', () => {
                 const color = circle.getAttribute('data-color');
-                body.classList.remove('tan-background', 'grey-background');
-                colorCircles.forEach(c => c.classList.remove('active'));
                 
+                // 1. Set the body background using the colorMap (for fast body color change)
+                body.style.backgroundColor = colorMap[color];
+                localStorage.setItem('backgroundColor', color);
+                
+                // 2. Manage the body classes for card background changes (handled by CSS)
+                body.classList.remove('tan-background', 'grey-background');
                 if (color === 'tan') {
                     body.classList.add('tan-background');
-                    circle.classList.add('active');
                 } else if (color === 'grey') {
                     body.classList.add('grey-background');
-                    circle.classList.add('active');
-                } else {
-                     // Ensure the default circle is explicitly active
-                    document.querySelector('.color-circle[data-color="default"]').classList.add('active');
                 }
+                
+                // 3. Update active state on buttons
+                colorCircles.forEach(c => c.classList.remove('active'));
+                circle.classList.add('active');
             });
         });
     }
 
-    // --- 3. Smooth Scroll for internal links ---
-    
+    // Smooth Scroll for internal links
     const smoothScrollLinks = document.querySelectorAll('.js-fluid-scroll[href^="#"]');
 
     smoothScrollLinks.forEach(link => {
@@ -229,70 +270,69 @@ document.addEventListener('DOMContentLoaded', () => {
                         behavior: 'smooth'
                     });
                 }
-                closeMenu(); 
+                if (link.closest('#off-canvas-menu')) {
+                    closeMenu(); 
+                }
             }
         });
     });
 
-    // --- 4. Scroll Fade-In Animations ---
-    
+    // Scroll Fade-In Animations Observer
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver(
         entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('in-view'); // Using 'in-view' class
                     observer.unobserve(entry.target);
                 }
             });
         },
-        { threshold: 0.1 }
+        { 
+            rootMargin: '0px 0px -100px 0px', // Start showing a bit earlier
+            threshold: 0.1 
+        }
     );
     animateElements.forEach(el => observer.observe(el));
 
 
-    // --- 5. Hope Script Quote Fade-In (NEW) ---
-    
+    // Hope Script Quote Fade-In Observer
     const quoteCardContainer = document.querySelector('.quote-card-container');
-    const hopeScript = document.querySelector('.quote-label'); // Targeting the new location of the quote
-    
-    // Note: The visibility class for quote-label is now defined in CSS 
+    const hopeScript = document.querySelector('.quote-label'); 
     
     function showHopeScript() {
         if (hopeScript) {
-            hopeScript.classList.add('visible');
+            // Apply transition and final opacity to trigger fade-in
+            hopeScript.style.transition = 'opacity 0.8s ease 0.3s';
+            hopeScript.style.opacity = '1';
         }
     }
 
-    // Use a new Intersection Observer for the Hero Quote Card
     if (quoteCardContainer) {
         const quoteObserver = new IntersectionObserver(
             entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Once the main quote card is visible, start the quote fade-in
                         showHopeScript();
                         quoteObserver.unobserve(entry.target);
                     }
                 });
             },
-            // Trigger when the container is 10% visible
             { threshold: 0.1 } 
         );
         quoteObserver.observe(quoteCardContainer);
     } else {
-        // Fallback: Show immediately if the container is missing 
+        // Fallback for cases where container is missing but script exists
         showHopeScript();
     }
     
-    // --- 6. Scroll to top on page load (NEW) ---
-    
+    // Scroll to top on page load and load state
     window.addEventListener('load', () => {
-        // Ensure the page starts at the very top after all assets have loaded
         window.scrollTo(0, 0); 
+        loadState();
     });
     
-    // --- 7. NAVIGATION CAPSULE SCROLL VISIBILITY LOGIC (NEW) ---
+    // NAVIGATION CAPSULE SCROLL VISIBILITY LOGIC (Hide/Show Nav on Scroll)
     if (navCapsule) {
         let lastScrollTop = 0;
         
@@ -303,11 +343,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Scrolling UP or at the very TOP
                 navCapsule.classList.remove('hidden');
             } else if (scrollTop > lastScrollTop && scrollTop > 50) {
-                // Scrolling DOWN and past the initial buffer of 50px
+                // Scrolling DOWN and past the initial buffer
                 navCapsule.classList.add('hidden');
             }
             
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile browsers
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
         }, false);
     }
 });

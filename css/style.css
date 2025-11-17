@@ -1,27 +1,26 @@
 /* --- 0. FONT IMPORTS & GLOBAL RESET (Vintage Modern) --- */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
-    /* Vintage Color Palette */
-    --color-paper: #FAF9F6;      /* Soft Off-White/Cream (Default) */
-    --color-ink: #333333;        /* Soft Charcoal for text */
-    --color-accent: #4A606C;     /* Dusty Blue/Green (The Muted Accent) */
-    --color-border: #B8B8B8;     /* Aged Silver/Metal for outlines */
-    /* UPDATED Accessibility Colors - Deeper Swatches for Visibility */
-    --color-tan: #EDE4D7;        /* Lighter background tan */
-    --color-tan-swatch: #C3B697; /* Deeper color for the circle preview */
-    --color-grey: #D3D3D3;       /* Lighter background grey */
-    --color-grey-swatch: #ADADAD;/* Deeper color for the circle preview */
+/* Vintage Color Palette */
+--color-paper: #FAF9F6;         /* Soft Off-White/Cream (Default) */
+--color-ink: #333333;           /* Soft Charcoal for text */
+--color-accent: #4A606C;        /* Dusty Blue/Green (The Muted Accent) */
+--color-border: #B8B8B8;        /* Aged Silver/Metal for outlines */
+/* UPDATED Accessibility Colors - Deeper Swatches for Visibility */
+--color-tan: #EDE4D7;           /* Lighter background tan */
+--color-tan-swatch: #C3B697;    /* Deeper color for the circle preview */
+--color-grey: #D3D3D3;          /* Lighter background grey */
+--color-grey-swatch: #ADADAD;   /* Deeper color for the circle preview */
 
-    /* NEW COLORS for Subtle Card Pop (Slightly Lighter than Body Tan/Grey) */
-    --color-card-tan: #F2EBE0; /* Slightly lighter than var(--color-tan) */
-    --color-card-grey: #EAEAEA; /* Slightly lighter than var(--color-grey) */
+/* NEW COLORS for Subtle Card Pop (Slightly Lighter than Body Tan/Grey) */
+--color-card-tan: #F2EBE0; /* Slightly lighter than var(--color-tan) */
+--color-card-grey: #EAEAEA; /* Slightly lighter than var(--color-grey) */
 
 
-    --transition-slow: 0.7s;     
-    --transition-fast: 0.3s;     
-    /* UPDATED: Max width to match .quote-card-container (1400px) */
-    --content-max-width: 1400px; 
+--transition-slow: 0.7s;        
+--transition-fast: 0.3s;        
+/* FIX: Converted 1400px to 87.5rem for REM-scaling */
+--content-max-width: 87.5rem;   
 }
 
 /* =======================
@@ -30,19 +29,22 @@
 
 :root {
     /* Defining breakpoints as variables for consistency */
-    --breakpoint-tablet: 768px;
+    --breakpoint-tablet: 768px; 
     --breakpoint-mobile: 500px;
+    --breakpoint-specific-tablet: 912px;
 }
 
 /* Base Styles & "Aged Paper" Background */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; 
     margin: 0;
     padding: 0;
 }
 
 body.vintage-modern-background {
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;   
+    /* NEW FIX: Base font size for slightly smaller natural scale */
+    font-size: 0.95rem; 
     background-color: var(--color-paper);
     color: var(--color-ink);
     line-height: 1.6;
@@ -61,95 +63,101 @@ h1, h2, h3, h4, blockquote {
 
 /* Global Link Styles (UPDATED for accent color) */
 a {
-    color: var(--color-accent); /* Change standard blue links to the accent color */
+    color: var(--color-accent); 
     text-decoration: none;
     transition: color var(--transition-fast) ease;
 }
 
 a:hover {
-    color: var(--color-ink); /* Change to soft charcoal on hover for contrast */
+    color: var(--color-ink);    
     text-decoration: underline;
 }
 
 
-/* --- ACCESSIBILITY CLASS TOGGLES --- */
+/* --- ACCESSIBILITY CLASS TOGGLES (Used by JS) --- */
 
 /* B. Bold Text Toggle */
 body.bold-text * {
-    font-weight: 600 !important; 
+    font-weight: 600 !important;    
 }
 
-/* C. Color Change Styles (Toggling background color) */
-body.tan-background {
-    background-color: var(--color-tan);
+/* C. Color Change Styles (Used by JS) */
+/* The background-color is now applied by JS directly, but these classes style the cards */
+
+/* Set card color based on body background */
+body.tan-background .article-card-feed,
+body.tan-background .content-card,
+body.tan-background .quote-card-container,
+body.tan-background .quote-image-section {
+    background-color: var(--color-card-tan);    
 }
-body.grey-background {
-    background-color: var(--color-grey);
+body.grey-background .article-card-feed,
+body.grey-background .content-card,
+body.grey-background .quote-card-container,
+body.grey-background .quote-image-section {
+    background-color: var(--color-card-grey);    
 }
 
 
-/* --- 1. FLOATING NAVIGATION CAPSULE (COMBINED & VERTICALLY STACKED) --- */
+/* --- 1. FLOATING NAVIGATION CAPSULE (Used by JS for .hidden) --- */
 
 .main-nav-capsule {
     position: fixed;
-    right: 20px; 
-    left: auto; 
-    transform: none; 
+    right: 20px;    
+    top: 20px; /* Default position */
     z-index: 1000;
-    width: auto; 
+    width: auto;    
     max-width: 95%; 
     
     display: flex;
     flex-direction: column; 
     align-items: center; 
     
-    padding: 15px 30px; 
+    padding: 0.9375rem 1.875rem; /* 15px 30px */
     
     background-color: var(--color-paper);
     border: 2px solid var(--color-border);
-    border-radius: 60px / 60px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 3.75rem / 3.75rem; /* 60px */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    
 
-    /* SCROLL VISIBILITY SETUP */
-    top: 20px; 
-    transition: top var(--transition-slow) ease-in-out; 
+    transition: top var(--transition-slow) ease-in-out;  
 }
 
 /* Class to hide the capsule when scrolling down (Controlled by JS) */
 .main-nav-capsule.hidden {
-    top: -100px; 
+    top: -6.25rem;  
 }
 
-/* Menu Button Styling */
+/* Menu Button Styling (Used by JS via #menu-trigger) */
 .menu-toggle-btn {
     font-family: 'Inter', sans-serif;
-    font-size: 1.5rem; 
-    padding: 10px 20px; 
+    font-size: 1.5rem;  
+    padding: 0.625rem 1.25rem; /* 10px 20px */
     background-color: var(--color-accent);
-    color: white; 
+    color: white;   
     border: none;
     cursor: pointer;
-    border-radius: 40px; 
+    border-radius: 2.5rem; /* 40px */ 
     transition: background-color var(--transition-fast) ease-out;
-    margin: 0 0 8px 0; 
+    margin: 0 0 0.5rem 0; /* 8px */ 
 }
 
 .menu-toggle-btn:hover {
-    background-color: #6a828e; 
+    background-color: #6a828e;  
 }
 
 /* Container for A, B, and Color Toggles */
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem; /* 10px */
     padding: 0; 
     border: none;
     position: relative; 
     margin-top: 0; 
 }
 
-/* General Button Style for A/B Toggles in Header */
+/* General Button Style for A/B Toggles in Header (Used by JS via IDs) */
 .header-controls button {
     text-decoration: none;
     line-height: 1; 
@@ -161,62 +169,62 @@ body.grey-background {
     transition: all var(--transition-fast) ease-out;
     border: none;
     outline: none;
-    background: none; 
+    background: none;   
 }
 
-/* A & B Button Style (Non-circular) */
+/* A & B Button Style (Used by JS for .active state) */
 #scale-page-toggle, #bold-page-toggle {
-    padding: 5px 10px; 
-    border-radius: 4px; 
-    border: 1px solid var(--color-border); 
+    padding: 0.3125rem 0.625rem; /* 5px 10px */
+    border-radius: 0.25rem; /* 4px */
+    border: 1px solid var(--color-border);  
     background-color: transparent;
 }
 
 #scale-page-toggle:hover, #bold-page-toggle:hover {
-    background-color: rgba(74, 96, 108, 0.1); 
+    background-color: rgba(74, 96, 108, 0.1);   
     border-color: var(--color-accent);
 }
 
 /* Style for active state (A or B is engaged) */
 #scale-page-toggle.active, #bold-page-toggle.active {
     background-color: var(--color-accent);
-    color: white; 
+    color: white;   
     border-color: var(--color-accent);
     box-shadow: 0 0 5px rgba(74, 96, 108, 0.5);
 }
 
-/* Requested Ampersand Style for A and B */
+/* Ampersand Style for A and B */
 .ampersand-accent {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1em; 
+    font-size: 1.1em;   
     vertical-align: -0.1em;
-    color: var(--color-ink); 
+    color: var(--color-ink);    
     padding: 0 4px; 
     transition: color var(--transition-fast);
 }
 
 /* Text color change when active */
 .header-controls button.active .ampersand-accent {
-    color: var(--color-paper); 
+    color: var(--color-paper);  
 }
 
-/* --- Dropdown Menu Styling --- */
+/* --- Dropdown Menu Styling (Used by JS for .visible) --- */
 .scale-dropdown-menu {
     position: absolute;
-    top: calc(100% + 10px); 
-    right: 0; 
+    top: calc(100% + 0.625rem); /* 10px */
+    right: 0;   
     left: auto;
-    width: 200px; 
+    width: 12.5rem; /* 200px */
     background-color: var(--color-paper);
     border: 1px solid var(--color-accent);
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 15px;
+    padding: 0.9375rem; /* 15px */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px); 
+    transform: translateY(-0.625rem); /* -10px */ 
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 990; 
+    z-index: 990;   
 }
 
 .scale-dropdown-menu.visible {
@@ -233,7 +241,7 @@ body.grey-background {
 .scale-label {
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem; /* 8px */
     font-weight: 600;
 }
 
@@ -242,17 +250,17 @@ body.grey-background {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 6px;
+    height: 0.375rem; /* 6px */
     background: var(--color-border);
-    border-radius: 3px;
+    border-radius: 0.1875rem; /* 3px */
     cursor: pointer;
 }
 
 #scale-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 1rem; /* 16px */
+    height: 1rem; /* 16px */
     border-radius: 50%;
     background: var(--color-accent);
     cursor: pointer;
@@ -260,13 +268,13 @@ body.grey-background {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Color Circles Styling in Header --- */
+/* --- Color Circles Styling in Header (Used by JS for data-color and .active) --- */
 .color-circle {
-    width: 20px; 
-    height: 20px;
+    width: 1.25rem; /* 20px */   
+    height: 1.25rem; /* 20px */
     border-radius: 50%; 
-    border: 2px solid var(--color-ink); 
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.5); 
+    border: 2px solid var(--color-ink);  
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.5);  
     transition: all 0.2s ease;
     opacity: 1; 
     cursor: pointer;
@@ -283,20 +291,20 @@ body.grey-background {
     background-color: var(--color-paper);
 }
 
-/* Permanent Active Style for Default Circle */
+/* Permanent Active Style for Default Circle (Initial state) */
 .color-circle[data-color="default"] {
-    border-color: var(--color-accent); 
-    border-width: 3px; 
+    border-color: var(--color-accent);   
+    border-width: 3px;   
     opacity: 1;
-    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8); 
+    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8);  
 }
 
 /* Override the standard active class on default, only allow tan/grey to switch */
 .color-circle.active:not([data-color="default"]) {
-    border-color: var(--color-accent); 
-    border-width: 3px; 
+    border-color: var(--color-accent);   
+    border-width: 3px;   
     opacity: 1;
-    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8); 
+    box-shadow: 0 0 8px rgba(74, 96, 108, 0.8);  
 }
 
 /* Hover effect should not apply to the default if it already looks active */
@@ -305,46 +313,56 @@ body.grey-background {
 }
 
 
-/* --- 2. OFF-CANVAS MENU STYLES --- */
+/* --- 2. OFF-CANVAS MENU STYLES (Used by JS for #off-canvas-menu, .nav-links, .active) --- */
 
 #off-canvas-menu {
     position: fixed;
     top: 0;
-    left: 0; 
-    width: 300px; 
+    left: 0;    
+    width: 18.75rem; /* 300px */
     height: 100%;
-    background-color: var(--color-paper); 
+    background-color: var(--color-paper);   
     z-index: 1500;
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem; /* 40px 20px */
     
-    transform: translateX(-100%); 
-    transition: transform var(--transition-slow) ease-in-out; 
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15); 
+    transform: translateX(-100%);   
+    transition: transform var(--transition-slow) ease-in-out;    
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);  
 }
 
-#off-canvas-menu.active {
-    transform: translateX(0); 
+#off-canvas-menu.open {
+    transform: translateX(0);   
 }
 
 #menu-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5rem;
+    top: 1.25rem;   
+    right: 1.25rem; 
+    
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;  
+    vertical-align: -0.1em;
+    color: var(--color-ink);    
+    padding: 0; 
+    transition: color var(--transition-fast);
+    
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--color-ink);
+}
+
+#menu-close:hover {
+    color: var(--color-accent);
 }
 
 #off-canvas-menu .nav-links {
     list-style: none;
-    padding-top: 40px;
+    padding-top: 2.5rem; /* 40px */
 }
 
 #off-canvas-menu a {
     display: block;
-    padding: 12px 0;
+    padding: 0.75rem 0; /* 12px */
     text-decoration: none;
     color: var(--color-ink);
     font-size: 1.1rem;
@@ -360,167 +378,152 @@ body.grey-background {
     font-family: 'Lora', serif;
     font-weight: 700;
     margin-top: 1.5rem;
-    padding-bottom: 5px;
+    padding-bottom: 0.3125rem; /* 5px */
     border-bottom: 1px solid var(--color-border);
 }
 
-/* --- 3. CONTENT STRUCTURE AND FIXES --- */
+/* --- 3. CONTENT STRUCTURE AND FIXES (Used by JS for .menu-open, .animate-on-scroll, .visible) --- */
 
 main {
-    transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease; 
+    transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease;   
 }
 
 /* Scrim effect on main content when menu is active */
 body.menu-open main {
-    opacity: 0.3; 
-    pointer-events: none; 
+    opacity: 0.3;   
+    pointer-events: none;   
 }
 
-.content-section {
-    /* Uses the new 1400px width */
-    max-width: var(--content-max-width); 
-    margin: 40px auto;
-    padding: 0 20px;
+.content-section, .archive-feed {
+    max-width: var(--content-max-width);    
+    margin: 2.5rem auto; /* 40px */
+    padding: 0 2.5rem; /* 40px */
 }
 
 .section-heading {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem; /* 30px */
 }
 
-/* Scroll Animation Styles */
+/* Scroll Animation Styles (Used by JS Intersection Observer) */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25rem); /* 20px */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.animate-on-scroll.visible {
+/* Changed from .visible to .in-view to match the JS implementation I confirmed earlier */
+.animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
 }
 
 
-/* Hero/Banner Styling */
+/* Hero/Banner Styling (Used by JS for Intersection Observer) */
 .hope-banner {
-    padding-top: 180px; 
+    padding-top: 1.875rem; /* 30px */    
     margin: 0 auto; 
-    padding-bottom: 40px; 
+    padding-bottom: 2.5rem; /* 40px */
     text-align: center;
 }
 
-/* Hope Script Styling */
-.hope-script {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    text-align: left; 
-    color: var(--color-accent);
-    line-height: 1.8; 
-    border-left: none; 
-    font-size: 1.1rem; 
-    white-space: normal; 
-    display: block; 
-    margin: 10px 0 0 0;
-}
-
-/* Quote Label for Fade-In Transition */
+/* Quote Label for Fade-In Transition (Used by JS for inline opacity) */
 .quote-label {
     font-family: 'Lora', serif;
-    font-size: 1.2em; 
+    font-size: 1.2em;   
     font-style: italic;
     color: var(--color-accent); 
     text-align: center; 
     line-height: 1.6;
-    margin-top: 0; 
-    
-    opacity: 0; /* Starts hidden */
-    transition: opacity 1.5s ease-out; 
-}
-
-/* Class toggled by JavaScript to make it visible */
-.quote-label.visible {
-    opacity: 1;
+    margin-top: 0;  
+    opacity: 0; /* Starts hidden, JS applies transition and opacity: 1 */
 }
 
 /* Citation Styling */
-.hope-script cite {
-    white-space: normal; 
+.quote-label cite {
+    white-space: normal;    
     display: block;
-    margin-top: 10px;
+    margin-top: 0.625rem; /* 10px */
     font-size: 0.8em;
     font-style: normal;
     color: var(--color-ink);
     line-height: 1.2;
+    text-align: center; 
 }
+
 
 /* Profile Photo and Bio Layout (DESKTOP) */
 .robyn-bio {
     display: flex;
-    gap: 50px;
+    gap: 3.125rem; /* 50px */
     align-items: center;
-    /* Bio section text should be slightly narrower for readability, even in the wide container */
-    max-width: 900px; 
-    margin-top: 0; 
-    margin-bottom: 60px;
+    max-width: 56.25rem; /* 900px */    
+    margin-top: 0;  
+    margin-bottom: 3.75rem; /* 60px */
     
-    /* REVERTED: Centered the 900px block within the 1400px container */
-    margin-left: auto; 
+    margin-left: auto;  
     margin-right: auto;
     
     width: 100%;
-    padding-left: 0; 
+    padding-left: 0;    
 }
 
 .robyn-photo {
-    width: 200px;
-    height: 200px;
-    object-fit: cover; 
-    border-radius: 5px; 
-    border: 2px solid var(--color-accent); 
-    box-shadow: none; 
+    width: 12.5rem; /* 200px */
+    height: 12.5rem; /* 200px */
+    object-fit: cover;  
+    border-radius: 0.3125rem; /* 5px */    
+    border: 2px solid var(--color-accent);  
+    box-shadow: none;   
 }
 
 /* Bio Text Size Increase */
 .robyn-bio p {
-    font-size: 1.3rem; 
-    line-height: 1.7; 
+    font-size: 1.3rem;  
+    line-height: 1.7;   
+    text-align: left; /* Default desktop alignment */
 }
 
-/* --- REVISED: Quote Card Styling (Hero Card) --- */
+/* Ensure the entire bio text block has vertical spacing */
+.robyn-bio-text {
+    padding-top: 1.875rem; /* 30px */
+    padding-bottom: 1.875rem; /* 30px */
+}
+
+/* --- REVISED: Quote Card Styling (Hero Card) (Used by JS for Intersection Observer) --- */
 
 .quote-card-container {
-    /* This is the 1400px source for the max-width variable */
-    max-width: var(--content-max-width); 
-    margin: 60px auto; /* Centered */
+    max-width: var(--content-max-width);    
+    margin: 3.75rem auto; /* 60px */
     background-color: var(--color-paper);
-    transition: background-color var(--transition-slow) ease; 
+    transition: background-color var(--transition-slow) ease;    
 
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; 
-    display: flex; 
-    align-items: center; 
+    overflow: hidden;   
+    display: flex;  
+    align-items: center;    
 }
 
 /* Apply the lighter card specific colors to the quote card container */
 body.tan-background .quote-card-container {
-    background-color: var(--color-card-tan); 
+    background-color: var(--color-card-tan);    
 }
 body.grey-background .quote-card-container {
-    background-color: var(--color-card-grey); 
+    background-color: var(--color-card-grey);
 }
 
 
 .quote-image-section {
-    flex: 0 0 400px; 
-    background-color: var(--color-paper); 
+    flex: 0 0 25rem; /* 400px */    
+    background-color: var(--color-paper);   
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;    
     align-items: center;
-    padding: 20px; 
-    border-right: 1px solid var(--color-border); 
+    padding: 1.25rem; /* 20px */
+    border-right: 1px solid var(--color-border);    
 }
 
 /* Ensure image section also updates */
@@ -533,64 +536,73 @@ body.grey-background .quote-image-section {
 
 
 .quote-card-image {
-    width: 250px; 
-    height: 250px; 
+    width: 15.625rem; /* 250px */
+    height: 15.625rem; /* 250px */
     object-fit: contain;
-    border-radius: 5px; 
-    margin-bottom: 20px; 
+    border-radius: 0.3125rem; /* 5px */    
+    margin-bottom: 1.25rem; /* 20px */ 
     border: none;
     box-shadow: none;
 }
 
 
-.quote-label cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.8em;
-    font-style: normal;
-    color: var(--color-ink);
-    line-height: 1.2;
-}
-
 .quote-text-section {
-    flex: 1; 
-    padding: 20px 40px; /* 40px padding on the left is the key alignment point */
+    flex: 1;    
+    padding: 1.25rem 2.5rem; /* 20px 40px */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;    
 }
 
+/* --- Specificity Fix for H2 Heading --- */
 .quote-text-section h2 {
-    font-size: 2.2em; 
-    margin-bottom: 10px;
     color: var(--color-ink);
-    text-align: center; /* Centered the Hero H2 (KEPT) */
+    text-align: center; 
 }
+
+.quote-heading {
+    font-size: 3.5em;   
+    margin-bottom: 0.625rem; /* 10px */
+}
+
+/* --- New .bio-subtitle Class (Applied to the <span>) --- */
+/* *** FIX START: Increased specificity to ensure text-align takes precedence *** */
+.quote-text-section .bio-subtitle {
+    font-size: 2rem; /* Increased size for greater visibility */
+    font-weight: 400;   
+    color: #4b5563; /* Subtle dark gray */
+    margin-top: 0.25rem;    
+    display: block;
+    line-height: 1.4;
+    text-align: center !important; 
+}
+/* *** FIX END *** */
+
+/* --------------------------------------------------------------------------------------- */
 
 .quote-text-section p {
-    font-size: 1.1em; 
+    font-size: 1.1em;   
     color: var(--color-ink);
     line-height: 1.4;
-    text-align: center; /* Centered the Hero P (KEPT) */
+    text-align: center; 
 }
 
-/* --- SINGLE ARTICLE LAYOUT STYLES --- */
+/* --- SINGLE ARTICLE LAYOUT STYLES (Used in other pages) --- */
 
 .article-body {
-    /* Narrower max-width for optimal reading of long text (800px is retained for text flow) */
-    max-width: 800px; 
-    margin: 40px auto; 
-    padding: 0 20px;
-    font-size: 1.1rem; 
-    text-align: left; 
+    max-width: 50rem; /* 800px */    
+    margin: 2.5rem auto; /* 40px */
+    padding: 0 1.25rem; /* 20px */
+    font-size: 1.1rem;  
+    text-align: left;   
 }
 
 /* Article Paragraph Specific Fixes */
 .article-body p {
-    font-size: 1.1rem; 
-    line-height: 1.8; /* Increased line height for better readability */
-    margin-bottom: 1.5em; /* Better paragraph separation */
-    hyphens: auto; 
+    font-size: 1.1rem;  
+    line-height: 1.8;   
+    margin-bottom: 1.5em;   
+    hyphens: auto;  
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
 }
@@ -602,89 +614,100 @@ body.grey-background .quote-image-section {
     margin-bottom: 0.5em;
 }
 
-/* Specific article hero text adjustments */
+/* Specific article hero text adjustments - Rules for .article-title and .article-meta moved to .article-header section for clarity/control */
 .article-hero .quote-text-section {
-    padding: 20px 40px;
+    padding: 1.25rem 2.5rem; /* 20px 40px */
 }
-.article-hero .article-title {
-    font-size: 2.2em; 
-    margin-bottom: 5px;
+
+
+/* --- NEW ARTICLE HEADER STYLING (For structure outside the hero card) --- */
+.article-header {
+    text-align: center;
+    margin: 2.5rem auto 1.5rem auto; /* Top, Right/Left, Bottom, Right/Left */
+    max-width: 50rem; /* Same as your .article-body content width */
 }
-.article-hero .article-meta {
+
+/* Title Control (e.g., set to 3.5rem for much larger text) */
+.article-header .article-title {
+    /* **PRIMARY CONTROL FOR ARTICLE TITLE SIZE** */
+    font-size: 3.5rem; /* Change this value! */
+    margin-bottom: 0.25rem;
+    line-height: 1.1;
+    font-family: 'Lora', serif;
+    color: var(--color-ink); 
+}
+/* Meta Data Control (e.g., set to 1.25rem for larger meta text) */
+.article-header .article-meta {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9em;
-    color: var(--color-ink);
-    margin-bottom: 0;
+    /* **PRIMARY CONTROL FOR ARTICLE META SIZE** */
+    font-size: 2.25rem; /* Change this value! */
+    color: var(--color-ink); 
+    display: block;
+    margin-bottom: 1.5rem; 
 }
+/* --- END NEW ARTICLE HEADER STYLING --- */
 
 
 /* --- Two-Column Content Layout (Books and Articles) --- */
 
 .content-columns {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; /* REVERTED: Back to center to look good inside the centered block */
-    gap: 30px; 
-    padding-top: 20px;
+    flex-wrap: wrap;    
+    justify-content: center;    
+    gap: 1.875rem; /* 30px */
+    padding-top: 1.25rem; /* 20px */
     
-    /* REVERTED: Centered the entire two-column block */
-    max-width: 1040px; 
-    margin-left: auto; 
+    max-width: 65rem; /* 1040px */   
+    margin-left: auto;  
     margin-right: auto; 
     
-    padding-left: 0; 
-    padding-right: 0; 
+    padding-left: 0;    
+    padding-right: 0;   
 }
 
 
 .book-column {
-    flex: 1 1 45%; 
-    max-width: 500px;
-    padding-right: 30px; /* REVERTED: Original 30px space */
-    padding-left: 0;  /* REVERTED: Flush left to the divider */
+    flex: 1 1 45%;  
+    max-width: 31.25rem; /* 500px */
+    padding-right: 1.875rem; /* 30px */
+    padding-left: 0;    
     border-right: 1px solid var(--color-border);
-    text-align: left; 
 }
 
 .articles-column {
     flex: 1 1 45%;
-    max-width: 500px;
-    padding-left: 30px; /* REVERTED: Original 30px space */
-    padding-right: 0; 
-    text-align: left; 
+    max-width: 31.25rem; /* 500px */
+    padding-left: 1.875rem; /* 30px */
+    padding-right: 0;   
 }
 
 .column-heading {
     font-family: 'Lora', serif;
     font-size: 1.6em;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px */
     color: var(--color-accent);
-    /* Ensure heading stays left-aligned */
-    text-align: left; 
+    text-align: center; 
 }
 
 /* Card Grid Layout */
 .card-grid-container {
     display: flex;
     flex-wrap: wrap;
-    /* Start cards from the left */
-    justify-content: flex-start; 
-    gap: 30px;
+    justify-content: center;    
+    gap: 1.875rem; /* 30px */
     align-items: flex-start;
 }
 
 /* Content Card Size Control */
 .content-card {
-    flex: 0 1 280px; 
-    max-width: 280px; 
-    padding: 20px; 
-    /* Left-align card content */
-    text-align: left; 
+    flex: 0 1 17.5rem; /* 280px */
+    max-width: 17.5rem; /* 280px */ 
+    padding: 1.25rem; /* 20px */  
+    text-align: left;   
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
     background-color: var(--color-paper);
-    /* Ensure card sits flush left */
-    margin-left: 0; 
+    margin-left: auto;  
     margin-right: auto;
 }
 
@@ -692,86 +715,67 @@ body.grey-background .quote-image-section {
 .content-image {
     width: 100%;
     height: auto;
-    max-height: 350px; 
+    max-height: 21.875rem; /* 350px */  
     display: block;
-    /* Align image left within the card */
-    margin: 0 auto 15px 0; 
+    margin: 0.325rem auto 0.9375rem 0; /* 15px */ 
     border-radius: 4px;
-    object-fit: contain; 
+    object-fit: contain;    
 }
 
+.book-column .content-image {
+    /* Top margin 1.125rem (18px) - Right/Left margin auto - Bottom margin 0.9375rem (15px) */
+    margin: 1.125rem auto 0.9375rem auto;   
+}
 
 /* Paragraph Styling */
 .content-card p {
     display: block;
-    margin-top: 10px;
-    /* Align paragraph text left */
+    margin-top: 0.625rem; /* 10px */
     text-align: left;
 }
 
 /* The book card still needs its button positioned correctly */
 .book-card p .buy-link {
-    display: inline-block; 
-    margin-top: 10px; 
-    /* Ensure button is pushed left */
-    margin-left: 0; 
+    display: inline-block;  
+    margin-top: 0.625rem; /* 10px */
+    margin-left: 4.125rem; /* 66px - User's updated value */ 
 }
 
 /* Article card link consistency */
 .article-card p.article-link, .article-card p.article-link a {
-    text-align: left; 
+    text-align: left;   
     display: block;
 }
 
 .button-style {
     display: inline-block;
-    padding: 8px 16px;
+    padding: 0.5rem 1rem; /* 8px 16px */
     background-color: var(--color-accent);
     color: white;
     text-decoration: none;
-    border-radius: 40px;
+    border-radius: 2.5rem; /* 40px */
     flex-shrink: 0; 
 }
 
 .site-footer {
     text-align: center;
-    padding: 30px 0;
-    margin-top: 40px;
+    padding: 1.875rem 0; /* 30px */
+    margin-top: 2.5rem; /* 40px */
     border-top: 1px solid var(--color-border);
     color: var(--color-ink);
 }
 
-/* --- 5. ARTICLE/ARCHIVE FEED STYLES --- */
-
-/* Container for the archive feed to center content */
-.archive-feed {
-    /* Uses the new 1400px width */
-    max-width: var(--content-max-width); 
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* Grid layout for the articles */
-.article-grid {
-    display: grid;
-    /* Use repeat/auto-fit to create a responsive 2 or 3 column layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
+/* --- 5. ARTICLE/ARCHIVE FEED STYLES (Used in other pages) --- */
 
 /* Base Article Card style, reusing .content-card but adding feed-specific adjustments */
 .article-card-feed {
-    /* Base styles inherited from .content-card, but ensure they flex well */
-    padding: 20px; 
-    /* Left-align card content */
-    text-align: left; 
+    padding: 1.25rem; /* 20px */  
+    text-align: left;   
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px */
     background-color: var(--color-paper);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: box-shadow var(--transition-fast) ease;
-    /* Ensure card sits flush left */
     margin-left: 0; 
     margin-right: auto;
 }
@@ -784,8 +788,8 @@ body.grey-background .quote-image-section {
     font-family: 'Lora', serif;
     font-size: 1.4em;
     color: var(--color-accent);
-    margin-bottom: 10px;
-    text-align: left; 
+    margin-bottom: 0.625rem; /* 10px */
+    text-align: left;   
 }
 
 .article-card-feed .article-date {
@@ -793,31 +797,29 @@ body.grey-background .quote-image-section {
     font-family: 'Inter', sans-serif;
     font-size: 0.9em;
     color: var(--color-border);
-    margin-bottom: 15px;
-    text-align: left; 
+    margin-bottom: 0.9375rem; /* 15px */
+    text-align: left;   
 }
 
 /* Article summary text */
 .article-card-feed p {
     font-size: 1em;
     line-height: 1.5;
-    margin-bottom: 20px;
-    text-align: left; 
+    margin-bottom: 1.25rem; /* 20px */
+    text-align: left;   
 }
 
 /* Reuse the button-style for 'Read More' links */
 .article-card-feed .button-style {
-    margin-top: 10px;
-    /* Ensure button is pushed left */
+    margin-top: 0.625rem; /* 10px */
     margin-left: 0; 
 }
 
-/* Style updates for color-change accessibility */
-body.tan-background .article-card-feed {
-    background-color: var(--color-card-tan); 
-}
-body.grey-background .article-card-feed {
-    background-color: var(--color-card-grey); 
+.center-content {
+    /* Critical: Centers the inline/inline-block elements inside the div (like buttons and links) */
+    text-align: center; 
+    /* Optional: Add some padding/margin for spacing */
+    margin-top: 2.5rem; /* 40px spacing above the button */
 }
 
 
@@ -825,61 +827,118 @@ body.grey-background .article-card-feed {
 
 /* Tablet/Medium Mobile Content Adjustments (Max Width 900px) */
 @media (max-width: 900px) {
+    
+    .content-section, .archive-feed {
+        padding-left: 0.9375rem; /* 15px */  
+        padding-right: 0.9375rem; /* 15px */
+        margin-top: 1.875rem; /* 30px */
+        margin-bottom: 1.875rem; /* 30px */
+    }
+    
+    .section-heading {
+        font-size: 1.8em;
+        margin-bottom: 1.25rem; /* 20px */
+    }
+
     /* --- Navigation Adjustment --- */
     .main-nav-capsule {
-        top: 10px; 
-        right: 10px; 
-        left: auto;
-        transform: none;
-        padding: 10px 15px; 
+        top: 10px;  
+        right: 10px;    
+        padding: 0.625rem 0.9375rem; 
     }
     
     .menu-toggle-btn {
-        margin: 0 0 10px 0; 
+        margin: 0 0 0.625rem 0; 
     }
     
-    /* --- Content Column Adjustment --- */
+    /* --- Robyn Bio Layout FIX for 900px breakpoint --- */
+    .robyn-bio {
+        flex-direction: column;
+        text-align: center; 
+        
+        /* ADJUSTMENT: Increase Vertical Margin for 850px and below */
+        margin-top: 3.125rem; /* 50px */ 
+        margin-bottom: 3.125rem; /* 50px */
+        
+        margin-left: auto;  
+        margin-right: auto;
+        padding-left: 0;    
+        max-width: 56.25rem;    
+        gap: 0; 
+    }
+    .robyn-photo {
+        margin: 0 auto 1.25rem auto; 
+        width: 12.5rem; 
+        height: 12.5rem; 
+    }
+    .robyn-bio-text {
+        width: 100%;    
+        max-width: 37.5rem; 
+        margin: 0 auto; 
+        padding-top: 1.25rem;   
+        padding-bottom: 1.25rem;
+    }
+    .robyn-bio-text h2 {
+        text-align: center; 
+    }
+    
+    /* CRITICAL FIX: Center the paragraph text inside the bio box for tablet/mobile */
+    .robyn-bio-text p {
+        margin-bottom: 1.5em;   
+        text-align: center; 
+    }
+    
+    /* --- Content Column Adjustment (Stacked on Tablet) --- */
     .content-columns {
         flex-direction: column; 
-        gap: 40px;
-        /* Reset shift on mobile (KEPT) */
-        margin-left: 0; 
-        padding-left: 20px; 
-        padding-right: 20px;
+        gap: 2.5rem;    
+        padding-left: 0;    
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .book-column, .articles-column {
         flex: 1 1 100%;
         max-width: 100%;
-        padding: 0 20px; /* Set consistent padding for mobile (KEPT) */
+        padding: 0; 
         border-right: none; 
-        text-align: left; /* Ensure left-align on mobile (KEPT) */
     }
-    
+
     .book-column {
-        padding-bottom: 20px;
+        padding-bottom: 1.25rem;    
         border-bottom: 1px solid var(--color-border);
     }
     
-    /* --- General Layout Adjustment --- */
-    .robyn-bio {
-        flex-direction: column;
-        text-align: left; /* Change to left for column view */
-        margin-top: 40px; 
-        /* Reset shift on mobile (KEPT) */
-        margin-left: 0; 
-        padding-left: 20px; 
-        max-width: 100%;
+    /* FIX: Override desktop centering for mobile stack */
+    .column-heading {
+        /* Align content headings to center when stacked */
+        text-align: center !important;  
     }
-    .robyn-photo {
-        margin: 0 0 20px 0; /* Align left */
+
+    /* Add back padding for the card container within the column */
+    .card-grid-container {
+        /* FIX: Center cards within the column */
+        justify-content: center !important; 
+        padding-top: 0.9375rem; 
     }
     
+    /* FIX: Content Card Alignment for stacked layout (now full-width) */
     .content-card {
-        flex: 1 1 90%; 
-        max-width: 90%; 
-        margin-left: 0; /* Ensure left align */
-        margin-right: auto;
+        flex: 1 1 100%; 
+        max-width: 100%; 
+        margin-left: 0 !important;   
+        margin-right: 0 !important;
+    }
+    
+    /* FIX: Center the Buy Link on Mobile/Tablet Stack */
+    .content-card p {
+        /* Target the paragraph that holds the button */
+        text-align: center; 
+    }
+    .book-card p .buy-link {
+        /* CRITICAL FIX: Reset the large desktop margin to 0 to allow it to be centered by parent text-align */
+        margin-left: 0 !important;  
     }
     
     /* --- Hero Card Mobile Fix --- */
@@ -893,75 +952,181 @@ body.grey-background .article-card-feed {
         flex: none; 
         width: 100%; 
         border-right: none;
-        border-bottom: 1px solid var(--color-border); 
-        padding: 20px 0;
+        border-bottom: 1px solid var(--color-border);   
+        padding: 1.25rem 0; 
     }
     .quote-card-image {
-        width: 150px; 
-        height: 150px; 
-        margin: 0 auto 15px auto; 
+        width: 9.375rem; 
+        height: 9.375rem; 
+        margin: 0 auto 0.9375rem auto; 
     }
     .quote-text-section {
-        text-align: left; /* Keep text left-aligned */
-        padding: 20px;
+        padding: 1.25rem; 
     }
     .quote-text-section h2, 
-    .quote-text-section p,
-    .hope-script, 
-    .hope-script cite { 
-        text-align: left; 
+    .quote-text-section p { 
+        text-align: center; 
     }
+    
     .quote-label {
-        margin-top: 0; 
-    }
-
-    /* Article Grid on medium screens */
-    .article-grid {
-        grid-template-columns: 1fr;
+        /* Fix the positioning of the scripture text */
+        position: static;
+        background-color: transparent;
+        color: var(--color-ink);
+        padding: 0;
+        margin-top: 1rem;
     }
 }
+
+/* --- DEDICATED FIX FOR 912 x 1368 (Viewport Width 912px) --- */
+@media (width: 912px) {
+    
+    .content-section, .archive-feed {
+        padding-left: 2.5rem;   
+        padding-right: 0.9375rem;   
+    }
+    
+    .robyn-photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .robyn-bio {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center; 
+    }
+    
+    .robyn-bio-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .robyn-bio-text h2 {
+        text-align: center; 
+    }
+    
+    /* Content columns are also now centered again for this specific breakpoint */
+    .content-columns {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+    
+    /* Ensure Content Cards align to the center */
+    .content-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Ensure the quote and citation remain centered on the 912px view */
+    .quote-label,
+    .quote-label cite {
+        text-align: center;
+    }
+}
+
+/* --- Dedicated Fix for Max Width 540px (User Request) --- */
+@media (max-width: 540px) {
+    .robyn-bio p {
+        /* Applied 2rem horizontal margin */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-top: 0.5rem; 
+        margin-bottom: 0.5rem;
+    }
+
+    /* Mobile Fix for New Article Header */
+    .article-header .article-title {
+        font-size: 1.8em;
+    }
+
+    /* ADDED: Meta size for small screens */
+    .article-header .article-meta {
+        font-size: 0.9em;
+    }
+}
+
 
 /* Small Mobile Content Adjustments (Max Width 500px) */
 @media (max-width: 500px) {
     
-    /* Reduce vertical padding for the main content to look better on small screens */
+    /* Horizontal Padding is confirmed at 1.25rem (20px) */
+    .content-section, .archive-feed {
+        padding-left: 1.25rem; /* 20px */  
+        padding-right: 1.25rem; /* 20px */
+        /* Vertical margin is handled by the 900px query, but we'll ensure it's still generous here */
+        margin-top: 2.5rem; 
+        margin-bottom: 2.5rem;
+    }
+    
     .hope-banner {
-        padding-top: 100px; 
-        padding-bottom: 20px;
+        padding-top: 4.0625rem; /* 65px */ 
+        padding-bottom: 1.25rem; /* 20px */
     }
 
-    /* Reduce general text sizes for better fit and readability */
+    /* --- Robyn Bio Text Specific Changes for 500px and below --- */
+    .robyn-bio-text {
+        /* ADJUSTMENT: Increased vertical padding for more room up and down */
+        padding-top: 2.5rem; /* 40px */ 
+        padding-bottom: 2.5rem; /* 40px */
+    }
+
     .robyn-bio p {
-        font-size: 1.1rem; 
-        line-height: 1.6;
+        font-size: 1.1rem;  
+        /* ADJUSTMENT: Increased line height for more lines/vertical space */
+        line-height: 1.85;
+        /* Bio text remains centered on small screens */
+        text-align: center;
+        /* Removed 1rem margin rules as they are now set by the 540px query */
+    }
+
+    /* CRITICAL FIX: Reduce main heading size on small screens to prevent overflow */
+    .quote-heading {
+        font-size: 2em; /* Reduced from 3.5em */
+        line-height: 1.1;
     }
 
     .quote-text-section h2 {
-        font-size: 1.8em; 
+        font-size: 1.6em;   
     }
-
     .quote-text-section p {
-        font-size: 1em; 
+        font-size: 0.9em;   
     }
     
-    /* Current small screen adjustment */
-    .hope-script {
+    .quote-label {
         font-size: 0.9rem;
-        margin: 10px 0 0 0;
+        margin: 1.5rem auto 1.5rem auto; 
+        /* Ensure quote centering holds */
+        text-align: center; 
+    }
+    
+    /* Ensure citation holds centered on small mobile */
+    .quote-label cite {
+        text-align: center;
     }
 
-    /* Tighter Nav Capsule for very narrow screens */
     .main-nav-capsule {
-        padding: 8px 15px; 
-    }
-    .header-controls {
-        gap: 8px; 
+        padding: 0.375rem 0.625rem; 
+        right: 8px; 
     }
     
-    /* Adjust font size for the main article text on small phones */
+    .menu-toggle-btn {
+        font-size: 1.3rem;  
+        padding: 0.5rem 0.9375rem;  
+    }
+    
+    .header-controls {
+        gap: 0.5rem; 
+    }
+    
     .article-body p {
-        font-size: 1rem; /* Reduced from 1.1rem for narrow screens */
+        font-size: 1rem;    
         line-height: 1.65;
         margin-bottom: 1.3em;
     }
+
+    .quote-text-section .bio-subtitle {
+        font-size: 1.25rem; /* Making it quite small, but still readable */
+       }
 }
