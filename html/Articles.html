@@ -1,0 +1,124 @@
+           <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <meta name="description" content="Chaplain Robyn — helping you find hope in seasons of grief, with resources, articles, and more.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="vintage-modern-background">
+    <nav class="main-nav-capsule">
+        
+        <button id="menu-trigger" class="menu-toggle-btn" aria-expanded="false" aria-label="Open main menu">
+            <span class="js-fluid-motion">☰ MENU</span>
+        </button>
+
+        <div class="header-controls">
+            <button id="scale-page-toggle" aria-label="Scale Page" aria-expanded="false" aria-controls="scale-dropdown">
+                <span class="ampersand-accent">A</span>
+            </button>
+            
+            <div id="scale-dropdown" class="scale-dropdown-menu" aria-hidden="true">
+                <div class="slider-control">
+                    <label for="scale-slider" class="scale-label">Zoom: <span id="scale-value">100%</span></label>
+                    <input type="range" id="scale-slider" min="100" max="175" value="100" step="5">
+                </div>
+            </div>
+
+            <button id="bold-page-toggle" aria-label="Bold Text"><span class="ampersand-accent">B</span></button>
+            
+            <button class="color-circle" data-color="tan" aria-label="Change background to Tan"></button>
+            <button class="color-circle" data-color="grey" aria-label="Change background to Grey"></button>
+            <button class="color-circle active" data-color="default" aria-label="Change background to Default"></button>
+        </div>
+        
+    </nav>
+
+   <nav id="off-canvas-menu" aria-label="Main Navigation">
+        <button id="menu-close" aria-label="Close menu">X</button>
+        <ul class="nav-links">
+            <li><a href="/index.html" aria-current="page" class="js-fluid-scroll">Home</a></li>
+            <li><a href="html/about-robyn.html" class="js-fluid-scroll">About Robyn</a></li>
+            
+        <li class="nav-section-heading">Content Library</li>
+        <li><a href="/html/Articles.html" class="js-fluid-scroll">Articles</a></li>
+        <li><a href="html/books.html" class="js-fluid-scroll">Books</a></li>
+        <li><a href="html/photography.html" class="js-fluid-scroll">Photography</a></li>
+        <li><a href="#" class="js-fluid-scroll">Sermons</a></li>
+
+            <li class="nav-section-heading">Grief Resources</li>
+            <li><a href="html/childrens-grief-resources.html" class="js-fluid-scroll">Children</a></li>
+            <li><a href="html/adult-grief-resources.html" class="js-fluid-scroll">Adults</a></li>
+            <li><a href="#" class="js-fluid-scroll">Professional</a></li>
+            <li><a href="html/invite-robyn.html" class="js-fluid-scroll">Invite Robyn</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hope-banner" aria-label="Hope Scripture Banner">
+            <div class="quote-card-container animate-on-scroll">
+                <div class="quote-image-section">
+                    <img src="/assets/banner.jpg" alt="Hope Flower Symbol" loading="eager" class="quote-card-image">
+                </div>
+                <div class="quote-text-section">
+                <h2 class="quote-heading">Sharing Hope in Seasons of Grief</h2>
+                    <span class="bio-subtitle">with Chaplain Robyn</span>
+                </div>
+            </div>
+        </section> 
+            
+<!-- Full-Width Article Feed Section (The key section for full-width layout) -->
+        <section class="archive-feed content-section">
+            
+            <!-- .section-heading ensures the large, custom title size -->
+            <h3 class="section-heading">My Articles</h3> 
+            
+            <div class="card-grid-container">
+                <!-- Article Card 1 -->
+                <div class="article-card content-card animate-on-scroll">
+                    <img class="article-cover content-image" src="/assets/holiday.jpg" alt="Finding Hope cover" loading="lazy">
+                    <h3>Finding Hope In Community</h3>
+                    <p>A short summary of the article content, ensuring card heights remain consistent due to Flexbox styling applied to this container.</p>
+                    <p class="article-link"><a href="/html/finding-hope.html" target="_blank" class="button-style">Read More</a></p>
+                </div>
+                
+                <!-- Article Card 2 -->
+                <div class="article-card content-card animate-on-scroll">
+                    <img class="article-cover content-image" src="/assets/chicken-soup-cover.jpg" alt="When Chicken Soup is Not Enough" loading="lazy">
+                    <h3>When Chicken Soup is Not Enough</h3>
+                    <p>Understanding that comfort often requires more than simple gestures during deep grief. This card uses fixed heights in the CSS for a clean grid layout.</p>
+                    <p class="article-link"><a href="/html/when-chicken.html" target="_blank" class="button-style">Read More</a></p>
+                </div>
+                
+                <!-- Article Card 3 -->
+                <div class="article-card content-card animate-on-scroll">
+                    <img class="article-cover content-image" src="/assets/ten-things.jpg" alt="10 Things to Know About Children and Grief" loading="lazy">
+                    <h3>10 Things to Know About Children and Grief</h3>
+                    <p>Essential guidance for parents and caregivers navigating complex emotional landscapes with young people.</p>
+                    <p class="article-link"><a href="/html/ten-things.html" target="_blank" class="button-style">Read More</a></p>
+                </div>
+                
+                <!-- Article Card 4 -->
+                <div class="article-card content-card animate-on-scroll">
+                    <img class="article-cover content-image" src="/assets/Spirituality-of-Grief.jpg" alt="Spirituality of Grief" loading="lazy">
+                    <h3>The Spirituality of Grief</h3>
+                    <p>Exploring the spiritual dimensions of loss and how faith can intersect with the healing process.</p>
+                    <p class="article-link"><a href="/html/Spirituality-of-Grief.html" target="_blank" class="button-style">Read More</a></p>
+                </div>
+                
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="site-footer">
+           <p>&copy; Robyn J Plocher 2025 | <a href="/index.html">Home</a></p>
+    </footer>
+
+    <script src="/js/script.js" defer></script>
+</body>
+</html>

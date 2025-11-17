@@ -185,33 +185,33 @@ document.addEventListener('DOMContentLoaded', () => {
             applyScale(snappedValue);
         }, DEBOUNCE_TIME);
         
-        // Continuously snap the visual display and trigger the debounced zoom.
+        // Continuously snap the visual display AND the slider value while dragging.
         scaleSlider.addEventListener('input', (e) => {
             const currentValue = parseInt(e.target.value, 10);
             const snappedValue = snapToNearestPreferredLevel(currentValue);
             
-            // NOTE: Removed line 'scaleSlider.value = snappedValue;'
-            // The slider value should only snap when the user stops dragging (on 'change') 
-            // to avoid confusing jumpiness during the 'input' event.
+            // CRITICAL FIX: Set the slider's physical value to the snapped value
+            // This makes the slider thumb visually jump to the preferred levels.
+            scaleSlider.value = snappedValue;
 
             if (scaleValueDisplay) {
                 scaleValueDisplay.textContent = `${snappedValue}%`;
             }
             
+            // Trigger the debounced function to apply and save the scale
             debouncedApplySnapAndScale(snappedValue);
         });
         
-        // Ensure the final zoom happens immediately on mouse release, AND set the snapped slider value.
+        // The 'change' event now only serves as a final, immediate check on release, 
+        // ensuring any pending debounce is cleared and the final value is saved/applied immediately.
         scaleSlider.addEventListener('change', (e) => {
-            const currentValue = parseInt(e.target.value, 10);
-            const snappedValue = snapToNearestPreferredLevel(currentValue);
-
+            const finalValue = parseInt(e.target.value, 10);
+            
+            // Clear any pending debounced calls
             clearTimeout(debounceTimer); 
             
-            // CRITICAL FIX: Explicitly set the slider to the snapped value on change
-            scaleSlider.value = snappedValue;
-            
-            applyScale(snappedValue); 
+            // Apply the final value immediately (it should already be snapped)
+            applyScale(finalValue); 
         });
     }
 

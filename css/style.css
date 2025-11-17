@@ -328,6 +328,7 @@ body.grey-background .quote-image-section {
     transform: translateX(-100%);   
     transition: transform var(--transition-slow) ease-in-out;    
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);  
+    overflow-y: auto;
 }
 
 #off-canvas-menu.open {
@@ -377,6 +378,7 @@ body.grey-background .quote-image-section {
 .nav-section-heading {
     font-family: 'Lora', serif;
     font-weight: 700;
+    font-size: 1.5rem;
     margin-top: 1.5rem;
     padding-bottom: 0.3125rem; /* 5px */
     border-bottom: 1px solid var(--color-border);
@@ -402,7 +404,8 @@ body.menu-open main {
 
 .section-heading {
     text-align: center;
-    margin-bottom: 1.875rem; /* 30px */
+    font-size: 2.25rem;
+    margin-bottom: 3.875rem; /* 30px */
 }
 
 /* Scroll Animation Styles (Used by JS Intersection Observer) */
@@ -689,7 +692,7 @@ body.grey-background .quote-image-section {
     text-align: center; 
 }
 
-/* Card Grid Layout */
+/* Card Grid Layout (Flex Fallback) */
 .card-grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -755,6 +758,11 @@ body.grey-background .quote-image-section {
     text-decoration: none;
     border-radius: 2.5rem; /* 40px */
     flex-shrink: 0; 
+    transition: background-color var(--transition-fast) ease;
+}
+
+.button-style:hover {
+    background-color: #6a828e;
 }
 
 .site-footer {
@@ -765,7 +773,9 @@ body.grey-background .quote-image-section {
     color: var(--color-ink);
 }
 
+/* --------------------------------------------------------------------------------------- */
 /* --- 5. ARTICLE/ARCHIVE FEED STYLES (Used in other pages) --- */
+/* --------------------------------------------------------------------------------------- */
 
 /* Base Article Card style, reusing .content-card but adding feed-specific adjustments */
 .article-card-feed {
@@ -821,6 +831,88 @@ body.grey-background .quote-image-section {
     /* Optional: Add some padding/margin for spacing */
     margin-top: 2.5rem; /* 40px spacing above the button */
 }
+
+/* --------------------------------------------------------------------------------------- */
+/* --- NEW CRITICAL STYLING FOR ARTICLE FEED GRID (Applies to the /html/articles.html page) --- */
+/* --------------------------------------------------------------------------------------- */
+
+.archive-feed .card-grid-container {
+    display: grid;
+    /* Responsive Grid: 3 columns on desktop, adapts down to 1 column on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); /* min 300px */
+    gap: 2.5rem; /* 40px gap between cards */
+    
+    /* Override flex-wrap from the .content-columns section to use Grid */
+    flex-wrap: nowrap; 
+    justify-content: unset; /* Resetting flex property */
+    align-items: stretch; /* Ensure all cards stretch to the same height */
+    
+    /* Reset Max Width if necessary, should be constrained by .content-section */
+    max-width: var(--content-max-width);
+}
+
+.article-card {
+    /* Base Article Card style, reusing .content-card base aesthetics */
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem; /* 20px */
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem; 
+    background-color: var(--color-paper);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-fast) ease;
+    
+    /* Ensure consistent height across grid row */
+    height: 100%; 
+    
+    /* Add a slight lift effect on hover */
+    &:hover {
+        transform: translateY(-0.1875rem); /* -3px */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.article-cover {
+    width: 100%;
+    /* Keep image height consistent within the card */
+    height: 12.5rem; /* 200px */
+    object-fit: cover;
+    border-radius: 0.3125rem; /* 5px */
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+}
+
+.article-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    color: var(--color-ink);
+    margin-bottom: 0.5rem;
+}
+
+.article-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+    /* Pushes the link button to the bottom */
+    flex-grow: 1; 
+}
+
+.article-card .article-link {
+    /* Ensures the link section has padding and is at the bottom */
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    flex-grow: 0;
+}
+
+/* Re-applying color swatch styles to these specific cards */
+body.tan-background .article-card {
+    background-color: var(--color-card-tan);
+}
+body.grey-background .article-card {
+    background-color: var(--color-card-grey);
+}
+
+/* --------------------------------------------------------------------------------------- */
 
 
 /* --- 6. MEDIA QUERIES (Basic Responsiveness) --- */
@@ -976,6 +1068,19 @@ body.grey-background .quote-image-section {
         padding: 0;
         margin-top: 1rem;
     }
+    
+    /* Article Feed Grid Adjustments */
+    .archive-feed .card-grid-container {
+        /* On tablet, reduce gap and min size slightly */
+        gap: 1.5rem; /* 24px */
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); 
+    }
+    .article-cover {
+        height: 10rem; /* 160px */
+    }
+    .article-card {
+        min-height: auto; /* Allow height to collapse when not in a perfect row */
+    }
 }
 
 /* --- DEDICATED FIX FOR 912 x 1368 (Viewport Width 912px) --- */
@@ -1129,4 +1234,10 @@ body.grey-background .quote-image-section {
     .quote-text-section .bio-subtitle {
         font-size: 1.25rem; /* Making it quite small, but still readable */
        }
+       
+    /* Article Feed Grid Adjustments */
+    .archive-feed .card-grid-container {
+        /* On small mobile, likely only one column, increase padding */
+        gap: 1.25rem;
+    }
 }
