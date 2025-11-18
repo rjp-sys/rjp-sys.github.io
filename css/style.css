@@ -1,5 +1,4 @@
 /* --- 0. FONT IMPORTS & GLOBAL RESET (Vintage Modern) --- */
-/* FIX: Added missing font imports here, which is standard practice for the top of a CSS file */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
@@ -8,6 +7,7 @@
 --color-ink: #333333;           /* Soft Charcoal for text */
 --color-accent: #4A606C;        /* Dusty Blue/Green (The Muted Accent) */
 --color-border: #B8B8B8;        /* Aged Silver/Metal for outlines */
+
 /* UPDATED Accessibility Colors - Deeper Swatches for Visibility */
 --color-tan: #EDE4D7;           /* Lighter background tan */
 --color-tan-swatch: #C3B697;    /* Deeper color for the circle preview */
@@ -18,19 +18,16 @@
 --color-card-tan: #F2EBE0; /* Slightly lighter than var(--color-tan) */
 --color-card-grey: #EAEAEA; /* Slightly lighter than var(--color-grey) */
 
-
 --transition-slow: 0.7s;        
 --transition-fast: 0.3s;        
-/* FIX: Converted 1400px to 87.5rem for REM-scaling */
 --content-max-width: 87.5rem;   
 }
 
 /* =======================
-    Responsive Breakpoints
+    Responsive Breakpoints (Definitions Only)
 ======================= */
 
 :root {
-    /* Defining breakpoints as variables for consistency */
     --breakpoint-tablet: 768px; 
     --breakpoint-mobile: 500px;
     --breakpoint-specific-tablet: 912px;
@@ -43,9 +40,9 @@
     padding: 0;
 }
 
+
 body.vintage-modern-background {
     font-family: 'Inter', sans-serif;   
-    /* NEW FIX: Base font size for slightly smaller natural scale */
     font-size: 0.95rem; 
     background-color: var(--color-paper);
     color: var(--color-ink);
@@ -63,9 +60,9 @@ h1, h2, h3, h4, blockquote {
     line-height: 1.2;
 }
 
-/* Global Link Styles (UPDATED for accent color) */
+/* Global Link Styles */
 a {
-    color: var(--color-accent); 
+    color: forestgreen; 
     text-decoration: none;
     transition: color var(--transition-fast) ease;
 }
@@ -84,33 +81,31 @@ body.bold-text * {
 }
 
 /* C. Color Change Styles (Used by JS) */
-/* The background-color is now applied by JS directly, but these classes style the cards */
-
-/* Set card color based on body background */
 body.tan-background .article-card-feed,
 body.tan-background .content-card,
 body.tan-background .quote-card-container,
 body.tan-background .quote-image-section,
-body.tan-background .topic-card, /* FIX: Added topic-card to color-changing elements */
-body.tan-background .article-card { /* FIX: Added article-card to color-changing elements */
+body.tan-background .topic-card,
+body.tan-background .article-card,
+body.tan-background .testimonial { 
     background-color: var(--color-card-tan);    
 }
 body.grey-background .article-card-feed,
 body.grey-background .content-card,
 body.grey-background .quote-card-container,
 body.grey-background .quote-image-section,
-body.grey-background .topic-card, /* FIX: Added topic-card to color-changing elements */
-body.grey-background .article-card { /* FIX: Added article-card to color-changing elements */
+body.grey-background .topic-card,
+body.grey-background .article-card,
+body.grey-background .testimonial { 
     background-color: var(--color-card-grey);    
 }
 
-
-/* --- 1. FLOATING NAVIGATION CAPSULE (Used by JS for .hidden) --- */
+/* --- 1. FLOATING NAVIGATION CAPSULE (Desktop) --- */
 
 .main-nav-capsule {
     position: fixed;
     right: 20px;    
-    top: 20px; /* Default position */
+    top: 20px; 
     z-index: 1000;
     width: auto;    
     max-width: 95%; 
@@ -119,51 +114,45 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     flex-direction: column; 
     align-items: center; 
     
-    padding: 0.9375rem 1.875rem; /* 15px 30px */
+    padding: 0.9375rem 1.875rem; 
     
     background-color: var(--color-paper);
     border: 2px solid var(--color-border);
-    border-radius: 3.75rem / 3.75rem; /* 60px */
+    border-radius: 3.75rem / 3.75rem; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    
 
     transition: top var(--transition-slow) ease-in-out;  
 }
 
-/* Class to hide the capsule when scrolling down (Controlled by JS) */
 .main-nav-capsule.hidden {
     top: -6.25rem;  
 }
 
-/* Menu Button Styling (Used by JS via #menu-trigger) */
 .menu-toggle-btn {
     font-family: 'Inter', sans-serif;
     font-size: 1.5rem;  
-    padding: 0.625rem 1.25rem; /* 10px 20px */
+    padding: 0.625rem 1.25rem; 
     background-color: var(--color-accent);
     color: white;   
     border: none;
     cursor: pointer;
-    border-radius: 2.5rem; /* 40px */ 
+    border-radius: 2.5rem; 
     transition: background-color var(--transition-fast) ease-out;
-    margin: 0 0 0.5rem 0; /* 8px */ 
+    margin: 0 0 0.5rem 0; 
 }
 
 .menu-toggle-btn:hover {
     background-color: #6a828e;  
 }
 
-/* Container for A, B, and Color Toggles */
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 0.625rem; /* 10px */
+    gap: 0.625rem; 
     padding: 0; 
-    border: none;
     position: relative; 
-    margin-top: 0; 
 }
 
-/* General Button Style for A/B Toggles in Header (Used by JS via IDs) */
 .header-controls button {
     text-decoration: none;
     line-height: 1; 
@@ -178,10 +167,9 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     background: none;   
 }
 
-/* A & B Button Style (Used by JS for .active state) */
 #scale-page-toggle, #bold-page-toggle {
-    padding: 0.3125rem 0.625rem; /* 5px 10px */
-    border-radius: 0.25rem; /* 4px */
+    padding: 0.3125rem 0.625rem; 
+    border-radius: 0.25rem; 
     border: 1px solid var(--color-border);  
     background-color: transparent;
 }
@@ -191,7 +179,6 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     border-color: var(--color-accent);
 }
 
-/* Style for active state (A or B is engaged) */
 #scale-page-toggle.active, #bold-page-toggle.active {
     background-color: var(--color-accent);
     color: white;   
@@ -199,7 +186,6 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     box-shadow: 0 0 5px rgba(74, 96, 108, 0.5);
 }
 
-/* Ampersand Style for A and B */
 .ampersand-accent {
     font-family: 'Playfair Display', serif;
     font-size: 1.1em;   
@@ -209,26 +195,24 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     transition: color var(--transition-fast);
 }
 
-/* Text color change when active */
 .header-controls button.active .ampersand-accent {
     color: var(--color-paper);  
 }
 
-/* --- Dropdown Menu Styling (Used by JS for .visible) --- */
 .scale-dropdown-menu {
     position: absolute;
-    top: calc(100% + 0.625rem); /* 10px */
+    top: calc(100% + 0.625rem); 
     right: 0;   
     left: auto;
-    width: 12.5rem; /* 200px */
+    width: 12.5rem; 
     background-color: var(--color-paper);
     border: 1px solid var(--color-accent);
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 0.9375rem; /* 15px */
+    padding: 0.9375rem; 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-0.625rem); /* -10px */ 
+    transform: translateY(-0.625rem); 
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 990;   
 }
@@ -247,26 +231,25 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
 .scale-label {
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
-    margin-bottom: 0.5rem; /* 8px */
+    margin-bottom: 0.5rem; 
     font-weight: 600;
 }
 
-/* Slider Aesthetics */
 #scale-slider {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 0.375rem; /* 6px */
+    height: 0.375rem; 
     background: var(--color-border);
-    border-radius: 0.1875rem; /* 3px */
+    border-radius: 0.1875rem; 
     cursor: pointer;
 }
 
 #scale-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 1rem; /* 16px */
-    height: 1rem; /* 16px */
+    width: 1rem; 
+    height: 1rem; 
     border-radius: 50%;
     background: var(--color-accent);
     cursor: pointer;
@@ -274,10 +257,9 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Color Circles Styling in Header (Used by JS for data-color and .active) --- */
 .color-circle {
-    width: 1.25rem; /* 20px */   
-    height: 1.25rem; /* 20px */
+    width: 1.25rem;    
+    height: 1.25rem; 
     border-radius: 50%; 
     border: 2px solid var(--color-ink);  
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.5);  
@@ -286,7 +268,6 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     cursor: pointer;
 }
 
-/* Apply the deeper swatch colors here */
 .color-circle[data-color="tan"] {
     background-color: var(--color-tan-swatch);
 }
@@ -297,7 +278,6 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     background-color: var(--color-paper);
 }
 
-/* Permanent Active Style for Default Circle (Initial state) */
 .color-circle[data-color="default"] {
     border-color: var(--color-accent);   
     border-width: 3px;   
@@ -305,7 +285,6 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     box-shadow: 0 0 8px rgba(74, 96, 108, 0.8);  
 }
 
-/* Override the standard active class on default, only allow tan/grey to switch */
 .color-circle.active:not([data-color="default"]) {
     border-color: var(--color-accent);   
     border-width: 3px;   
@@ -313,23 +292,22 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     box-shadow: 0 0 8px rgba(74, 96, 108, 0.8);  
 }
 
-/* Hover effect should not apply to the default if it already looks active */
 .color-circle:hover:not([data-color="default"]) {
     transform: scale(1.05); 
 }
 
 
-/* --- 2. OFF-CANVAS MENU STYLES (Used by JS for #off-canvas-menu, .nav-links, .active) --- */
+/* --- 2. OFF-CANVAS MENU STYLES --- */
 
 #off-canvas-menu {
     position: fixed;
     top: 0;
     left: 0;    
-    width: 18.75rem; /* 300px */
+    width: 18.75rem; 
     height: 100%;
     background-color: var(--color-paper);   
     z-index: 1500;
-    padding: 2.5rem 1.25rem; /* 40px 20px */
+    padding: 2.5rem 1.25rem; 
     
     transform: translateX(-100%);   
     transition: transform var(--transition-slow) ease-in-out;    
@@ -364,19 +342,18 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
 
 #off-canvas-menu .nav-links {
     list-style: none;
-    padding-top: 2.5rem; /* 40px */
+    padding-top: 2.5rem; 
 }
 
 #off-canvas-menu a {
     display: block;
-    padding: 0.75rem 0; /* 12px */
+    padding: 0.75rem 0; 
     text-decoration: none;
     color: var(--color-ink);
     font-size: 1.1rem;
     transition: color var(--transition-fast);
 }
 
-/* Explicitly set hover color for nav links */
 #off-canvas-menu a:hover {
     color: var(--color-accent); 
 }
@@ -386,17 +363,17 @@ body.grey-background .article-card { /* FIX: Added article-card to color-changin
     font-weight: 700;
     font-size: 1.5rem;
     margin-top: 1.5rem;
-    padding-bottom: 0.3125rem; /* 5px */
+    padding-bottom: 0.3125rem; 
     border-bottom: 1px solid var(--color-border);
 }
 
-/* --- 3. CONTENT STRUCTURE AND FIXES (Used by JS for .menu-open, .animate-on-scroll, .visible) --- */
+
+/* --- 3. CONTENT STRUCTURE AND FIXES (Desktop Defaults) --- */
 
 main {
     transition: transform var(--transition-fast) ease, opacity var(--transition-fast) ease;   
 }
 
-/* Scrim effect on main content when menu is active */
 body.menu-open main {
     opacity: 0.3;   
     pointer-events: none;   
@@ -404,39 +381,34 @@ body.menu-open main {
 
 .content-section, .archive-feed {
     max-width: var(--content-max-width);    
-    margin: 2.5rem auto; /* 40px */
-    padding: 0 2.5rem; /* 40px */
+    margin: 2.5rem auto; 
+    padding: 0 2.5rem; 
 }
 
 .section-heading {
     text-align: center;
     font-size: 2.25rem;
-    margin-bottom: 3.875rem; /* 30px */
+    margin-bottom: 3.875rem; 
 }
 
-/* Scroll Animation Styles (Used by JS Intersection Observer) */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(1.25rem); /* 20px */
+    transform: translateY(1.25rem); 
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Changed from .visible to .in-view to match the JS implementation I confirmed earlier */
 .animate-on-scroll.in-view {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-/* Hero/Banner Styling (Used by JS for Intersection Observer) */
 .hope-banner {
-    padding-top: 1.875rem; /* 30px */    
+    padding-top: 1.875rem;     
     margin: 0 auto; 
-    padding-bottom: 2.5rem; /* 40px */
+    padding-bottom: 2.5rem; 
     text-align: center;
 }
 
-/* Quote Label for Fade-In Transition (Used by JS for inline opacity) */
 .quote-label {
     font-family: 'Lora', serif;
     font-size: 1.2em;   
@@ -445,14 +417,13 @@ body.menu-open main {
     text-align: center; 
     line-height: 1.6;
     margin-top: 0;  
-    opacity: 0; /* Starts hidden, JS applies transition and opacity: 1 */
+    opacity: 0; 
 }
 
-/* Citation Styling */
 .quote-label cite {
     white-space: normal;    
     display: block;
-    margin-top: 0.625rem; /* 10px */
+    margin-top: 0.625rem; 
     font-size: 0.8em;
     font-style: normal;
     color: var(--color-ink);
@@ -461,14 +432,14 @@ body.menu-open main {
 }
 
 
-/* Profile Photo and Bio Layout (DESKTOP) */
+/* Profile Photo and Bio Layout (GENERAL DESKTOP) */
 .robyn-bio {
     display: flex;
-    gap: 3.125rem; /* 50px */
+    gap: 3.125rem; 
     align-items: center;
-    max-width: 56.25rem; /* 900px */    
+    max-width: 56.25rem;     
     margin-top: 0;  
-    margin-bottom: 3.75rem; /* 60px */
+    margin-bottom: 3.75rem; 
     
     margin-left: auto;  
     margin-right: auto;
@@ -478,78 +449,59 @@ body.menu-open main {
 }
 
 .robyn-photo {
-    width: 12.5rem; /* 200px */
-    height: 12.5rem; /* 200px */
+    width: 12.5rem; 
+    height: 12.5rem; 
     object-fit: cover;  
-    border-radius: 0.3125rem; /* 5px */    
+    border-radius: 0.3125rem;     
     border: 2px solid var(--color-accent);  
     box-shadow: none;   
 }
 
-/* Bio Text Size Increase */
 .robyn-bio p {
     font-size: 1.3rem;  
     line-height: 1.7;   
-    text-align: left; /* Default desktop alignment */
+    text-align: left; 
 }
 
-/* Ensure the entire bio text block has vertical spacing */
 .robyn-bio-text {
-    padding-top: 1.875rem; /* 30px */
-    padding-bottom: 1.875rem; /* 30px */
+    padding-top: 1.875rem; 
+    padding-bottom: 1.875rem; 
 }
 
-/* --- REVISED: Quote Card Styling (Hero Card) (Used by JS for Intersection Observer) --- */
+
+/* Quote Card Styling (Hero Card) */
 
 .quote-card-container {
     max-width: var(--content-max-width);    
-    margin: 3.75rem auto; /* 60px */
+    margin: 3.75rem auto; 
     background-color: var(--color-paper);
     transition: background-color var(--transition-slow) ease;    
 
     border: 1px solid var(--color-border);
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;   
     display: flex;  
     align-items: center;    
 }
 
-/* Apply the lighter card specific colors to the quote card container */
-body.tan-background .quote-card-container {
-    background-color: var(--color-card-tan);    
-}
-body.grey-background .quote-card-container {
-    background-color: var(--color-card-grey);
-}
-
-
 .quote-image-section {
-    flex: 0 0 25rem; /* 400px */    
+    flex: 0 0 25rem;     
     background-color: var(--color-paper);   
     display: flex;
     flex-direction: column;
     justify-content: center;    
     align-items: center;
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem; 
     border-right: 1px solid var(--color-border);    
 }
 
-/* Ensure image section also updates */
-body.tan-background .quote-image-section {
-    background-color: var(--color-card-tan);
-}
-body.grey-background .quote-image-section {
-    background-color: var(--color-card-grey);
-}
-
-
 .quote-card-image {
-    width: 15.625rem; /* 250px */
-    height: 15.625rem; /* 250px */
+    width: 15.625rem; 
+    height: 15.625rem; 
     object-fit: contain;
-    border-radius: 0.3125rem; /* 5px */    
-    margin-bottom: 1.25rem; /* 20px */ 
+    border-radius: 0.3125rem;     
+    margin-bottom: 1.25rem; 
     border: none;
     box-shadow: none;
 }
@@ -557,13 +509,12 @@ body.grey-background .quote-image-section {
 
 .quote-text-section {
     flex: 1;    
-    padding: 1.25rem 2.5rem; /* 20px 40px */
+    padding: 1.25rem 2.5rem; 
     display: flex;
     flex-direction: column;
     justify-content: center;    
 }
 
-/* --- Specificity Fix for H2 Heading --- */
 .quote-text-section h2 {
     color: var(--color-ink);
     text-align: center; 
@@ -571,23 +522,18 @@ body.grey-background .quote-image-section {
 
 .quote-heading {
     font-size: 3.5em;   
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem; 
 }
 
-/* --- New .bio-subtitle Class (Applied to the <span>) --- */
-/* *** FIX START: Increased specificity to ensure text-align takes precedence *** */
 .quote-text-section .bio-subtitle {
-    font-size: 2rem; /* Increased size for greater visibility */
+    font-size: 2rem; 
     font-weight: 400;   
-    color: #4b5563; /* Subtle dark gray */
+    color: #4b5563; 
     margin-top: 0.25rem;    
     display: block;
     line-height: 1.4;
     text-align: center !important; 
 }
-/* *** FIX END *** */
-
-/* --------------------------------------------------------------------------------------- */
 
 .quote-text-section p {
     font-size: 1.1em;   
@@ -596,17 +542,16 @@ body.grey-background .quote-image-section {
     text-align: center; 
 }
 
-/* --- SINGLE ARTICLE LAYOUT STYLES (Used in other pages) --- */
+/* --- SINGLE ARTICLE LAYOUT STYLES --- */
 
 .article-body {
-    max-width: 50rem; /* 800px */    
-    margin: 2.5rem auto; /* 40px */
-    padding: 0 1.25rem; /* 20px */
+    max-width: 50rem;     
+    margin: 2.5rem auto; 
+    padding: 0 1.25rem; 
     font-size: 1.1rem;  
     text-align: left;   
 }
 
-/* Article Paragraph Specific Fixes */
 .article-body p {
     font-size: 1.1rem;  
     line-height: 1.8;   
@@ -616,30 +561,31 @@ body.grey-background .quote-image-section {
     -ms-hyphens: auto;
 }
 
-/* Ensure headings inside the article body are spaced well */
 .article-body h2 {
     font-size: 1.8em;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
 }
 
-/* Specific article hero text adjustments - Rules for .article-title and .article-meta moved to .article-header section for clarity/control */
+.article-body a {
+    color: forestgreen;
+    text-decoration: underline; 
+}
+
 .article-hero .quote-text-section {
-    padding: 1.25rem 2.5rem; /* 20px 40px */
+    padding: 1.25rem 2.5rem; 
 }
 
 
-/* --- NEW ARTICLE HEADER STYLING (For structure outside the hero card) --- */
+/* --- NEW ARTICLE HEADER STYLING --- */
 .article-header {
     text-align: center;
-    margin: 2.5rem auto 1.5rem auto; /* Top, Right/Left, Bottom, Right/Left */
-    max-width: 50rem; /* Same as your .article-body content width */
+    margin: 2.5rem auto 1.5rem auto; 
+    max-width: 50rem; 
 }
 
-/* Title Control (e.g., set to 3.5rem for much larger text) */
 .article-header .article-title {
-    /* **PRIMARY CONTROL FOR ARTICLE TITLE SIZE** */
-    font-size: 3.5rem; /* Change this value! */
+    font-size: 3.5rem; 
     margin-bottom: 0.25rem;
     line-height: 1.1;
     font-family: 'Lora', serif;
@@ -663,10 +609,10 @@ body.grey-background .quote-image-section {
     display: flex;
     flex-wrap: wrap;    
     justify-content: center;    
-    gap: 1.875rem; /* 30px */
-    padding-top: 1.25rem; /* 20px */
+    gap: 1.875rem; 
+    padding-top: 1.25rem; 
     
-    max-width: 65rem; /* 1040px */   
+    max-width: 65rem;    
     margin-left: auto;  
     margin-right: auto; 
     
@@ -677,23 +623,23 @@ body.grey-background .quote-image-section {
 
 .book-column {
     flex: 1 1 45%;  
-    max-width: 31.25rem; /* 500px */
-    padding-right: 1.875rem; /* 30px */
+    max-width: 31.25rem; 
+    padding-right: 1.875rem; 
     padding-left: 0;    
     border-right: 1px solid var(--color-border);
 }
 
 .articles-column {
     flex: 1 1 45%;
-    max-width: 31.25rem; /* 500px */
-    padding-left: 1.875rem; /* 30px */
+    max-width: 31.25rem; 
+    padding-left: 1.875rem; 
     padding-right: 0;   
 }
 
 .column-heading {
     font-family: 'Lora', serif;
     font-size: 1.6em;
-    margin-bottom: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem; 
     color: var(--color-accent);
     text-align: center; 
 }
@@ -703,18 +649,18 @@ body.grey-background .quote-image-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;    
-    gap: 1.875rem; /* 30px */
+    gap: 1.875rem; 
     align-items: flex-start;
 }
 
 /* Content Card Size Control */
 .content-card {
-    flex: 0 1 17.5rem; /* 280px */
-    max-width: 17.5rem; /* 280px */ 
-    padding: 1.25rem; /* 20px */  
+    flex: 0 1 17.5rem; 
+    max-width: 17.5rem; 
+    padding: 1.25rem; 
     text-align: left;   
     border: 1px solid var(--color-border);
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem; 
     background-color: var(--color-paper);
     margin-left: auto;  
     margin-right: auto;
@@ -724,57 +670,64 @@ body.grey-background .quote-image-section {
 .content-image {
     width: 100%;
     height: auto;
-    max-height: 21.875rem; /* 350px */  
+    max-height: 21.875rem; 
     display: block;
-    margin: 0.325rem auto 0.9375rem 0; /* 15px */ 
+    margin: 0.325rem auto 0.9375rem 0; 
     border-radius: 4px;
     object-fit: contain;    
 }
 
 .book-column .content-image {
-    /* Top margin 1.125rem (18px) - Right/Left margin auto - Bottom margin 0.9375rem (15px) */
     margin: 1.125rem auto 0.9375rem auto;   
 }
 
 /* Paragraph Styling */
 .content-card p {
     display: block;
-    margin-top: 0.625rem; /* 10px */
+    margin-top: 0.625rem; 
     text-align: left;
 }
 
-/* The book card still needs its button positioned correctly */
 .book-card p .buy-link {
     display: inline-block;  
-    margin-top: 0.625rem; /* 10px */
-    margin-left: 4.125rem; /* 66px - User's updated value */ 
+    margin-top: 0.625rem; 
+    margin-left: 4.125rem; 
 }
 
 /* Article card link consistency */
-.article-card p.article-link, .article-card p.article-link a {
-    text-align: left;   
+.article-card p.article-link {
+    text-align: left;
     display: block;
+    color: white;
+    margin: 0; 
+}
+
+.article-card p.article-link a {
+    display: inline-block; 
 }
 
 .button-style {
     display: inline-block;
-    padding: 0.5rem 1rem; /* 8px 16px */
+    padding: 0.5rem 1rem; 
     background-color: var(--color-accent);
-    color: white;
+    color: white !important;
     text-decoration: none;
-    border-radius: 2.5rem; /* 40px */
+    border-radius: 2.5rem; 
     flex-shrink: 0; 
     transition: background-color var(--transition-fast) ease;
+    margin: 0;
 }
-
+.button-style a {
+    color: white !important;
+}
 .button-style:hover {
     background-color: #6a828e;
 }
 
 .site-footer {
     text-align: center;
-    padding: 1.875rem 0; /* 30px */
-    margin-top: 2.5rem; /* 40px */
+    padding: 1.875rem 0; 
+    margin-top: 2.5rem; 
     border-top: 1px solid var(--color-border);
     color: var(--color-ink);
 }
@@ -785,10 +738,10 @@ body.grey-background .quote-image-section {
 
 /* Base Article Card style, reusing .content-card but adding feed-specific adjustments */
 .article-card-feed {
-    padding: 1.25rem; /* 20px */  
+    padding: 1.25rem; 
     text-align: left;   
     border: 1px solid var(--color-border);
-    border-radius: 0.5rem; /* 8px */
+    border-radius: 0.5rem; 
     background-color: var(--color-paper);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: box-shadow var(--transition-fast) ease;
@@ -797,14 +750,14 @@ body.grey-background .quote-image-section {
 }
 
 .article-card-feed:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
 }
 
 .article-card-feed h3 {
     font-family: 'Lora', serif;
     font-size: 1.4em;
     color: var(--color-accent);
-    margin-bottom: 0.625rem; /* 10px */
+    margin-bottom: 0.625rem; 
     text-align: left;   
 }
 
@@ -813,7 +766,7 @@ body.grey-background .quote-image-section {
     font-family: 'Inter', sans-serif;
     font-size: 0.9em;
     color: var(--color-border);
-    margin-bottom: 0.9375rem; /* 15px */
+    margin-bottom: 0.9375rem; 
     text-align: left;   
 }
 
@@ -821,13 +774,13 @@ body.grey-background .quote-image-section {
 .article-card-feed p {
     font-size: 1em;
     line-height: 1.5;
-    margin-bottom: 1.25rem; /* 20px */
+    margin-bottom: 1.25rem; 
     text-align: left;   
 }
 
 /* Reuse the button-style for 'Read More' links */
 .article-card-feed .button-style {
-    margin-top: 0.625rem; /* 10px */
+    margin-top: 0.625rem; 
     margin-left: 0; 
 }
 
@@ -835,7 +788,7 @@ body.grey-background .quote-image-section {
     /* Critical: Centers the inline/inline-block elements inside the div (like buttons and links) */
     text-align: center; 
     /* Optional: Add some padding/margin for spacing */
-    margin-top: 2.5rem; /* 40px spacing above the button */
+    margin-top: 2.5rem; 
 }
 
 /* --------------------------------------------------------------------------------------- */
@@ -845,13 +798,13 @@ body.grey-background .quote-image-section {
 .archive-feed .card-grid-container {
     display: grid;
     /* Responsive Grid: 3 columns on desktop, adapts down to 1 column on mobile */
-    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); /* min 300px */
-    gap: 2.5rem; /* 40px gap between cards */
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); 
+    gap: 2.5rem; 
     
     /* Override flex-wrap from the .content-columns section to use Grid */
     flex-wrap: nowrap; 
-    justify-content: unset; /* Resetting flex property */
-    align-items: stretch; /* Ensure all cards stretch to the same height */
+    justify-content: unset; 
+    align-items: stretch; 
     
     /* Reset Max Width if necessary, should be constrained by .content-section */
     max-width: var(--content-max-width);
@@ -861,7 +814,7 @@ body.grey-background .quote-image-section {
     /* Base Article Card style, reusing .content-card base aesthetics */
     display: flex;
     flex-direction: column;
-    padding: 1.25rem; /* 20px */
+    padding: 1.25rem; 
     border: 1px solid var(--color-border);
     border-radius: 0.5rem; 
     background-color: var(--color-paper);
@@ -870,21 +823,20 @@ body.grey-background .quote-image-section {
     
     /* Ensure consistent height across grid row */
     height: 100%; 
-    
-    /* Add a slight lift effect on hover */
-    /* FIX: Added CSS for hover state */
-    &:hover {
-        transform: translateY(-0.1875rem); /* -3px */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
+}
+
+/* FIX: Converted CSS Nesting `:hover` to standard CSS */
+.article-card:hover {
+    transform: translateY(-0.1875rem); /* -3px */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .article-cover {
     width: 100%;
     /* Keep image height consistent within the card */
-    height: 12.5rem; /* 200px */
+    height: 12.5rem; 
     object-fit: cover;
-    border-radius: 0.3125rem; /* 5px */
+    border-radius: 0.3125rem; 
     margin-bottom: 1rem;
     border: 1px solid var(--color-border);
 }
@@ -911,14 +863,6 @@ body.grey-background .quote-image-section {
     flex-grow: 0;
 }
 
-/* Re-applying color swatch styles to these specific cards */
-body.tan-background .article-card {
-    background-color: var(--color-card-tan);
-}
-body.grey-background .article-card {
-    background-color: var(--color-card-grey);
-}
-
 
 /* --------------------------------------------------------------------------------------- */
 /* --- NEW STYLING FOR INVITE ROBYN PAGE (Centering and Form Sizing) --- */
@@ -927,7 +871,7 @@ body.grey-background .article-card {
 /* Center the topic list and limit its width for readability on large screens */
 .invite-content-wrapper {
     max-width: 750px; 
-    margin: 40px auto; /* Centers the block */
+    margin: 40px auto; 
     padding: 0 20px;
 }
 
@@ -943,14 +887,6 @@ body.grey-background .article-card {
     border-radius: 0.5rem;
     background-color: var(--color-paper);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-/* Color adjustment for topic cards */
-body.tan-background .topic-card {
-    background-color: var(--color-card-tan);
-}
-body.grey-background .topic-card {
-    background-color: var(--color-card-grey);
 }
 
 .topic-card h3 {
@@ -970,7 +906,7 @@ body.grey-background .topic-card {
 /* Center the form container and limit its width */
 .form-container {
     max-width: 700px; 
-    margin: 40px auto; /* Centers the block */
+    margin: 40px auto; 
     padding: 0 20px 80px 20px;
 }
 
@@ -980,13 +916,121 @@ body.grey-background .topic-card {
 }
 
 /* --------------------------------------------------------------------------------------- */
+/* =======================
+    ABOUT ROBYN PAGE SPECIFIC LAYOUT (Scoped to .about-page)
+======================= */
+
+/* --- TESTIMONIALS SECTION LAYOUT (Side-by-Side Cards) --- */
+.about-page .testimonials-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.about-page .testimonials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 65rem; 
+    margin: 0 auto 5rem auto; 
+    padding: 0 1rem;
+}
+
+.about-page .testimonial {
+    flex: 1 1 45%; 
+    background-color: var(--color-paper);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    margin: 0; 
+}
+
+.about-page .testimonial-quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem; 
+}
+.about-page .testimonial-quote::before {
+    content: "\201C"; 
+    font-size: 3rem;
+    line-height: 0;
+    position: absolute;
+    top: 0.5rem;
+    left: -0.5rem;
+    color: var(--color-accent);
+}
+
+.about-page .testimonial-author {
+    display: block;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    text-align: right;
+}
+
+.about-page .testimonial-org {
+    font-weight: normal;
+    font-style: italic;
+    color: var(--color-text-secondary);
+}
+
+/* --- PROFILE PHOTO & BIO LAYOUT (Balanced Two-Column) --- */
+.about-page .robyn-bio {
+    display: flex;
+    gap: 3rem; 
+    align-items: flex-start;
+    /* Keeps the wide container size for maximum text flow (80rem = 1280px) */
+    max-width: 80rem; 
+    
+    /* Reduced vertical space on the main container */
+    margin: 3rem auto 2rem auto; 
+    
+    width: 100%;
+    padding: 0 1rem; 
+    position: relative; 
+}
+
+.about-page .robyn-photo {
+    /* Photo takes up 20% of the total space */
+    flex: 0 0 20%; 
+    max-width: 20%; 
+    height: auto; 
+    object-fit: cover;  
+    border-radius: 0.3125rem; 
+    border: 2px solid var(--color-accent);  
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+    flex-shrink: 0;
+    
+    /* DESKTOP OFFSET: Photo is pushed down 7rem for unique visual alignment */
+    margin-top: 7rem; 
+}
+
+.about-page .robyn-bio-text {
+    /* Text takes up the remaining 80% of the total space */
+    flex: 1 1 80%; 
+    max-width: 80%; 
+    padding-top: 0rem; 
+    /* Ensures the text container has height, aligning with the bottom of the offset photo */
+    padding-bottom: 10rem; 
+}
+
+.about-page .robyn-bio-text p {
+    font-size: 1.15rem; 
+    line-height: 1.7;   
+    text-align: justify; 
+    hyphens: auto;  
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    max-width: 100%; 
+}
 
 
-/* --- 6. MEDIA QUERIES (Basic Responsiveness) --- */
 /* --------------------------------------------------------------------------------------- */
-/* --- 6. MEDIA QUERIES (Corrected Order and Consolidation) --- */
+/* --- 6. RESPONSIVE MEDIA QUERIES --- */
 /* --------------------------------------------------------------------------------------- */
-
 
 /* Tablet and Small Desktop Adjustments (Max Width 992px) */
 @media (max-width: 992px) {
@@ -998,7 +1042,8 @@ body.grey-background .topic-card {
 
     /* ADDED: Meta size for small screens */
     .article-header .article-meta {
-        font-size: 0.9em;
+        /* Adjusted to a fixed size for better control */
+        font-size: 1rem; 
     }
     
     /* Ensure invite page content remains readable on very small screens */
@@ -1017,10 +1062,12 @@ body.grey-background .topic-card {
 @media (width: 912px) {
     
     .content-section, .archive-feed {
+        /* Tighter padding on the right for this specific, common tablet size */
         padding-left: 2.5rem;   
         padding-right: 0.9375rem;   
     }
     
+    /* Robyn Bio: Explicitly center components for this wide tablet view */
     .robyn-photo {
         margin-left: auto;
         margin-right: auto;
@@ -1059,12 +1106,61 @@ body.grey-background .topic-card {
     .quote-label cite {
         text-align: center;
     }
+    
+    /* FIX: About Page Testimonial Grid for 912px Tablet */
+    .about-page .testimonials-grid {
+        gap: 1.5rem; /* Reduce gap slightly */
+    }
 }
 
+.highlight-scripture {
+    /* Use the same styling as before, but with a semantic tag */
+    color: red; 
+    font-weight: 600;
+}
+.photo-grid-container {
+    display: grid;
+    /* This creates a responsive grid: 
+       - It will try to fit as many columns as possible
+       - Each column will be at least 250px wide, up to 1fr (equal fraction of space) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; /* Space between the photo cards */
+    padding: 2rem; /* Padding around the entire grid */
+    max-width: 1200px; /* Limit overall grid width */
+    margin: 0 auto; /* Center the grid container */
+}
+
+.photo-card {
+    border: 1px solid var(--color-border); /* Example border for each card */
+    border-radius: 0.5rem; /* Slightly rounded corners */
+    overflow: hidden; /* Ensures image corners respect border-radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effects */
+}
+
+.photo-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.photo-card img {
+    width: 100%; /* Make images fill their card width */
+    height: 200px; /* Fixed height for consistent card appearance */
+    object-fit: cover; /* Crop images to fit fixed height without distortion */
+    display: block; /* Remove extra space below images */
+}
+
+.photo-grid-container a {
+    display: block;
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit;
+}
 
 /* Tablet/Medium Mobile Content Adjustments (Max Width 900px) */
 /* **This block re-establishes the core tablet stacking and padding.** */
 @media (max-width: 900px) {
+    
+    /* --- GENERAL CONTENT AND LAYOUT --- */
     
     .content-section, .archive-feed {
         padding-left: 0.9375rem; /* 15px */  
@@ -1078,7 +1174,7 @@ body.grey-background .topic-card {
         margin-bottom: 1.25rem; /* 20px */
     }
 
-    /* --- Navigation Adjustment --- */
+    /* Navigation Adjustment */
     .main-nav-capsule {
         top: 10px;  
         right: 10px;    
@@ -1089,36 +1185,49 @@ body.grey-background .topic-card {
         margin: 0 0 0.625rem 0; 
     }
     
-    /* --- Robyn Bio Layout FIX --- */
-    .robyn-bio {
+    /* --- ROBYN BIO LAYOUT FIX (Stacking for .about-page and general bio) --- */
+    
+    /* Ensures the main container stacks correctly for both general and .about-page bio */
+    .about-page .robyn-bio, .robyn-bio {
         flex-direction: column;
-        text-align: center; 
+        align-items: center;
         margin: 3.125rem auto; 
-        gap: 0; 
+        gap: 0;
+        max-width: 95%; /* Adjusted max-width for tablet */
     }
-    .robyn-photo {
-        margin: 0 auto 1.25rem auto; 
-        width: 12.5rem; 
-        height: 12.5rem; 
+
+    /* CRITICAL FIX: Photo Styling - Applied to BOTH general and .about-page photo */
+    .robyn-photo, .about-page .robyn-photo {
+        /* This handles both the small photo (12.5rem) and large photo (width: 90%) */
+        margin: 0 auto 1.5rem auto; 
+        margin-top: 0; /* REMOVES THE DESKTOP OFFSET (7rem) */
+        max-width: 90%; 
+        width: 90%;
+        height: auto; 
     }
-    .robyn-bio-text {
+    
+    /* CRITICAL FIX: Text Styling - Applied to BOTH general and .about-page text */
+    .robyn-bio-text, .about-page .robyn-bio-text {
         width: 100%;    
-        max-width: 37.5rem; 
+        max-width: 90%; /* Allows text to use full width of the wrapper */
         margin: 0 auto; 
         padding-top: 1.25rem;   
+        /* Reset padding-bottom from the large desktop 10rem to a standard mobile value */
         padding-bottom: 1.25rem;
     }
+    
     .robyn-bio-text h2 {
         text-align: center; 
     }
-    
-    /* CRITICAL FIX: Center the paragraph text inside the bio box for tablet/mobile */
+
+    /* CRITICAL FIX: Paragraph text inside the bio box for tablet/mobile */
     .robyn-bio-text p {
         margin-bottom: 1.5em;   
         text-align: center; 
     }
     
-    /* --- Content Column Adjustment (Stacked on Tablet) --- */
+    /* --- CONTENT COLUMNS (Books & Articles) --- */
+
     .content-columns {
         flex-direction: column; 
         gap: 2.5rem;    
@@ -1140,18 +1249,17 @@ body.grey-background .topic-card {
         border-bottom: 1px solid var(--color-border);
     }
     
-    /* FIX: Override desktop centering for mobile stack */
     .column-heading {
         text-align: center !important;  
     }
 
-    /* Add back padding for the card container within the column */
+    /* --- CONTENT CARDS AND FEEDS --- */
+
     .card-grid-container {
         justify-content: center !important; 
         padding-top: 0.9375rem; 
     }
     
-    /* FIX: Content Card Alignment for stacked layout (now full-width) */
     .content-card {
         flex: 1 1 100%; 
         max-width: 100%; 
@@ -1159,13 +1267,10 @@ body.grey-background .topic-card {
         margin-right: 0 !important;
     }
     
-    /* FIX: Reset text-align to left for individual cards inside the stacked column,
-           but let the wrapper align the button */
     .content-card p {
         text-align: left;
     }
 
-    /* FIX: Center the Buy Link on Mobile/Tablet Stack */
     .book-card p {
         text-align: center; 
     }
@@ -1173,7 +1278,20 @@ body.grey-background .topic-card {
         margin-left: 0 !important;  
     }
     
-    /* --- Hero Card Mobile Fix --- */
+    /* Article Feed Grid Adjustments */
+    .archive-feed .card-grid-container {
+        gap: 1.5rem; 
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); 
+    }
+    .article-cover {
+        height: 10rem; 
+    }
+    .article-card {
+        min-height: auto; 
+    }
+    
+    /* --- HERO CARD FIX --- */
+
     .quote-card-container {
         flex-direction: column; 
         max-width: 95%; 
@@ -1208,16 +1326,14 @@ body.grey-background .topic-card {
         margin-top: 1rem;
     }
     
-    /* Article Feed Grid Adjustments */
-    .archive-feed .card-grid-container {
-        gap: 1.5rem; /* 24px */
-        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); 
+    /* --- TESTIMONIALS FIX --- */
+
+    .about-page .testimonials-grid {
+        flex-direction: column; 
+        gap: 1.5rem;
     }
-    .article-cover {
-        height: 10rem; /* 160px */
-    }
-    .article-card {
-        min-height: auto; 
+    .about-page .testimonial {
+        flex: 1 1 100%; 
     }
 }
 
@@ -1227,8 +1343,9 @@ body.grey-background .topic-card {
     
     /* FIX: Revert horizontal margin on bio text to prevent extreme squish/overlap at this size */
     .robyn-bio p {
-        margin-left: 0.9375rem; /* 15px */
-        margin-right: 0.9375rem; /* 15px */
+        /* Set explicit side padding to control text block width better than margin */
+        padding-left: 0.9375rem; /* 15px */
+        padding-right: 0.9375rem; /* 15px */
         margin-top: 0.5rem; 
         margin-bottom: 0.5rem;
         /* Ensure font size is comfortable */
@@ -1260,9 +1377,38 @@ body.grey-background .topic-card {
 /* Small Mobile Content Adjustments (Max Width 500px) */
 @media (max-width: 500px) {
     
-    /* Horizontal Padding is confirmed at 1.25rem (20px) */
+    /* Horizontal Padding is confirmed at 1.25rem (20px) for general content */
     .content-section, .archive-feed {
         padding-left: 1.25rem; /* 20px */
         padding-right: 1.25rem; /* 20px */
+    }
+    
+    /* Revert bio text padding to 0 and rely on the wrapper's padding */
+    .robyn-bio p {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Article feed grid now switches to a single column */
+    .archive-feed .card-grid-container {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.photo-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .photo-card img {
+        height: 150px; /* Adjust height for smaller cards */
+    }
+@media (max-width: 480px) {
+    .photo-grid-container {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        padding: 0.5rem;
+    }
+    .photo-card img {
+        height: 250px; /* Taller images when they are full width */
     }
 }
