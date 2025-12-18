@@ -577,6 +577,7 @@ body.menu-open main {
 }
 
 
+
 /* --- NEW ARTICLE HEADER STYLING --- */
 .article-header {
     text-align: center;
@@ -599,6 +600,22 @@ body.menu-open main {
     color: var(--color-ink); 
     display: block;
     margin-bottom: 1.5rem; 
+}
+
+h2.sermon-meta {
+  font-size: 1.3em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h2.parable-heading {
+  font-size: 1.3em;
+
+}
+
+.color {
+    color: blue;
+
 }
 /* --- END NEW ARTICLE HEADER STYLING --- */
 
