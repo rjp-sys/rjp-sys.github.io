@@ -1,0 +1,8 @@
+extends: spelling
+message: Ignore specific project words
+ignore:
+  - Plocher
+  - MENU
+  - LORD
+  - NIV 
+level: suggestion
